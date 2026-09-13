@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>About Us – Dhage Travels</title>
+    <meta name="description"
+        content="Learn the story of Dhage Travels — Maharashtra's most trusted premium bus service since 1985.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-yellow: #f9d71c;
+            --bg-dark: #1c1c1c;
+            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            color: #1a1e24;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            background-color: var(--bg-dark);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--brand-yellow);
+            text-decoration: none;
+        }
+
+        .logo-top {
+            font-family: 'Oswald', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo-bottom {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--brand-yellow);
+        }
+
+        .btn-signup {
+            background-color: var(--brand-yellow);
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: 90px;
+            background: linear-gradient(135deg, #1c1c1c 0%, #2d2d2d 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(249, 215, 28, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 60px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-hero h1 span {
+            color: var(--brand-yellow);
+        }
+
+        .page-hero p {
+            color: #aab;
+            font-size: 18px;
+            margin-top: 12px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .page-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* ===== MISSION BLOCK ===== */
+        .mission-block {
+            background: linear-gradient(135deg, #1e2b3a, #14222e);
+            border-radius: 50px;
+            padding: 60px 70px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.9s ease-out;
+        }
+
+        .mission-left {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .mission-left .big-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .mission-left .big-yellow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--brand-yellow);
+            letter-spacing: 4px;
+            margin-top: 8px;
+        }
+
+        .mission-right {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .mission-right p {
+            color: #e0e8f0;
+            font-size: 18px;
+            line-height: 1.8;
+            border-left: 4px solid var(--brand-yellow);
+            padding-left: 24px;
+        }
+
+        /* ===== STATS GRID ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 28px;
+            padding: 36px 24px;
+            text-align: center;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .stat-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--brand-yellow);
+        }
+
+        .stat-card .stat-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #1c1c1c;
+            line-height: 1;
+        }
+
+        .stat-card .stat-num span {
+            color: var(--brand-yellow);
+        }
+
+        .stat-card .stat-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION HEADING ===== */
+        .section-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 8px;
+            border-left: 6px solid var(--brand-yellow);
+            padding-left: 20px;
+        }
+
+        .section-subheading {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 50px;
+            padding-left: 26px;
+        }
+
+        /* ===== VALUES GRID ===== */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 32px;
+            padding: 40px 32px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .value-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .value-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--brand-yellow);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            color: #2b3a8c;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--brand-yellow), transparent);
+            top: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 40px);
+            position: relative;
+            margin-bottom: 50px;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 40px);
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--brand-yellow);
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--brand-yellow);
+            top: 16px;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 32px;
+            box-shadow: var(--soft-shadow);
+            max-width: 400px;
+            border: 1px solid #edf2f7;
+        }
+
+        .timeline-year {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            color: var(--brand-yellow);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 6px 0 8px;
+        }
+
+        .timeline-content p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+            text-align: center;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .team-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .team-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .team-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .team-avatar {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            background: linear-gradient(135deg, #f4f9ff, #e8f0fe);
+        }
+
+        .team-info {
+            padding: 24px;
+        }
+
+        .team-info h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .team-info span {
+            color: var(--brand-yellow);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .team-info p {
+            color: #718096;
+            font-size: 13px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: var(--brand-yellow);
+            border-radius: 40px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: #1c1c1c;
+            margin-bottom: 12px;
+        }
+
+        .cta-banner p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #1c1c1c;
+            color: var(--brand-yellow);
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background-color: #0f0f0f;
+            color: #efefef;
+            padding: 40px 40px 20px;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            color: var(--brand-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 30px auto 0;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            color: #7e848f;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #abafb6;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--brand-yellow);
+        }
+
+        /* ===== KEYFRAMES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .mission-block {
+                padding: 40px;
+            }
+
+            .mission-left .big-text {
+                font-size: 52px;
+            }
+
+            .timeline::before {
+                left: 24px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start;
+                padding-right: 0;
+                padding-left: 70px;
+            }
+
+            .timeline-item:nth-child(even) {
+                padding-left: 70px;
+            }
+
+            .timeline-dot {
+                left: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .cta-banner {
+                padding: 40px 24px;
+            }
+
+            .cta-banner h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV (same as home.html) -->
+    <nav>
+        <a href="home.html" class="logo-group">
+            <div class="logo-top">DHAGE</div>
+            <div class="logo-bottom">TRAVELS</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book Now</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <h1>About <span>Dhage Travels</span></h1>
+        <p>Maharashtra's most trusted premium bus service — connecting hearts since 1985.</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-content">
+
+        <!-- MISSION BLOCK -->
+        <div class="mission-block">
+            <div class="mission-left">
+                <div class="big-text">40+</div>
+                <div class="big-yellow">YEARS</div>
+            </div>
+            <div class="mission-right">
+                <p>Dhage Travels has been connecting people across Maharashtra for over four decades. What started as a
+                    single bus route from Majalgaon to Mumbai in 1985 has grown into a premier network of luxury bus
+                    services touching Pune, Beed, Parbhani, Nanded, Georai, Sonpeth and beyond. We don't just carry
+                    passengers — we carry stories, dreams, and families home.</p>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num">1985<span>.</span></div>
+                <div class="stat-label">Year Founded</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">50<span>+</span></div>
+                <div class="stat-label">Luxury Coaches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">2L<span>+</span></div>
+                <div class="stat-label">Happy Passengers Yearly</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">8<span>+</span></div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+        </div>
+
+        <!-- OUR VALUES -->
+        <h2 class="section-heading">Our Values</h2>
+        <p class="section-subheading">The principles that define every journey we operate.</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="bi bi-shield-check value-icon"></i>
+                <h3>Safety First</h3>
+                <p>Every coach undergoes daily safety inspections. All drivers are certified and trained for defensive
+                    driving, ensuring you always arrive safely.</p>
+            </div>
+            <div class="value-card">
+                <i class="bi bi-stars value-icon"></i>
+                <h3>Premium Comfort</h3>
+                <p>From air-conditioned Volvo sleepers to recliner seats — we believe every passenger deserves a
+                    comfortable journey, regardless of distance.</p>
+            </div>
+            <div class="value-card">
+                <i class="bi bi-clock-history value-icon"></i>
+                <h3>Punctuality</h3>
+                <p>We respect your time. Our operations team monitors every trip in real-time to ensure buses depart and
+                    arrive on schedule, every day.</p>
+            </div>
+            <div class="value-card">
+                <i class="bi bi-people-fill value-icon"></i>
+                <h3>Community Roots</h3>
+                <p>Born in Majalgaon, built by the community. We take pride in serving the towns and villages of
+                    Maharashtra, connecting them to opportunities.</p>
+            </div>
+        </div>
+
+        <!-- OUR STORY TIMELINE -->
+        <h2 class="section-heading">Our Journey</h2>
+        <p class="section-subheading">Milestones that shaped who we are today.</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1985</div>
+                    <h4>The First Bus</h4>
+                    <p>Mr. Dhage launched the very first route — Majalgaon to Mumbai — with a single bus and a vision to
+                        connect rural Maharashtra to the city.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1998</div>
+                    <h4>Expanding Routes</h4>
+                    <p>Routes to Parbhani, Nanded, and Beed were added. The fleet grew to 12 buses serving 5 cities
+                        across Marathwada.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2008</div>
+                    <h4>Going Luxury</h4>
+                    <p>Introduced our iconic AC Sleeper coaches — the first luxury overnight bus in the Marathwada
+                        region — setting a new benchmark for comfort.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <h4>Going Digital</h4>
+                    <p>Launched our new digital booking platform, allowing passengers to search, choose seats, and pay
+                        online — making travel easier than ever.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEAM -->
+        <h2 class="section-heading">Leadership Team</h2>
+        <p class="section-subheading">The people driving Dhage Travels forward.</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">👨‍💼</div>
+                <div class="team-info">
+                    <h4>Sushant Dhage</h4>
+                    <span>Founder & Chairman</span>
+                    <p>Started from a single bus in Majalgaon and built Maharashtra's most trusted travel brand over 40
+                        years.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👩‍💼</div>
+                <div class="team-info">
+                    <h4>Mrs.Shobha Dhage</h4>
+                    <span>Managing Director</span>
+                    <p>Leading daily operations and customer experience strategy to bring Dhage Travels into a new
+                        digital era.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👨‍🔧</div>
+                <div class="team-info">
+                    <h4>Anand Tupsamindar</h4>
+                    <span>Fleet & Safety Manager</span>
+                    <p>Overseeing the safety and maintenance of 50+ coaches across the entire Dhage Travels network.</p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="team-card">
+            <div class="team-avatar">👨‍🔧</div>
+            <div class="team-info">
+                <h4>Arvind Tupsamindar</h4>
+                <span>Fleet & Safety Manager</span>
+                <p>Overseeing the safety and maintenance of 50+ coaches across the entire Dhage Travels network.</p>
+            </div>
+        </div>
+    </div> -->
+
+        <!-- CTA BANNER -->
+        <div class="cta-banner">
+            <h2>Ready to Travel with Us?</h2>
+            <p>Book your seat today and experience the Dhage Travels difference.</p>
+            <a href="book.html" class="btn-cta"><i class="bi bi-bus-front-fill"></i> Book Now</a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER (same as home.html) -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">DHAGE<span
+                        style="display:block;font-size:12px;letter-spacing:3px;">TRAVELS</span></div>
+                <p>Reliable, safe and premium bus travels since 1985.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Quick links</h5>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Download app</h5>
+                <ul>
+                    <li><a href="#"><i class="bi bi-google-play"></i> Play</a></li>
+                    <li><a href="#"><i class="bi bi-apple"></i> Store</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Dhage Travels</span>
+            <span><a href="#">Privacy</a> | <a href="#">Terms</a></span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

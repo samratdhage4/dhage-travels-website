@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Dhage Travels – animated journey</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-yellow: #f9d71c;
+            --bg-dark: #1c1c1c;
+            --card-bg: #ffffff;
+            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            color: #1a1e24;
+            overflow-x: hidden;
+        }
+
+        /* fixed navigation */
+        nav {
+            background-color: var(--bg-dark);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--brand-yellow);
+            text-decoration: none;
+        }
+
+        .logo-top {
+            font-family: 'Oswald', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo-bottom {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links li a:hover {
+            color: var(--brand-yellow);
+        }
+
+        .nav-links li a.active {
+            color: var(--brand-yellow);
+            font-weight: 700;
+        }
+
+        .btn-signup {
+            background-color: var(--brand-yellow);
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* hero with original bus.png */
+        .hero-section {
+            margin-top: 90px;
+            height: 400px;
+            width: 100%;
+            background-image: url('img/bus.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 8%;
+            animation: zoomFade 1.4s ease-out;
+        }
+
+        /* SuperBus logo overlay */
+        .super-bus-logo {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            padding: 22px 42px;
+            border-radius: 80px;
+            border: 2px solid var(--brand-yellow);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .super-bus-logo .line1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .super-bus-logo .line2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand-yellow);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+
+        .super-bus-logo .line2 small {
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #ccc;
+        }
+
+        /* ===== ATTRACTIVE BOOKING BANNER ===== */
+        .booking-banner {
+            background-color: var(--brand-yellow);
+            padding: 30px 20px;
+            width: 100%;
+            text-align: center;
+            border-bottom: 4px solid #1c1c1c;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .offer-headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1c1c1c;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .offer-sub {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1c1c1c;
+            margin-bottom: 20px;
+        }
+
+        .btn-booknow {
+            background-color: #1c1c1c;
+            color: var(--brand-yellow);
+            padding: 18px 70px;
+            border-radius: 60px;
+            border: 3px solid white;
+            font-weight: 800;
+            font-size: 28px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .btn-booknow:hover {
+            background-color: #2d2d2d;
+            transform: scale(1.05);
+            box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--brand-yellow);
+            color: #ffffff;
+        }
+
+        .btn-booknow i {
+            font-size: 32px;
+        }
+
+        /* ===== EXPLORE INDIA SECTION (static) ===== */
+        .explore-section {
+            max-width: 1280px;
+            margin: 50px auto 30px;
+            padding: 0 40px;
+        }
+
+        .explore-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 12px;
+        }
+
+        .explore-subhead {
+            font-size: 18px;
+            color: #3a4a5a;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .value-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 40px;
+            padding: 32px 28px;
+            flex: 1 1 280px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #f0f2f5;
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .value-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            font-size: 3.2rem;
+            color: #2b3a8c;
+            margin-bottom: 22px;
+        }
+
+        .value-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 18px;
+        }
+
+        .value-card p {
+            color: #2f3e4e;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* SuperBus experience card */
+        .superbus-card {
+            background: linear-gradient(135deg, #1e2b3a, #14222e);
+            border-radius: 50px;
+            padding: 42px 48px;
+            margin: 50px 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #4a5f72;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeScale 0.9s forwards 0.8s;
+        }
+
+        .superbus-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .superbus-left .big-super {
+            font-family: 'Oswald', sans-serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .superbus-left .big-experience {
+            font-family: 'Inter', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand-yellow);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-top: 4px;
+        }
+
+        .superbus-right p {
+            color: #e0e8f0;
+            font-size: 1.2rem;
+            max-width: 500px;
+            border-left: 4px solid var(--brand-yellow);
+            padding-left: 30px;
+        }
+
+        /* ===== HORIZONTAL SCROLLING SECTIONS (why choose & interiors) ===== */
+        .scroll-section {
+            max-width: 1280px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            border-left: 6px solid var(--brand-yellow);
+            padding-left: 18px;
+            margin: 40px 0 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.8s forwards;
+        }
+
+        .scroll-row {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .scroll-row::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scroll-row::-webkit-scrollbar-track {
+            background: #e0e6ed;
+            border-radius: 20px;
+        }
+
+        .scroll-row::-webkit-scrollbar-thumb {
+            background: var(--brand-yellow);
+            border-radius: 20px;
+        }
+
+        .scroll-card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: var(--soft-shadow);
+            min-width: 280px;
+            width: 280px;
+            flex-shrink: 0;
+            border: 1px solid #eaeef2;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .scroll-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .scroll-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .scroll-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .scroll-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .scroll-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .scroll-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .scroll-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .scroll-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .scroll-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px;
+            background-color: #d0dfec;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .scroll-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 18px;
+        }
+
+        .card-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 6px;
+        }
+
+        .card-content p {
+            color: #3d4552;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            background: var(--brand-yellow);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* why choose specific style */
+        .why-card .card-content {
+            text-align: center;
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            color: #2b3a8c;
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+
+        /* ===== MAP-LIKE ROUTES VISUAL ===== */
+        .interactive-routes {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #e0ef04, #f67d13);
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-routes::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#ffffff 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+        }
+
+        .interactive-routes .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            color: rgb(17, 16, 16);
+            border-left: 6px solid var(--brand-yellow);
+            padding-left: 18px;
+            margin: 40px 0 30px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        .route-map-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 30px;
+            padding-top: 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            position: relative;
+            z-index: 2;
+        }
+
+        .route-map-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .route-map-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+        }
+
+        .route-map-scroll::-webkit-scrollbar-thumb {
+            background: var(--brand-yellow);
+            border-radius: 20px;
+        }
+
+        .map-route-card {
+            background: linear-gradient(145deg, rgba(203, 7, 7, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(249, 215, 28, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(249, 215, 28, 0.05);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 340px;
+            width: 340px;
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .map-route-card.visible-animate {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .map-route-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transform: rotate(45deg);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .map-route-card>* {
+            position: relative;
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+
+        /* Hover Expansion State */
+        .map-route-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, rgba(249, 215, 28, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+            border-color: var(--brand-yellow);
+            box-shadow: 0 20px 40px rgba(249, 215, 28, 0.25), inset 0 0 30px rgba(249, 215, 28, 0.1);
+        }
+
+        .city-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .city-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+
+        .origin-city {
+            text-align: left;
+        }
+
+        .dest-city {
+            text-align: right;
+        }
+
+        .path-visual {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .path-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .path-dot.start {
+            background: #4cd137;
+            box-shadow: 0 0 0 4px rgba(76, 209, 55, 0.2);
+        }
+
+        .path-dot.end {
+            background: #e84118;
+            box-shadow: 0 0 0 4px rgba(232, 65, 24, 0.2);
+        }
+
+        .path-line {
+            flex: 1;
+            height: 3px;
+            background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.3) 6px, transparent 6px, transparent 12px);
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .animated-bus {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%) translateX(-15px);
+            color: var(--brand-yellow);
+            font-size: 24px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+            animation: driveAcross 4s infinite linear;
+        }
+
+        .map-route-card:nth-child(even) .animated-bus {
+            animation-delay: 1.5s;
+            animation-duration: 3.5s;
+        }
+
+        .map-route-card:nth-child(3n) .animated-bus {
+            animation-delay: 0.8s;
+            animation-duration: 4.5s;
+        }
+
+        @keyframes driveAcross {
+            0% {
+                left: 0%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+                transform: translateY(-50%) translateX(-100%);
+            }
+        }
+
+        .route-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.2);
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .route-details span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .route-details i {
+            color: var(--brand-yellow);
+        }
+
+        /* ===== KEYFRAMES ===== */
+        @keyframes zoomFade {
+            0% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* General Entrance Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes lineGrow {
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 #090909;
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(249, 215, 28, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 215, 28, 0);
+            }
+        }
+
+        @keyframes glowPulse {
+            from {
+                text-shadow: 0 0 10px #f9d71c;
+            }
+
+            to {
+                text-shadow: 0 0 20px #f9d71c, 0 0 30px #f9d71c;
+            }
+        }
+
+        /* footer */
+        .site-footer {
+            background-color: #0f0f0f;
+            color: #efefef;
+            padding: 40px 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            color: var(--brand-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 30px auto 0;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            color: #7e848f;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #abafb6;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--brand-yellow);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo-group">
+            <div class="logo-top">DHAGE</div>
+            <div class="logo-bottom">TRAVELS</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book Now</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero with bus.png and SuperBus logo -->
+    <div class="hero-section">
+        <div class="super-bus-logo">
+            <div class="line1">SuperBus</div>
+            <div class="line2">EXPERIENCE <small>™</small></div>
+        </div>
+    </div>
+
+
+    <!-- ATTRACTIVE BANNER: 15% OFF + CENTERED BOOK NOW BUTTON -->
+    <div class="booking-banner">
+        <div class="offer-headline">🎫 Get 15% off on Dhage Travels</div>
+        <div class="offer-sub">Limited time offer · Book your journey now</div>
+        <a href="book.html" class="btn-booknow">
+            <i class="bi bi-bus-front"></i> BOOK NOW <i class="bi bi-arrow-right-circle"></i>
+        </a>
+
+    </div>
+
+
+    <!-- ===== BUS INTERIORS – HORIZONTAL SCROLL ===== -->
+    <div class="scroll-section">
+        <div class="section-title"><i class="bi bi-bus-front"></i> Luxury bus interiors</div>
+        <div class="scroll-row">
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i1.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4> Sleeper+AC Coach</p><span class="badge">24 recliners</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i2.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Clean Cabin</h4>
+                    <p>⭐ 4.9 · Non-stop</p><span class="badge">8 berths</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i3.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Space</h4>
+                    <p>⭐ 4.7 · A/C lounge</p><span class="badge">32 seats</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i4.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Charging Point</h4>
+                    <p>⭐ 4.6 · sleeper class</p><span class="badge">40 berths</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i8.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Push Back Seat </h4>
+                    <p>⭐ 4.9 · premium</p><span class="badge">20 seats</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i6.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Comfart space</h4>
+                    <p>⭐ 4.8 · panoramic</p><span class="badge">52 berths</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i9.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Privacy </h4>
+                    <p>⭐ 4.7 · personal TV</p><span class="badge">32 berths</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/i10.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Blanket Pillow</h4>
+                    <p>⭐ 4.9 · mini bar</p><span class="badge">12 seats</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ===== MAP-LIKE ROUTES VISUAL ===== -->
+    <section class="interactive-routes">
+        <div class="scroll-section" style="margin: 0 auto;">
+            <h2 class="section-title"><i class="bi bi-geo-alt-fill"
+                    style="margin-right: 15px; color: var(--brand-yellow);"></i> Our daily service on the routes</h2>
+            <div class="route-map-scroll">
+                <!-- Route: Pune -> Majalgaon -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Pune</span>
+                        <span class="city-name dest-city">Majalgaon</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Express</span>
+                        <span><i class="bi bi-wifi"></i> WiFi</span>
+                    </div>
+                </div>
+
+                <!-- Route: Pune -> Nanded -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Pune</span>
+                        <span class="city-name dest-city">Nanded</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Night Express</span>
+                        <span><i class="bi bi-snow"></i> AC Sleeper</span>
+                    </div>
+                </div>
+
+                <!-- Route: Pune -> Beed -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Pune</span>
+                        <span class="city-name dest-city">Beed</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Daily Service</span>
+                        <span><i class="bi bi-cup-hot"></i> Snacks</span>
+                    </div>
+                </div>
+
+                <!-- Route: Pune -> Georai -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Pune</span>
+                        <span class="city-name dest-city">Georai</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Scenic Route</span>
+                        <span><i class="bi bi-bag"></i> Extra Luggage</span>
+                    </div>
+                </div>
+
+                <!-- Route: Mumbai -> Nanded -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Mumbai</span>
+                        <span class="city-name dest-city">Nanded</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Multi Axle</span>
+                        <span><i class="bi bi-play-circle"></i> Media TV</span>
+                    </div>
+                </div>
+
+                <!-- Route: Mumbai -> Sonpeth (Full details) -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Mumbai</span>
+                        <span class="city-name dest-city">Sonpeth</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Direct Route</span>
+                        <span><i class="bi bi-plug"></i> Charging</span>
+                    </div>
+                </div>
+
+                <!-- Route: Mumbai -> Georai -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Mumbai</span>
+                        <span class="city-name dest-city">Georai</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Comfort Ride</span>
+                        <span><i class="bi bi-wind"></i> Air Purified</span>
+                    </div>
+                </div>
+
+                <!-- Route: Pune -> Mumbai -->
+                <div class="map-route-card animate-card">
+                    <div class="city-row">
+                        <span class="city-name origin-city">Pune</span>
+                        <span class="city-name dest-city">Mumbai</span>
+                    </div>
+                    <div class="path-visual">
+                        <div class="path-dot start"></div>
+                        <div class="path-line"><i class="bi bi-bus-front-fill animated-bus"></i></div>
+                        <div class="path-dot end"></div>
+                    </div>
+                    <div class="route-details">
+                        <span><i class="bi bi-clock"></i> Express Link</span>
+                        <span><i class="bi bi-shield-check"></i> Super Safe</span>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- ===== BUS INTERIORS – HORIZONTAL SCROLL ===== -->
+    <div class="scroll-section">
+        <div class="section-title"><i class="bi bi-bus-front"></i> DHAGE TRAVELS PREMIUM BUS</div>
+        <div class="scroll-row">
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/r1.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4> Volvo 9600</p><span class="badge">Luxury On Wheel</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/b2.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Volovo Eicher</h4>
+                    <p>⭐ 4.9 · </p><span class="badge">Full Air Suspension</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/b3.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Bharat Benz</h4>
+                    <p>⭐ 4.7 · A/C lounge</p><span class="badge">32 seats</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/b4.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Volvo 9400</h4>
+                    <p>⭐ 4.6 · sleeper class</p><span class="badge">42 seats</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/b11.png" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Scania </h4>
+                    <p>⭐ 4.9 · premium</p><span class="badge">Washroom facility</span>
+                </div>
+            </div>
+            <div class="scroll-card">
+                <div class="card-img"><img src="img/b12.jpg" alt="interior"></div>
+                <div class="card-content">
+                    <h4>Scania</h4>
+                    <p>⭐ 4.8 · panoramic</p><span class="badge">Scania Luxury</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!-- EXPLORE INDIA CARDS (static) -->
+    <div class="explore-section">
+        <div class="explore-heading">Explore India with Dhage Travels</div>
+        <div class="explore-subhead">See how we go the extra mile to make sure you have the best experience.</div>
+
+        <div class="value-cards">
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-emoji-smile"></i></div>
+                <h3>Customer Gratification</h3>
+                <p>We value our customers smiles over anything else, and offer services that go beyond industry
+                    standards.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-shield-lock"></i></div>
+                <h3>Privacy first</h3>
+                <p>Your privacy is of utmost importance to us! Rest assured, your personal details are safe with us, no
+                    matter what.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-shield-check"></i></div>
+                <h3>Safety & Punctuality</h3>
+                <p>You're in safe hands! Ride in style and always be on time with Dhage Travels.</p>
+            </div>
+        </div>
+
+        <div class="superbus-card">
+            <div class="superbus-left">
+                <div class="big-super">SuperBus</div>
+                <div class="big-experience">EXPERIENCE</div>
+            </div>
+            <div class="superbus-right">
+                <p><strong>Experience next-level travel</strong> with our premium fleet, entertainment, and seamless
+                    booking. Only with Dhage.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== WHY CHOOSE DHAGE TRAVELS – HORIZONTAL SCROLL ===== -->
+    <div class="scroll-section">
+        <div class="section-title"><i class="bi bi-star-fill" style="color: #f9d71c;"></i> Why Choose Dhage Travels
+        </div>
+        <div class="scroll-row">
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-clock-history"></i></div>
+                <div class="card-content">
+                    <h3>On time service</h3>
+                    <p>Punctuality is our promise. We ensure departures and arrivals exactly as scheduled.</p>
+                </div>
+            </div>
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-shield-check"></i></div>
+                <div class="card-content">
+                    <h3>Reliable</h3>
+                    <p>Count on us for safe, dependable travel every day, across all routes.</p>
+                </div>
+            </div>
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-bus-front"></i></div>
+                <div class="card-content">
+                    <h3>Luxury bus</h3>
+                    <p>Experience premium comfort with leather seats, AC, and onboard entertainment.</p>
+                </div>
+            </div>
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-person-badge"></i></div>
+                <div class="card-content">
+                    <h3>Experienced driver</h3>
+                    <p>All drivers are certified with years of experience on highways and hills.</p>
+                </div>
+            </div>
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-headset"></i></div>
+                <div class="card-content">
+                    <h3>24/7 Support</h3>
+                    <p>We're always here to help – call or chat anytime during your journey.</p>
+                </div>
+            </div>
+            <div class="scroll-card why-card">
+                <div class="why-icon"><i class="bi bi-droplet"></i></div>
+                <div class="card-content">
+                    <h3>Hygienic washrooms</h3>
+                    <p>Clean and sanitized restrooms on all luxury coaches for a fresh trip.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">DHAGE<span
+                        style="display:block;font-size:12px;letter-spacing:3px;">TRAVELS</span></div>
+                <p>Reliable, safe and premium bus travels since 1985.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Quick links</h5>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Download app</h5>
+                <ul>
+                    <li><a href="#"><i class="bi bi-google-play"></i> Play</a></li>
+                    <li><a href="#"><i class="bi bi-apple"></i> Store</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Dhage Travels</span>
+            <span><a href="#">Privacy</a> | <a href="#">Terms</a></span>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal elements upon scrolling
+        document.addEventListener("DOMContentLoaded", function () {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            // Add scroll classes to multiple static elements to animate them on mount/scroll
+            document.querySelectorAll('.explore-heading, .explore-subhead, .booking-banner, .superbus-card').forEach((el) => {
+                el.classList.add('animate-on-scroll');
+            });
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Cascade animation inside horizontal scrolling areas
+                        if (entry.target.classList.contains('interactive-routes') || entry.target.classList.contains('scroll-row')) {
+                            const cards = entry.target.querySelectorAll('.animate-card, .scroll-card');
+                            cards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('visible-animate');
+                                    // Make scroll cards visible immediately since they use a different animation class
+                                    if (card.classList.contains('scroll-card')) {
+                                        card.style.opacity = 1;
+                                        card.style.transform = 'translateY(0)';
+                                        card.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
+                                    }
+                                }, index * 100); // 100ms staggered appearance
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections
+            document.querySelectorAll('.animate-on-scroll, .scroll-section, .interactive-routes').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Fix initial state for scroll cards
+            document.querySelectorAll('.scroll-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(30px)';
+            });
+        });
+    </script>
+</body>
+
+</html>

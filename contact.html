@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Contact Us – Dhage Travels</title>
+    <meta name="description"
+        content="Get in touch with Dhage Travels. Find our offices across Majalgaon, Mumbai, Parbhani, Beed, Nanded and Sonpeth.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-yellow: #f9d71c;
+            --bg-dark: #1c1c1c;
+            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            color: #1a1e24;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            background-color: var(--bg-dark);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--brand-yellow);
+            text-decoration: none;
+        }
+
+        .logo-top {
+            font-family: 'Oswald', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo-bottom {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--brand-yellow);
+        }
+
+        .btn-signup {
+            background-color: var(--brand-yellow);
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: 90px;
+            background: linear-gradient(135deg, #1c1c1c 0%, #2d2d2d 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(249, 215, 28, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 60px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-hero h1 span {
+            color: var(--brand-yellow);
+        }
+
+        .page-hero p {
+            color: #aab;
+            font-size: 18px;
+            margin-top: 12px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .page-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* ===== CONTACT INTRO GRID ===== */
+        .contact-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            text-align: center;
+            transition: 0.3s;
+            animation: fadeUp 0.8s ease-out both;
+        }
+
+        .contact-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-card .icon {
+            font-size: 48px;
+            color: var(--brand-yellow);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: #1c1c1c;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            color: var(--brand-yellow);
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 8px;
+            border-left: 6px solid var(--brand-yellow);
+            padding-left: 20px;
+        }
+
+        .section-subheading {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 50px;
+            padding-left: 26px;
+        }
+
+        /* ===== OFFICES GRID ===== */
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .office-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .office-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .office-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .office-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .office-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .office-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .office-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .office-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--brand-yellow);
+        }
+
+        .office-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--brand-yellow);
+        }
+
+        .office-badge {
+            background: var(--brand-yellow);
+            color: #1c1c1c;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .main-office-badge {
+            background: #1c1c1c;
+            color: var(--brand-yellow);
+        }
+
+        .office-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #1c1c1c;
+        }
+
+        .office-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .office-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .office-info-item i {
+            color: var(--brand-yellow);
+            font-size: 18px;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form-section {
+            background: white;
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid #edf2f7;
+            margin-bottom: 60px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #718096;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            border: 2px solid #edf2f7;
+            border-radius: 14px;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            color: #1c1c1c;
+            outline: none;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--brand-yellow);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .btn-submit {
+            background: var(--brand-yellow);
+            color: #1c1c1c;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(249, 215, 28, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background-color: #0f0f0f;
+            color: #efefef;
+            padding: 40px 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            color: var(--brand-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 30px auto 0;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            color: #7e848f;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #abafb6;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--brand-yellow);
+        }
+
+        /* ===== KEYFRAMES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .contact-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: 1;
+            }
+
+            .contact-form-section {
+                padding: 30px;
+            }
+
+            .offices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV (same as home.html) -->
+    <nav>
+        <a href="home.html" class="logo-group">
+            <div class="logo-top">DHAGE</div>
+            <div class="logo-bottom">TRAVELS</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book Now</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <h1>Contact <span>Us</span></h1>
+        <p>We're here to help — reach out to any of our offices across Maharashtra.</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-content">
+
+        <!-- QUICK CONTACT CARDS -->
+        <div class="contact-intro">
+            <div class="contact-card">
+                <i class="bi bi-telephone-fill icon"></i>
+                <h3>Call Us</h3>
+                <p>Available 24/7 for booking assistance and queries.<br>
+                    <a href="tel:+919876543210">+91 9175742397</a><br>
+                    <a href="tel:+912226001234">+91 22 2600 1234</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <i class="bi bi-envelope-fill icon"></i>
+                <h3>Email Us</h3>
+                <p>Send us your queries and we'll respond within 24 hours.<br>
+                    <a href="mailto:support@dhagetravels.com">support@dhagetravels.com</a><br>
+                    <a href="mailto:booking@dhagetravels.com">booking@dhagetravels.com</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- OFFICE LOCATIONS -->
+        <h2 class="section-heading">Our Offices</h2>
+        <p class="section-subheading">Visit us at any of our conveniently located offices across Maharashtra.</p>
+
+        <div class="offices-grid">
+
+            <!-- 1. Majalgaon – MAIN OFFICE -->
+            <div class="office-card">
+                <span class="office-badge main-office-badge">★ Main Office</span>
+                <h3>Majalgaon</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Shivaji Chowk, Near Ganesh Mandir Road,<br>Majalgaon – 431131, Beed District</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 6:00 AM – 11:00 PM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 97655 10001</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Mumbai -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Mumbai</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Kashimira Bus Depot, SV Road Kashimira Mumbai – 401107</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 5:30 AM – 12:00 AM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 22 2600 1234</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- 2. Mumbai -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Mumbai</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Borivali East,Near Axis Bank – 401107</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 5:30 AM – 12:00 AM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 22 2600 1234</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Mumbai -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Mumbai</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>SK Stone,Mira Road Opposite Of Domes – 401107</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 5:30 AM – 12:00 AM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 22 2600 1234</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 3. Parbhani -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Parbhani</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Shop No. 4, Near Parbhani Central Bus Stand,<br>Station Road, Parbhani – 431401</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 6:00 AM – 10:30 PM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 97655 10003</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Beed -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Beed</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Opposite MSRTC Bus Stand, Ambedkar Chowk,<br>Beed – 431122, Maharashtra</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 6:00 AM – 10:00 PM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 97655 10004</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Nanded -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Nanded</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Kiosk 7, Near Nanded Bus Stand,<br>Vazirabad Road, Nanded – 431601</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 5:30 AM – 11:00 PM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 97655 10005</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Sonpeth -->
+            <div class="office-card">
+                <span class="office-badge">City Office</span>
+                <h3>Sonpeth</h3>
+                <div class="office-info">
+                    <div class="office-info-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Near Sonpeth ST Bus Stop, Main Road,<br>Sonpeth – 431511, Parbhani District</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Mon–Sun: 6:30 AM – 9:30 PM</span>
+                    </div>
+                    <div class="office-info-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+91 97655 10006</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-section">
+            <h2 class="section-heading" style="border:none; padding:0; margin-bottom:8px;">Send Us a Message</h2>
+            <p class="section-subheading" style="padding:0; margin-bottom:40px;">Have a question or feedback? We'd love
+                to hear from you.</p>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="contactName" placeholder="e.g. Sushant Dhage">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="contactEmail" placeholder="you@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="contactPhone" placeholder="+91 98765 XXXXX">
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select id="contactSubject">
+                        <option>Booking Enquiry</option>
+                        <option>Ticket Cancellation</option>
+                        <option>Lost & Found</option>
+                        <option>Feedback / Complaint</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Message</label>
+                    <textarea id="contactMessage" placeholder="Write your message here..."></textarea>
+                </div>
+            </div>
+            <button class="btn-submit" onclick="handleSubmit()">
+                <i class="bi bi-send-fill"></i> Send Message
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FOOTER (same as home.html) -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">DHAGE<span
+                        style="display:block;font-size:12px;letter-spacing:3px;">TRAVELS</span></div>
+                <p>Reliable, safe and premium bus travels since 1985.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Quick links</h5>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Download app</h5>
+                <ul>
+                    <li><a href="#"><i class="bi bi-google-play"></i> Play</a></li>
+                    <li><a href="#"><i class="bi bi-apple"></i> Store</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Dhage Travels</span>
+            <span><a href="#">Privacy</a> | <a href="#">Terms</a></span>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit() {
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in your name, email, and message before sending.');
+                return;
+            }
+
+            const btn = document.querySelector('.btn-submit');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-arrow-repeat spin" style="display:inline-block; animation: spin 1s linear infinite;"></i> Sending...';
+            btn.disabled = true;
+
+            const feedbackData = {
+                name: name,
+                email: email,
+                phone: phone,
+                subject: subject,
+                message: message
+            };
+
+            fetch('feedback_process.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(feedbackData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(`Thank you, ${name}! We've received your message and will get back to you within 24 hours.`);
+                        document.getElementById('contactName').value = '';
+                        document.getElementById('contactEmail').value = '';
+                        document.getElementById('contactPhone').value = '';
+                        document.getElementById('contactMessage').value = '';
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Error communicating with server. Please ensure you are running this on a PHP server (like XAMPP).');
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                });
+        }
+    </script>
+
+</body>
+
+</html>

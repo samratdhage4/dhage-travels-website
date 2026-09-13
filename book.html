@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Dhage Travels · Mumbai stops in route order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --brand-yellow: #f9d71c; --bg-dark: #1c1c1c; --card-bg: #ffffff;
+            --soft-shadow: 0 12px 28px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.02);
+        }
+        body {
+            font-family: 'Inter', sans-serif; background-color: #f4f7f9; color: #1a1e24;
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+        nav {
+            background-color: var(--bg-dark); height: 90px; display: flex; align-items: center;
+            justify-content: space-between; padding: 0 40px; position: fixed; top:0; width:100%; z-index:1000;
+        }
+        .logo-group { display:flex; flex-direction:column; align-items:center; color:var(--brand-yellow); text-decoration:none; }
+        .logo-top { font-family:'Oswald',sans-serif; font-size:34px; font-weight:700; text-transform:uppercase; }
+        .logo-bottom { font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:5px; margin-top:4px; text-transform:uppercase; }
+        .nav-links { display:flex; list-style:none; gap:25px; }
+        .nav-links li a { color:#ffffff; text-decoration:none; font-size:14px; font-weight:500; }
+        .nav-links li a:hover { color:var(--brand-yellow); }
+        .main-content { margin-top:90px; flex:1; }
+        .booking-page { max-width:1280px; margin:40px auto; padding:0 40px; }
+        .page-title { font-family:'Oswald',sans-serif; font-size:42px; color:#1c1c1c; margin-bottom:30px; border-left:6px solid var(--brand-yellow); padding-left:20px; }
+        .booking-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px; margin-bottom:40px; }
+
+        .selection-bar {
+            background:white; border-radius:60px; padding:15px 30px; display:flex; align-items:center;
+            justify-content:space-between; gap:20px; box-shadow:var(--soft-shadow); margin-bottom:40px;
+            border:1px solid #edf2f7; flex-wrap:wrap;
+        }
+        .selection-item { display:flex; flex-direction:column; flex:1; min-width:150px; }
+        .selection-item label { font-size:11px; text-transform:uppercase; font-weight:700; color:#7e848f; margin-bottom:4px; letter-spacing:1px; }
+        .selection-item select, .selection-item input { border:none; outline:none; font-size:16px; font-weight:600; color:#1c1c1c; background:transparent; padding:5px 0; width:100%; }
+        .btn-search {
+            background:var(--brand-yellow); color:#000; padding:12px 35px; border-radius:50px; border:none;
+            font-weight:700; font-size:15px; cursor:pointer; transition:0.2s; display:flex; align-items:center; gap:8px;
+        }
+        .btn-search:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(249,215,28,0.3); }
+        .error-message { color:#e53e3e; font-size:12px; margin-top:5px; display:none; font-weight:600; text-align:center; }
+
+        .bus-card {
+            background:white; border-radius:24px; padding:25px; margin-bottom:20px; box-shadow:var(--soft-shadow);
+            border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; transition:0.3s; cursor:pointer;
+        }
+        .bus-card:hover { transform:translateY(-5px); border-color:var(--brand-yellow); }
+        .bus-info { display:flex; flex-direction:column; gap:5px; }
+        .bus-name { font-family:'Oswald',sans-serif; font-size:20px; font-weight:700; }
+        .bus-type { font-size:13px; color:#718096; background:#f7fafc; padding:4px 12px; border-radius:20px; display:inline-block; width:fit-content; }
+        .bus-price { font-size:24px; font-weight:800; color:#1c1c1c; }
+
+        .seat-board { background:white; border-radius:24px; padding:25px; box-shadow:var(--soft-shadow); border:1px solid #edf2f7; }
+        .bus-layout { display:flex; gap:20px; justify-content:space-between; }
+        .deck-container { flex:1; background:#fcfcfc; border-radius:12px; padding:20px; }
+        .deck-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; font-weight:700; font-size:18px; color:#111; }
+        .steering-icon { font-size:32px; color:#adb5bd; }
+        .berth-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; }
+        .berth-group { display:flex; gap:12px; }
+        .berth-wrapper { display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; }
+        .berth { width:40px; height:85px; border:2px solid #28a745; border-radius:8px; background:white; position:relative; transition:all 0.2s; }
+        .berth-pillow { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:22px; height:6px; background:#d4edda; border-radius:4px; }
+        .berth-price { font-size:12px; color:#6c757d; font-weight:500; }
+        .berth-wrapper.selected .berth { background:#28a745; }
+        .berth-wrapper.selected .berth-pillow { background:white; }
+        .berth-wrapper.sold .berth { border-color:#e9ecef; background:#f4f5f6; cursor:not-allowed; }
+        .berth-wrapper.sold .berth-pillow { display:none; }
+        .berth-wrapper.sold .berth::after { content:'\F478'; font-family:'bootstrap-icons'; font-size:20px; color:#ced4da; }
+        .legend { display:flex; gap:20px; margin-top:25px; flex-wrap:wrap; padding-top:15px; border-top:1px solid #e2e8f0; justify-content:center; }
+
+        .trip-panel { background:white; border-radius:40px; padding:30px; box-shadow:var(--soft-shadow); border:1px solid #edf2f7; }
+        .route-summary { background:#f4f9ff; border-radius:28px; padding:20px; margin-bottom:30px; }
+        .city-pair { display:flex; align-items:center; justify-content:space-between; font-family:'Oswald',sans-serif; font-size:28px; margin-bottom:15px; }
+        .city { display:flex; flex-direction:column; align-items:center; }
+        .city small { font-size:12px; color:#6f7d95; }
+        .route-meta { display:flex; justify-content:space-between; color:#3b4d66; font-size:15px; }
+        .fare-detail { display:flex; justify-content:space-between; font-size:18px; margin:15px 0; }
+        .total-fare { font-weight:800; font-size:24px; color:#1c1c1c; border-top:2px solid #e2e8f0; padding-top:15px; }
+        .passenger-form { margin:25px 0; }
+        .form-group { margin-bottom:18px; }
+        .form-group input, .form-group select { width:100%; padding:14px 20px; border:1px solid #cfddee; border-radius:50px; font-size:16px; outline:none; }
+        .form-group input:focus { border-color:var(--brand-yellow); box-shadow:0 0 0 3px rgba(249,215,28,0.2); }
+        .phone-group { display:flex; gap:10px; }
+        .phone-group input:first-child { width:100px; background:#eef2f6; }
+        .btn-proceed { background:#1c1c1c; color:var(--brand-yellow); padding:16px; border-radius:60px; border:none; font-weight:700; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; transition:0.2s; }
+        .btn-proceed:hover { background:#2d2d2d; }
+        .btn-continue { background:white; color:#1c1c1c; padding:14px; border-radius:60px; border:2px solid #1c1c1c; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; }
+        .btn-continue:hover { background:#f2f2f2; }
+        .info-section { margin-top:30px; border-top:1px solid #e2e8f0; padding-top:25px; }
+        .info-section h4 { font-family:'Oswald',sans-serif; font-size:18px; margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+        .timing-list { list-style:none; }
+        .timing-item { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #edf2f7; font-size:14px; }
+        .timing-item .point { font-weight:500; color:#4a5568; }
+        .timing-item .time { font-weight:700; color:#1c1c1c; }
+        .booking-step-section { display:none; animation:fadeIn 0.4s; }
+        .booking-step-section.active { display:block; }
+
+        /* Stops double column */
+        .stops-double { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:10px; }
+        .stops-card { background:#f8fafd; border-radius:16px; padding:15px; max-height:270px; overflow-y:auto; }
+        .stops-card h5 { font-size:14px; margin-bottom:10px; color:#1e293b; display:flex; align-items:center; gap:6px; border-bottom:1px solid #dde7f0; padding-bottom:6px; position:sticky; top:0; background:#f8fafd; }
+        .stops-card ul { list-style:none; }
+        .stops-card li { padding:8px 6px; border-bottom:1px solid #e9eef3; font-size:14px; display:flex; align-items:center; gap:8px; }
+        .stops-card li i { color:#2f855a; font-size:12px; }
+        .stops-card li input[type="radio"] { margin-right:8px; accent-color:var(--brand-yellow); }
+
+        footer { background:#0f0f0f; color:#efefef; padding:40px 40px 20px; margin-top:60px; }
+        .footer-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:40px; }
+        .footer-logo { font-family:'Oswald',sans-serif; font-size:30px; color:var(--brand-yellow); }
+        .footer-bottom { max-width:1280px; margin:30px auto 0; border-top:1px solid #2a2a2a; padding-top:22px; display:flex; justify-content:space-between; color:#7e848f; }
+
+        @media (max-width:900px) { .booking-grid { grid-template-columns:1fr; } }
+        @keyframes spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+        .spin { animation:spin 1s linear infinite; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo-group"><div class="logo-top">DHAGE</div><div class="logo-bottom">TRAVELS</div></a>
+        <ul class="nav-links"><li><a href="#">Home</a></li><li><a href="#" class="active">Book Now</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li></ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="booking-page">
+            <h1 class="page-title"><i class="bi bi-bus-front" style="margin-right:15px;"></i> Book your seat</h1>
+
+            <!-- selection bar -->
+            <div class="selection-bar">
+                <div class="selection-item"><label>From</label><select id="selectFrom">
+                    <option value="Mumbai">Mumbai</option><option value="Pune">Pune</option><option value="Majalgaon">Majalgaon</option>
+                    <option value="Nanded">Nanded</option><option value="Beed">Beed</option><option value="Georai">Georai</option>
+                    <option value="Sonpeth">Sonpeth</option>
+                </select></div>
+                <div class="selection-item" style="flex:0;"><i class="bi bi-arrow-left-right" style="font-size:20px; margin-top:15px;"></i></div>
+                <div class="selection-item"><label>To</label><select id="selectTo">
+                    <option value="Majalgaon">Majalgaon</option><option value="Mumbai">Mumbai</option><option value="Pune">Pune</option>
+                    <option value="Nanded">Nanded</option><option value="Beed">Beed</option><option value="Georai">Georai</option>
+                    <option value="Sonpeth">Sonpeth</option>
+                </select></div>
+                <div class="selection-item"><label>Travel Date</label><input type="date" id="travelDate" value="2026-03-28"></div>
+                <button class="btn-search" id="searchBusesBtn"><i class="bi bi-search"></i> Search</button>
+            </div>
+            <div id="cityError" class="error-message">* Start and End cities cannot be the same.</div>
+
+            <!-- STEP 1: AVAILABILITY -->
+            <div id="step-availability" class="booking-step-section active">
+                <div style="text-align:center; padding:60px; background:white; border-radius:40px;">
+                    <i class="bi bi-search" style="font-size:48px; color:#cbd5e0;"></i>
+                    <h2 style="font-family:'Oswald';">Find your bus</h2>
+                    <p style="color:#718096;">Select route & date to see available buses.</p>
+                </div>
+            </div>
+
+            <!-- STEP 2: SEAT + PICKUP (MUMBAI STEPS IN ROUTE ORDER) + DROP -->
+            <div id="step-seats" class="booking-step-section">
+                <div class="booking-grid">
+                    <!-- LEFT: SEATS -->
+                    <div class="seat-board">
+                        <div class="bus-layout">
+                            <div class="deck-container">
+                                <div class="deck-header"><span>Lower deck</span><i class="bi bi-steering steering-icon"></i></div>
+                                <script>
+                                    for(let i=1;i<=6;i++) {
+                                        let soldClass = (i===2||i===5) ? 'sold' : '';
+                                        document.write(`
+                                            <div class="berth-row">
+                                                <div class="berth-wrapper ${soldClass}" data-seat="L${i}A">
+                                                    <div class="berth"><div class="berth-pillow"></div></div>
+                                                    <div class="berth-price">₹539</div>
+                                                </div>
+                                                <div class="berth-group">
+                                                    <div class="berth-wrapper" data-seat="L${i}B"><div class="berth"><div class="berth-pillow"></div></div><div class="berth-price">₹539</div></div>
+                                                    <div class="berth-wrapper" data-seat="L${i}C"><div class="berth"><div class="berth-pillow"></div></div><div class="berth-price">₹539</div></div>
+                                                </div>
+                                            </div>
+                                        `);
+                                    }
+                                </script>
+                            </div>
+                            <div class="deck-container">
+                                <div class="deck-header"><span>Upper deck</span></div>
+                                <script>
+                                    for(let i=1;i<=6;i++) {
+                                        document.write(`
+                                            <div class="berth-row">
+                                                <div class="berth-wrapper" data-seat="U${i}A"><div class="berth"><div class="berth-pillow"></div></div><div class="berth-price">₹539</div></div>
+                                                <div class="berth-group">
+                                                    <div class="berth-wrapper" data-seat="U${i}B"><div class="berth"><div class="berth-pillow"></div></div><div class="berth-price">₹539</div></div>
+                                                    <div class="berth-wrapper" data-seat="U${i}C"><div class="berth"><div class="berth-pillow"></div></div><div class="berth-price">₹539</div></div>
+                                                </div>
+                                            </div>
+                                        `);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item"><span class="legend-box" style="border:2px solid #28a745;"></span> Available</div>
+                            <div class="legend-item"><span class="legend-box" style="background:#28a745;"></span> Selected</div>
+                            <div class="legend-item"><span class="legend-box" style="background:#e9ecef;"></span> Sold</div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PANEL -->
+                    <div class="trip-panel">
+                        <div class="route-summary">
+                            <div class="city-pair">
+                                <div class="city" id="summaryFromCity">Mumbai <small>pickup</small></div>
+                                <i class="bi bi-arrow-right-short" style="font-size:32px;"></i>
+                                <div class="city" id="summaryToCity">Majalgaon <small>drop</small></div>
+                            </div>
+                            <div class="route-meta" id="summaryMeta">
+                                <span><i class="bi bi-calendar3"></i> 28 Mar 2026</span>
+                                <span><i class="bi bi-clock"></i> 21:15 (9h)</span>
+                                <span><i class="bi bi-bus-front"></i> Royal Cruiser</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom:20px;"><span style="font-weight:600;">Selected seats: </span><span id="selectedSeatsDisplay" style="background:#f0f5fa; padding:6px 16px; border-radius:30px;">none</span></div>
+                        <div class="fare-detail"><span id="fareBaseLabel">Base fare (0 seats)</span><span id="fareBaseAmount">₹0</span></div>
+                        <div class="fare-detail"><span>Taxes & fees</span><span id="fareTaxAmount">₹0</span></div>
+                        <div class="total-fare"><span>Total</span><span id="totalAmount">₹0</span></div>
+                        <div class="divider"></div>
+
+                        <!-- PICKUP & DROP – MUMBAI STOPS IN EXACT ROUTE ORDER (given by user) -->
+                        <div class="info-section">
+                            <h4><i class="bi bi-geo-alt"></i> Select pickup & drop point</h4>
+                            <div class="stops-double">
+                                <div class="stops-card">
+                                    <h5><i class="bi bi-arrow-up-circle"></i> Pickup from <span id="pickupCityName">Mumbai</span></h5>
+                                    <ul id="pickupList"></ul>
+                                </div>
+                                <div class="stops-card">
+                                    <h5><i class="bi bi-arrow-down-circle"></i> Drop at <span id="dropCityName">Majalgaon</span></h5>
+                                    <ul id="dropList"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROUTE TIMINGS (dynamic) -->
+                        <div class="info-section">
+                            <h4><i class="bi bi-clock-history"></i> Route schedule & halts</h4>
+                            <ul class="timing-list" id="routeTimingList">
+                                <li class="timing-item"><span class="point">Mumbai (Mira Road)</span><span class="time">20:30</span></li>
+                                <li class="timing-item"><span class="point">Kashimira</span><span class="time">20:45</span></li>
+                                <li class="timing-item"><span class="point">Dahisar</span><span class="time">21:00</span></li>
+                                <li class="timing-item"><span class="point">Borivali</span><span class="time">21:15</span></li>
+                                <li class="timing-item"><span class="point">Kandivali</span><span class="time">21:25</span></li>
+                                <li class="timing-item"><span class="point">Malad</span><span class="time">21:35</span></li>
+                                <li class="timing-item"><span class="point">Goregaon</span><span class="time">21:45</span></li>
+                                <li class="timing-item"><span class="point">Andheri</span><span class="time">22:00</span></li>
+                                <li class="timing-item"><span class="point">Jogeshwari</span><span class="time">22:10</span></li>
+                                <li class="timing-item"><span class="point">Vashi</span><span class="time">23:00</span></li>
+                                <li class="timing-item"><span class="point">Chembur</span><span class="time">23:20</span></li>
+                                <li class="timing-item"><span class="point">Bandra</span><span class="time">23:40</span></li>
+                                <li class="timing-item"><span class="point">Kalamboli</span><span class="time">00:15 (halt 10min)</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- passenger (minimal) -->
+                        <div class="passenger-form">
+                            <h3 style="margin-bottom:20px; font-family:'Oswald';">Passenger</h3>
+                            <div class="form-group"><label>Full name</label><input type="text" id="passengerName" value="Rahul Sharma"></div>
+                            <div class="form-group"><label>Phone</label><div class="phone-group"><input type="text" value="+91" readonly style="width:80px;"><input type="tel" id="passengerPhone" value="9876543210"></div></div>
+                        </div>
+
+                        <button class="btn-proceed" id="proceedBtn"><i class="bi bi-wallet2"></i> Proceed to pay</button>
+                        <button class="btn-continue" id="backToAvailability" style="margin-top:15px;"><i class="bi bi-arrow-left"></i> Change Bus</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: PAYMENT -->
+            <div id="step-payment" class="booking-step-section" style="max-width:600px; margin:0 auto;">
+                <div style="background:white; border-radius:40px; padding:40px;">
+                    <h2 style="font-family:'Oswald'; border-left:6px solid var(--brand-yellow); padding-left:20px;">Payment</h2>
+                    <div style="background:#f4f9ff; padding:20px; border-radius:20px; margin:30px 0;">
+                        <div style="display:flex; justify-content:space-between; font-weight:700;"><span id="paymentTrip">Mumbai → Majalgaon</span><span id="paymentAmount">₹1840</span></div>
+                        <div style="color:#718096;" id="paymentMeta">28 Mar • Seats: none • Pickup: Borivali</div>
+                    </div>
+                    <button class="btn-proceed" id="finalPayBtn" style="width:100%;"><i class="bi bi-shield-lock"></i> Pay now</button>
+                    <button class="btn-continue" id="backToSeats" style="width:100%; margin-top:15px;">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid"><div><div class="footer-logo">DHAGE<span style="display:block;font-size:12px;">TRAVELS</span></div></div></div>
+        <div class="footer-bottom"><span>© 2026 Dhage Travels</span><span>Terms</span></div>
+    </footer>
+
+    <script>
+        (function(){
+            // ---- ROUTES & STOPS ----
+            const routes = [
+                { from:'Mumbai', to:'Majalgaon', busName:'Royal Cruiser', basePrice:800, departure:'21:15', arrival:'06:15', duration:'9h', rating:4.8 },
+                { from:'Mumbai', to:'Nanded', busName:'Nanded Express', basePrice:950, departure:'20:30', arrival:'07:45', duration:'11h15m', rating:4.6 },
+                { from:'Mumbai', to:'Sonpeth', busName:'Sonpeth Link', basePrice:720, departure:'22:00', arrival:'07:00', duration:'9h', rating:4.4 },
+                { from:'Mumbai', to:'Georai', busName:'Georai Fast', basePrice:680, departure:'23:15', arrival:'07:30', duration:'8h15m', rating:4.3 },
+                { from:'Pune', to:'Majalgaon', busName:'Pune-Majal', basePrice:750, departure:'22:45', arrival:'07:30', duration:'8h45m', rating:4.5 },
+                { from:'Pune', to:'Nanded', busName:'Marathwada', basePrice:880, departure:'21:00', arrival:'07:00', duration:'10h', rating:4.7 },
+                { from:'Pune', to:'Beed', busName:'Beed Express', basePrice:620, departure:'23:30', arrival:'06:15', duration:'6h45m', rating:4.4 },
+                { from:'Pune', to:'Georai', busName:'Georai Express', basePrice:670, departure:'20:15', arrival:'05:00', duration:'8h45m', rating:4.2 },
+                { from:'Pune', to:'Mumbai', busName:'Back Connection', basePrice:550, departure:'06:00', arrival:'10:30', duration:'4h30m', rating:4.5 }
+            ];
+
+            // cityStops: Mumbai stops arranged in the exact route order as requested
+            const cityStops = {
+                'Mumbai': [
+                    'Mira Road', 'Kashimira', 'Dahisar', 'Borivali', 'Kandivali', 'Malad',
+                    'Goregaon', 'Andheri', 'Jogeshwari', 'Vashi', 'Chembur', 'Bandra', 'Kalamboli'
+                ],
+                'Pune': ['Shivaji Nagar', 'Swargate', 'Hinjewadi', 'Chakan', 'Hadapsar'],
+                'Majalgaon': ['Majalgaon Bus Stand', 'Gandhi Chowk', 'New Mondha', 'Old Market'],
+                'Nanded': ['Nanded Bus Stand', 'V.I.P. Road', 'Shivaji Nagar Nanded'],
+                'Beed': ['Beed Central', 'Georai Naka', 'Kada Chowk'],
+                'Georai': ['Georai Bus Stop', 'Main Road Georai', 'Market Yard'],
+                'Sonpeth': ['Sonpeth Phata', 'Sonpeth Gramin', 'Bus Stop Sonpeth']
+            };
+
+            // detailed timings (example for Mumbai-Majalgaon) – extended to include new stops
+            const routeTimings = {
+                'Mumbai-Majalgaon': [
+                    { point: 'Mira Road', time: '20:30' },
+                    { point: 'Kashimira', time: '20:45' },
+                    { point: 'Dahisar', time: '21:00' },
+                    { point: 'Borivali', time: '21:15' },
+                    { point: 'Kandivali', time: '21:25' },
+                    { point: 'Malad', time: '21:35' },
+                    { point: 'Goregaon', time: '21:45' },
+                    { point: 'Andheri', time: '22:00' },
+                    { point: 'Jogeshwari', time: '22:10' },
+                    { point: 'Vashi', time: '23:00' },
+                    { point: 'Chembur', time: '23:20' },
+                    { point: 'Bandra', time: '23:40' },
+                    { point: 'Kalamboli', time: '00:15', halt: 'halt 10min' },
+                    { point: 'Pune', time: '02:30', halt: 'halt 20min' },
+                    { point: 'Ahmednagar', time: '04:45' },
+                    { point: 'Beed', time: '06:00' },
+                    { point: 'Majalgaon', time: '07:15' }
+                ],
+                // fallback for other routes (simplified)
+                'Pune-Majalgaon': [ { point:'Pune', time:'22:45' }, { point:'Majalgaon', time:'07:30' } ],
+                'Mumbai-Nanded': [ { point:'Borivali', time:'20:30' }, { point:'Nanded', time:'07:45' } ]
+            };
+
+            // DOM elements
+            const stepAvail = document.getElementById('step-availability');
+            const stepSeats = document.getElementById('step-seats');
+            const stepPay = document.getElementById('step-payment');
+            const fromSel = document.getElementById('selectFrom');
+            const toSel = document.getElementById('selectTo');
+            const searchBtn = document.getElementById('searchBusesBtn');
+            const cityErr = document.getElementById('cityError');
+            const proceedBtn = document.getElementById('proceedBtn');
+            const backAvail = document.getElementById('backToAvailability');
+            const backSeats = document.getElementById('backToSeats');
+            const finalPay = document.getElementById('finalPayBtn');
+            const pickupList = document.getElementById('pickupList');
+            const dropList = document.getElementById('dropList');
+            const pickupCitySpan = document.getElementById('pickupCityName');
+            const dropCitySpan = document.getElementById('dropCityName');
+            const routeTimingList = document.getElementById('routeTimingList');
+            const selectedDisplay = document.getElementById('selectedSeatsDisplay');
+            const totalSpan = document.getElementById('totalAmount');
+            const fareBaseLabel = document.getElementById('fareBaseLabel');
+            const fareBaseAmount = document.getElementById('fareBaseAmount');
+            const fareTax = document.getElementById('fareTaxAmount');
+            const summaryFrom = document.getElementById('summaryFromCity');
+            const summaryTo = document.getElementById('summaryToCity');
+            const summaryMeta = document.getElementById('summaryMeta');
+
+            let selectedSeats = [];
+            let currentBus = null;
+            let currentPrice = 800;
+
+            function showStep(id) {
+                document.querySelectorAll('.booking-step-section').forEach(s=>s.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+                window.scrollTo({top:0,behavior:'smooth'});
+            }
+
+            function validateCities() {
+                if(fromSel.value===toSel.value) {
+                    cityErr.style.display='block'; searchBtn.disabled=true; searchBtn.style.opacity='0.5'; return false;
+                } else {
+                    cityErr.style.display='none'; searchBtn.disabled=false; searchBtn.style.opacity='1'; return true;
+                }
+            }
+            fromSel.addEventListener('change',validateCities);
+            toSel.addEventListener('change',validateCities);
+
+            searchBtn.addEventListener('click',function(){
+                if(!validateCities()) return;
+                const from = fromSel.value, to = toSel.value;
+                const matched = routes.filter(r => r.from===from && r.to===to);
+                stepAvail.innerHTML = `<h2 style="font-family:'Oswald'; margin-bottom:25px;">Available buses ${from} → ${to}</h2>`;
+                if(matched.length===0) {
+                    stepAvail.innerHTML += '<p style="text-align:center; padding:40px;">No direct bus. Try another route.</p>';
+                    return;
+                }
+                matched.forEach(b=>{
+                    stepAvail.innerHTML += `
+                        <div class="bus-card" data-bus='${JSON.stringify(b)}'>
+                            <div class="bus-info">
+                                <div class="bus-name">${b.busName}</div>
+                                <div class="bus-type">AC Sleeper 2+1</div>
+                                <div style="display:flex; gap:20px;"><span>${b.departure} - ${b.arrival}</span><span>${b.duration}</span><span>⭐ ${b.rating}</span></div>
+                            </div>
+                            <div style="text-align:right;">
+                                <div class="bus-price">₹ ${b.basePrice}</div>
+                                <button class="btn-search" style="padding:8px 20px;">Select Seats</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.querySelectorAll('.bus-card').forEach(card=>{
+                    card.addEventListener('click', function(){
+                        const busData = JSON.parse(this.dataset.bus);
+                        selectBus(busData);
+                    });
+                });
+            });
+
+            function selectBus(bus) {
+                currentBus = bus;
+                currentPrice = bus.basePrice;
+                summaryFrom.innerHTML = `${bus.from} <small>pickup</small>`;
+                summaryTo.innerHTML = `${bus.to} <small>drop</small>`;
+                summaryMeta.innerHTML = `<span><i class="bi bi-calendar3"></i> ${document.getElementById('travelDate').value}</span>
+                                          <span><i class="bi bi-clock"></i> ${bus.departure} (${bus.duration})</span>
+                                          <span><i class="bi bi-bus-front"></i> ${bus.busName}</span>`;
+
+                // Load pickup stops (for 'from' city) – for Mumbai we have the ordered list
+                pickupCitySpan.innerText = bus.from;
+                dropCitySpan.innerText = bus.to;
+                const fromStops = cityStops[bus.from] || ['Main stop'];
+                const toStops = cityStops[bus.to] || ['Terminal'];
+                pickupList.innerHTML = fromStops.map(s=>`<li><input type="radio" name="pickup" value="${s}"> <i class="bi bi-geo"></i> ${s}</li>`).join('');
+                dropList.innerHTML = toStops.map(s=>`<li><input type="radio" name="drop" value="${s}"> <i class="bi bi-geo"></i> ${s}</li>`).join('');
+
+                // Route timings (use extended Mumbai-Majalgaon if matches, else generic)
+                const key = bus.from+'-'+bus.to;
+                const timing = routeTimings[key] || [{point:bus.from, time:bus.departure},{point:bus.to,time:bus.arrival}];
+                routeTimingList.innerHTML = timing.map(t=>`<li class="timing-item"><span class="point">${t.point}</span><span class="time">${t.time} ${t.halt?t.halt:''}</span></li>`).join('');
+
+                // reset seat selection
+                selectedSeats = [];
+                document.querySelectorAll('.berth-wrapper.selected').forEach(s=>s.classList.remove('selected'));
+                updateSeatSummary();
+
+                showStep('step-seats');
+            }
+
+            // seat selection
+            document.querySelector('.bus-layout').addEventListener('click', function(e){
+                const seat = e.target.closest('.berth-wrapper[data-seat]:not(.sold)');
+                if(!seat) return;
+                const num = seat.getAttribute('data-seat');
+                if(seat.classList.contains('selected')) {
+                    seat.classList.remove('selected');
+                    selectedSeats = selectedSeats.filter(s=> s!==num);
+                } else {
+                    if(selectedSeats.length>=6) { alert('max 6 seats'); return; }
+                    seat.classList.add('selected');
+                    selectedSeats.push(num);
+                }
+                updateSeatSummary();
+            });
+
+            function updateSeatSummary() {
+                if(selectedSeats.length===0) {
+                    selectedDisplay.innerText = 'none';
+                    totalSpan.innerText = '₹0';
+                    fareBaseLabel.innerText = 'Base fare (0 seats)';
+                    fareBaseAmount.innerText = '₹0';
+                    fareTax.innerText = '₹0';
+                } else {
+                    selectedDisplay.innerText = selectedSeats.join(', ');
+                    const base = selectedSeats.length * currentPrice;
+                    const tax = selectedSeats.length * 150;
+                    totalSpan.innerText = `₹ ${base+tax}`;
+                    fareBaseLabel.innerText = `Base fare (${selectedSeats.length} seats)`;
+                    fareBaseAmount.innerText = `₹ ${base}`;
+                    fareTax.innerText = `₹ ${tax}`;
+                }
+            }
+
+            proceedBtn.addEventListener('click',function(){
+                if(selectedSeats.length===0) { alert('select seat'); return; }
+                const pickup = document.querySelector('input[name="pickup"]:checked');
+                const drop = document.querySelector('input[name="drop"]:checked');
+                if(!pickup || !drop) { alert('Please select pickup and drop point'); return; }
+
+                document.getElementById('paymentTrip').innerText = `${fromSel.value} → ${toSel.value}`;
+                document.getElementById('paymentAmount').innerText = totalSpan.innerText;
+                document.getElementById('paymentMeta').innerHTML = `${document.getElementById('travelDate').value} • Seats: ${selectedSeats.join(',')} • Pickup: ${pickup.value}`;
+                showStep('step-payment');
+            });
+
+            finalPay.addEventListener('click',function(){
+                alert('Booking confirmed! (Demo)');
+                showStep('step-availability');
+            });
+
+            backAvail.addEventListener('click',()=> showStep('step-availability'));
+            backSeats.addEventListener('click',()=> showStep('step-seats'));
+
+            validateCities();
+        })();
+    </script>
+</body>
+</html>
