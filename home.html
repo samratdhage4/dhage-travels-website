@@ -917,6 +917,8 @@
             <li><a href="book.html">Book Now</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="book.html?pnr=open" style="color:var(--brand-yellow); font-weight:700;"><i
+                        class="bi bi-search"></i> Check PNR</a></li>
         </ul>
     </nav>
 
@@ -929,14 +931,58 @@
     </div>
 
 
-    <!-- ATTRACTIVE BANNER: 15% OFF + CENTERED BOOK NOW BUTTON -->
+    <!-- ATTRACTIVE BANNER: 15% OFF + REAL-TIME SEARCH WIDGET -->
     <div class="booking-banner">
-        <div class="offer-headline">🎫 Get 15% off on Dhage Travels</div>
-        <div class="offer-sub">Limited time offer · Book your journey now</div>
-        <a href="book.html" class="btn-booknow">
-            <i class="bi bi-bus-front"></i> BOOK NOW <i class="bi bi-arrow-right-circle"></i>
-        </a>
+        <div class="offer-headline">🎫 Get 15% off with Promo Code <strong>DHAGE15</strong></div>
+        <div class="offer-sub">Live real-time bus booking with gender safety berths & instant e-ticket</div>
 
+        <form id="homeQuickSearchForm"
+            style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; max-width:920px; margin:24px auto 10px; background:rgba(0,0,0,0.45); backdrop-filter:blur(10px); padding:16px 24px; border-radius:50px; border:2px solid var(--brand-yellow);">
+            <div style="display:flex; flex-direction:column; align-items:flex-start;">
+                <label
+                    style="font-size:10px; color:var(--brand-yellow); text-transform:uppercase; font-weight:700; margin-left:12px;">From</label>
+                <select id="homeFromCity"
+                    style="background:#1e2430; color:#fff; border:1px solid #475569; padding:8px 16px; border-radius:24px; font-weight:600; outline:none; font-size:14px;">
+                    <option value="Mumbai" selected>Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Majalgaon">Majalgaon</option>
+                    <option value="Nanded">Nanded</option>
+                    <option value="Beed">Beed</option>
+                    <option value="Georai">Georai</option>
+                    <option value="Sonpeth">Sonpeth</option>
+                </select>
+            </div>
+
+            <button type="button" id="homeSwapCitiesBtn"
+                style="background:var(--brand-yellow); border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:16px; margin-top:14px; font-weight:800;"
+                title="Swap Cities">⇄</button>
+
+            <div style="display:flex; flex-direction:column; align-items:flex-start;">
+                <label
+                    style="font-size:10px; color:var(--brand-yellow); text-transform:uppercase; font-weight:700; margin-left:12px;">To</label>
+                <select id="homeToCity"
+                    style="background:#1e2430; color:#fff; border:1px solid #475569; padding:8px 16px; border-radius:24px; font-weight:600; outline:none; font-size:14px;">
+                    <option value="Majalgaon" selected>Majalgaon</option>
+                    <option value="Nanded">Nanded</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Beed">Beed</option>
+                    <option value="Georai">Georai</option>
+                    <option value="Sonpeth">Sonpeth</option>
+                </select>
+            </div>
+
+            <div style="display:flex; flex-direction:column; align-items:flex-start;">
+                <label
+                    style="font-size:10px; color:var(--brand-yellow); text-transform:uppercase; font-weight:700; margin-left:12px;">Date</label>
+                <input type="date" id="homeTravelDate"
+                    style="background:#1e2430; color:#fff; border:1px solid #475569; padding:8px 14px; border-radius:24px; font-weight:600; outline:none; font-size:14px;">
+            </div>
+
+            <button type="submit" class="btn-booknow" style="margin:14px 0 0 0; padding:10px 28px; cursor:pointer;">
+                <i class="bi bi-search"></i> SEARCH BUSES
+            </button>
+        </form>
     </div>
 
 
@@ -1374,6 +1420,53 @@
             document.querySelectorAll('.scroll-card').forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(30px)';
+            });
+
+            // Quick Search Form & Dynamic Routes Handler
+            const homeForm = document.getElementById('homeQuickSearchForm');
+            const homeFrom = document.getElementById('homeFromCity');
+            const homeTo = document.getElementById('homeToCity');
+            const homeDate = document.getElementById('homeTravelDate');
+            const homeSwap = document.getElementById('homeSwapCitiesBtn');
+
+            if (homeDate) {
+                const today = new Date().toLocaleDateString('en-CA');
+                homeDate.min = today;
+                homeDate.value = today;
+            }
+
+            if (homeSwap && homeFrom && homeTo) {
+                homeSwap.addEventListener('click', () => {
+                    const temp = homeFrom.value;
+                    homeFrom.value = homeTo.value;
+                    homeTo.value = temp;
+                });
+            }
+
+            if (homeForm && homeFrom && homeTo && homeDate) {
+                homeForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (homeFrom.value === homeTo.value) {
+                        alert('Boarding and destination cities cannot be the same.');
+                        return;
+                    }
+                    window.location.href = `book.html?from=${encodeURIComponent(homeFrom.value)}&to=${encodeURIComponent(homeTo.value)}&date=${encodeURIComponent(homeDate.value)}`;
+                });
+            }
+
+            // Make interactive route cards clickable
+            document.querySelectorAll('.map-route-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const origin = card.querySelector('.origin-city');
+                    const dest = card.querySelector('.dest-city');
+                    if (origin && dest) {
+                        const from = origin.innerText.trim();
+                        const to = dest.innerText.trim();
+                        const today = new Date().toLocaleDateString('en-CA');
+                        window.location.href = `book.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(today)}`;
+                    }
+                });
             });
         });
     </script>

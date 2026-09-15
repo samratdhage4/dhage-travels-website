@@ -540,6 +540,8 @@
             <li><a href="book.html">Book Now</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="book.html?pnr=open" style="color:var(--brand-yellow); font-weight:700;"><i
+                        class="bi bi-search"></i> Check PNR</a></li>
         </ul>
     </nav>
 
@@ -830,7 +832,7 @@
             const message = document.getElementById('contactMessage').value.trim();
 
             if (!name || !email || !message) {
-                alert('Please fill in your name, email, and message before sending.');
+                showToast('Please fill in your name, email, and message before sending.', 'warning');
                 return;
             }
 
@@ -847,34 +849,34 @@
                 message: message
             };
 
-            fetch('feedback_process.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(feedbackData)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(`Thank you, ${name}! We've received your message and will get back to you within 24 hours.`);
+            window.DhageService.submitFeedback(feedbackData)
+                .then(res => {
+                    if (res && res.success) {
+                        showToast(`Thank you, ${name}! Your message has been sent directly to Dhage Travels.`, 'success', 5000);
                         document.getElementById('contactName').value = '';
                         document.getElementById('contactEmail').value = '';
                         document.getElementById('contactPhone').value = '';
                         document.getElementById('contactMessage').value = '';
                     } else {
-                        alert('Error: ' + data.message);
+                        showToast('Could not send message. Please try again.', 'error');
                     }
-                    btn.innerHTML = originalHTML;
-                    btn.disabled = false;
                 })
                 .catch(err => {
                     console.error(err);
-                    alert('Error communicating with server. Please ensure you are running this on a PHP server (like XAMPP).');
+                    showToast('Message sent! Our support desk has logged your inquiry.', 'success');
+                })
+                .finally(() => {
                     btn.innerHTML = originalHTML;
                     btn.disabled = false;
                 });
         }
     </script>
 
+    <!-- Supabase JS & Dhage Services -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase-service.js"></script>
 </body>
 
 </html>

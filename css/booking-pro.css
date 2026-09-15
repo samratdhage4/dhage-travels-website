@@ -1,0 +1,1028 @@
+/* ==========================================================================
+   Dhage Travels - Professional Booking Engine Stylesheet (booking-pro.css)
+   ========================================================================== */
+
+:root {
+    --brand-yellow: #f9d71c;
+    --brand-dark: #12151c;
+    --brand-dark-soft: #1a202c;
+    --brand-accent: #f59e0b;
+    --color-male: #2563eb;
+    --color-male-soft: #eff6ff;
+    --color-female: #db2777;
+    --color-female-soft: #fdf2f8;
+    --color-female-border: #f472b6;
+    --color-available: #10b981;
+    --color-available-bg: #f0fdf4;
+    --color-selected: #f9d71c;
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.07), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+}
+
+/* Connection Status Badge in Header */
+.realtime-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.realtime-badge.live {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.realtime-badge.demo {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+    box-shadow: 0 0 0 0 currentColor;
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Step Progress Indicator */
+.booking-stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 850px;
+    margin: 20px auto 40px;
+    padding: 0 20px;
+}
+
+.booking-stepper::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 60px;
+    right: 60px;
+    height: 3px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.step-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+}
+
+.step-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #64748b;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+.step-item.active .step-circle {
+    background: var(--brand-dark);
+    color: var(--brand-yellow);
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 4px rgba(249, 215, 28, 0.25);
+    transform: scale(1.1);
+}
+
+.step-item.completed .step-circle {
+    background: #10b981;
+    color: #ffffff;
+    border-color: #10b981;
+}
+
+.step-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.step-item.active .step-label {
+    color: var(--brand-dark);
+    font-weight: 800;
+}
+
+/* City Swap Button */
+.btn-city-swap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 10px;
+}
+
+.btn-city-swap:hover {
+    background: var(--brand-yellow);
+    color: #000;
+    transform: rotate(180deg) scale(1.08);
+    box-shadow: 0 4px 12px rgba(249, 215, 28, 0.4);
+}
+
+/* Bus Card Professional Redesign */
+.pro-bus-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.pro-bus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-lg);
+    border-color: var(--brand-yellow);
+}
+
+.pro-bus-card.departed {
+    opacity: 0.65;
+    background: #f8fafc;
+    border-style: dashed;
+    pointer-events: none;
+}
+
+.pro-bus-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.pro-bus-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+}
+
+.pro-bus-rating {
+    background: #ecfdf5;
+    color: #059669;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pro-bus-type {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.amenity-chip {
+    font-size: 11px;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 3px 10px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Time & Route indicator */
+.pro-bus-timing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.time-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.time-place {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.route-duration-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0 16px;
+}
+
+.duration-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.duration-line {
+    width: 100%;
+    height: 2px;
+    background: #cbd5e1;
+    position: relative;
+}
+
+.duration-line::after {
+    content: '\F17A';
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 0 4px;
+    color: var(--brand-accent);
+    font-size: 13px;
+}
+
+/* Bus Price & Action */
+.pro-bus-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.pro-fare-amount {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.seats-left-pill {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.seats-left-pill.warning {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.seats-left-pill.safe {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.seats-left-pill.departed {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.btn-select-seats {
+    background: var(--brand-yellow);
+    color: #000000;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-select-seats:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 14px rgba(249, 215, 28, 0.4);
+}
+
+/* ==========================================================================
+   SEAT MAP & GENDER-SPECIFIC STYLING
+   ========================================================================== */
+.seat-legend-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border: 1px solid #e2e8f0;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.legend-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-swatch {
+    width: 22px;
+    height: 32px;
+    border-radius: 5px;
+    position: relative;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.swatch-available {
+    border-color: var(--color-available);
+    background: #ffffff;
+}
+
+.swatch-selected {
+    background: var(--brand-yellow);
+    border-color: #000000;
+}
+
+.swatch-male {
+    background: var(--color-male);
+    color: #ffffff;
+}
+
+.swatch-female {
+    background: var(--color-female);
+    color: #ffffff;
+}
+
+.swatch-ladies-quota {
+    border: 2px dashed var(--color-female);
+    background: var(--color-female-soft);
+    color: var(--color-female);
+}
+
+/* Berth Item */
+.berth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: transform 0.2s;
+}
+
+.berth-wrapper:hover:not(.booked-male):not(.booked-female) {
+    transform: translateY(-2px);
+}
+
+.berth {
+    width: 44px;
+    height: 90px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 2px solid var(--color-available);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.berth-code {
+    font-size: 11px;
+    font-weight: 800;
+    color: #334155;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.berth-pillow {
+    width: 26px;
+    height: 7px;
+    background: #dcfce7;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background 0.2s;
+}
+
+.berth-price-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* Selected State */
+.berth-wrapper.selected .berth {
+    background: var(--brand-yellow);
+    border-color: #000000;
+    box-shadow: 0 4px 12px rgba(249, 215, 28, 0.4);
+    transform: scale(1.05);
+}
+
+.berth-wrapper.selected .berth-pillow {
+    background: #000000;
+}
+
+.berth-wrapper.selected .berth-code {
+    color: #000000;
+}
+
+/* Booked by Male */
+.berth-wrapper.booked-male {
+    cursor: not-allowed;
+}
+
+.berth-wrapper.booked-male .berth {
+    background: var(--color-male);
+    border-color: #1d4ed8;
+    color: #ffffff;
+}
+
+.berth-wrapper.booked-male .berth-pillow {
+    display: none;
+}
+
+.berth-wrapper.booked-male .berth-code {
+    color: #ffffff;
+}
+
+.berth-wrapper.booked-male .gender-icon {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Booked by Female */
+.berth-wrapper.booked-female {
+    cursor: not-allowed;
+}
+
+.berth-wrapper.booked-female .berth {
+    background: var(--color-female);
+    border-color: #be185d;
+    color: #ffffff;
+}
+
+.berth-wrapper.booked-female .berth-pillow {
+    display: none;
+}
+
+.berth-wrapper.booked-female .berth-code {
+    color: #ffffff;
+}
+
+.berth-wrapper.booked-female .gender-icon {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* LADIES ONLY ADJACENT BERTH (Double Berth Safety Policy) */
+.berth-wrapper.ladies-quota-available .berth {
+    border: 2px dashed var(--color-female);
+    background: var(--color-female-soft);
+}
+
+.berth-wrapper.ladies-quota-available .berth-pillow {
+    background: #fbcfe8;
+}
+
+.berth-wrapper.ladies-quota-available .ladies-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--color-female);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(219, 39, 119, 0.4);
+    z-index: 5;
+    animation: ladiesBadgeBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes ladiesBadgeBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Just Booked Animation (Supabase Realtime Live Event) */
+.berth-wrapper.just-booked {
+    animation: justBookedFlash 1.2s ease;
+}
+
+@keyframes justBookedFlash {
+    0% {
+        transform: scale(1.18);
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Double Berth Group Container */
+.double-berth-group {
+    display: flex;
+    gap: 10px;
+    padding: 4px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.015);
+    border: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.double-berth-group.has-female-booked {
+    background: rgba(244, 114, 182, 0.08);
+    border-color: rgba(244, 114, 182, 0.4);
+}
+
+/* ==========================================================================
+   DYNAMIC PASSENGER FORMS & COUPON ENGINE
+   ========================================================================== */
+.passenger-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #e2e8f0;
+    transition: border-color 0.2s;
+}
+
+.passenger-card:hover {
+    border-color: #cbd5e1;
+}
+
+.passenger-card.ladies-quota-card {
+    border-left: 5px solid var(--color-female);
+    background: #fff5f9;
+}
+
+.passenger-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.passenger-card-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ladies-quota-tag {
+    font-size: 11px;
+    background: var(--color-female-soft);
+    color: var(--color-female);
+    border: 1px solid var(--color-female-border);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.passenger-form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr;
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .passenger-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Coupon Box */
+.coupon-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.coupon-input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #cbd5e1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    font-size: 14px;
+}
+
+.coupon-input:focus {
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 3px rgba(249, 215, 28, 0.2);
+}
+
+.btn-apply-coupon {
+    background: #0f172a;
+    color: var(--brand-yellow);
+    border: none;
+    padding: 0 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-apply-coupon:hover {
+    background: #1e293b;
+    transform: scale(1.03);
+}
+
+.discount-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #16a34a;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+/* ==========================================================================
+   E-TICKET / DIGITAL BOARDING PASS (AIRLINE STYLE & PRINT READY)
+   ========================================================================== */
+.ticket-wrapper {
+    max-width: 680px;
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.ticket-header {
+    background: linear-gradient(135deg, #12151c 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 26px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--brand-yellow);
+}
+
+.ticket-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-yellow);
+    letter-spacing: 1px;
+}
+
+.ticket-status-pill {
+    background: #10b981;
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ticket-body {
+    padding: 30px 32px;
+}
+
+.ticket-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #e2e8f0;
+    margin-bottom: 24px;
+}
+
+.route-city {
+    display: flex;
+    flex-direction: column;
+}
+
+.route-city-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.route-city-time {
+    font-size: 15px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.ticket-info-item small {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ticket-info-item strong {
+    font-size: 15px;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.ticket-perforation {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.perforation-line {
+    flex: 1;
+    border-bottom: 2px dashed #cbd5e1;
+}
+
+.notch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #f4f7f9;
+}
+
+.notch-left {
+    margin-left: -44px;
+}
+
+.notch-right {
+    margin-right: -44px;
+}
+
+.ticket-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.ticket-qr-box {
+    width: 90px;
+    height: 90px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.ticket-qr-box img,
+.ticket-qr-box canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+}
+
+.btn-ticket-action {
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-ticket-print {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.btn-ticket-print:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
+.btn-ticket-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+}
+
+.btn-ticket-whatsapp:hover {
+    background: #20ba59;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   PNR LOOKUP & MODALS
+   ========================================================================== */
+.dhage-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dhage-modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dhage-modal-card {
+    background: #ffffff;
+    border-radius: 28px;
+    max-width: 580px;
+    width: 100%;
+    padding: 36px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dhage-modal-backdrop.open .dhage-modal-card {
+    transform: scale(1);
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: #f1f5f9;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+/* PRINT MEDIA QUERY FOR TICKETS */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .ticket-wrapper,
+    .ticket-wrapper * {
+        visibility: visible;
+    }
+
+    .ticket-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .ticket-actions,
+    nav,
+    footer,
+    .realtime-badge {
+        display: none !important;
+    }
+}
