@@ -2,2619 +2,989 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book Volvo 9600 Luxury Sleeper Bus Tickets – Dhage Travels</title>
-    <meta name="description"
-        content="Book premium Volvo 9600 multi-axle sleeper bus tickets with Dhage Travels. Strict sequential booking flow, interactive berth selection, transparent fares, and instant e-ticket generation.">
-
-    <!-- Google Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your Dhage Travels bus ticket.">
+    <title>Book Bus Tickets | Dhage Travels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Professional Stylesheet -->
-    <link rel="stylesheet" href="css/booking-pro.css">
-
     <style>
+        :root {
+            --yellow: #f9d71c;
+            --ink: #12151c;
+            --paper: #f4f7f9;
+            --muted: #64748b;
+            --line: #dbe3ec;
+            --green: #059669;
+            --blue: #2563eb;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f7f9;
-            color: #1a1e24;
-            overflow-x: hidden;
-            padding-top: 90px;
+            margin: 0;
+            color: #172033;
+            background: var(--paper);
+            font: 14px/1.5 Inter, Arial, sans-serif;
         }
 
-        /* ===== NAVIGATION (MATCHING SITE IDENTITY) ===== */
-        nav {
-            background-color: #12151c;
-            height: 90px;
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .site-nav {
+            height: 82px;
+            padding: 0 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 40px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            gap: 24px;
+            background: var(--ink);
+            color: #fff;
         }
 
-        .logo-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--brand-yellow);
+        .brand {
+            color: var(--yellow);
             text-decoration: none;
-            transition: transform 0.2s ease;
+            font: 700 30px/0.85 Oswald, sans-serif;
+            letter-spacing: 1px;
+            text-align: center;
         }
 
-        .logo-group:hover {
-            transform: scale(1.03);
-        }
-
-        .logo-top {
-            font-family: 'Oswald', sans-serif;
-            font-size: 34px;
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        .logo-bottom {
-            font-family: 'Oswald', sans-serif;
-            font-size: 11px;
-            letter-spacing: 5px;
-            margin-top: 4px;
-            text-transform: uppercase;
-        }
-
-        .nav-center-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .volvo-pill {
-            background: linear-gradient(135deg, #242c3d, #141822);
-            border: 1px solid rgba(249, 215, 28, 0.5);
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .volvo-pill span {
-            color: var(--brand-yellow);
-        }
-
-        .realtime-badge {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            padding: 5px 12px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            animation: pulseDot 2s infinite;
-        }
-
-        @keyframes pulseDot {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        .brand small {
+            display: block;
+            margin-top: 7px;
+            letter-spacing: 4px;
+            font-size: 10px;
         }
 
         .nav-links {
             display: flex;
+            align-items: center;
+            gap: 22px;
             list-style: none;
-            gap: 25px;
-            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-links li a {
-            color: #ffffff;
+        .nav-links a {
+            color: #fff;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            font-weight: 600;
         }
 
-        .nav-links li a:hover,
-        .nav-links li a.active {
-            color: var(--brand-yellow);
-            font-weight: 700;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--yellow);
         }
 
-        .btn-pnr-link {
-            background: rgba(249, 215, 28, 0.12);
-            border: 1px solid var(--brand-yellow);
-            color: var(--brand-yellow) !important;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-pnr-link:hover {
-            background: var(--brand-yellow);
-            color: #000000 !important;
-        }
-
-        .mobile-menu-btn {
-            display: none;
+        .pnr-btn {
+            border: 1px solid var(--yellow);
+            border-radius: 999px;
+            padding: 8px 14px;
             background: transparent;
-            border: none;
-            color: #ffffff;
-            font-size: 26px;
-            cursor: pointer;
-        }
-
-        /* ===== FOOTER ===== */
-        .site-footer {
-            background-color: #0f0f0f;
-            color: #efefef;
-            padding: 50px 40px 24px;
-            margin-top: 60px;
-            border-top: 3px solid var(--brand-yellow);
-        }
-
-        .footer-grid {
-            max-width: 1260px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 32px;
-            color: var(--brand-yellow);
+            color: var(--yellow);
             font-weight: 700;
         }
 
-        .footer-col h5 {
-            color: #ffffff;
-            margin-bottom: 14px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 16px;
-            letter-spacing: 0.5px;
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            font-size: 27px;
         }
 
-        .footer-col ul {
-            list-style: none;
+        .page {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 34px 20px 62px;
         }
 
-        .footer-col ul li {
-            margin-bottom: 10px;
+        .hero {
+            border-radius: 22px;
+            padding: 34px;
+            color: #fff;
+            background: linear-gradient(115deg, #111827, #25334b);
+            box-shadow: 0 16px 35px rgba(15, 23, 42, .16);
         }
 
-        .footer-col ul li a {
-            color: #abafb6;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
+        .eyebrow {
+            display: inline-flex;
+            gap: 7px;
+            align-items: center;
+            color: var(--yellow);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .8px;
+            text-transform: uppercase;
         }
 
-        .footer-col ul li a:hover {
-            color: var(--brand-yellow);
+        h1,
+        h2,
+        h3 {
+            font-family: Oswald, Arial, sans-serif;
+            margin: 0;
         }
 
-        .footer-bottom {
-            max-width: 1260px;
-            margin: 35px auto 0;
-            border-top: 1px solid #262626;
-            padding-top: 20px;
+        .hero h1 {
+            margin-top: 8px;
+            font-size: 38px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 8px 0 25px;
+            color: #cbd5e1;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 170px auto;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 15px;
+            background: #fff;
+        }
+
+        label {
+            display: block;
+            margin: 0 0 6px;
+            color: #475569;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        select,
+        input {
+            width: 100%;
+            min-height: 46px;
+            padding: 0 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            background: #fff;
+            color: #172033;
+            outline: none;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .14);
+        }
+
+        .primary {
+            min-height: 46px;
+            padding: 0 20px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--yellow);
+            color: #111;
+            font-weight: 800;
+        }
+
+        .primary:hover {
+            filter: brightness(.95);
+        }
+
+        .screen {
+            display: none;
+            margin-top: 26px;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .section-head {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            align-items: end;
             gap: 12px;
-            color: #7e848f;
+            margin-bottom: 14px;
+        }
+
+        .section-head h2 {
+            font-size: 28px;
+        }
+
+        .route-chip {
+            color: #075f47;
+            background: #eafaf3;
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .bus-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .bus-card {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr auto;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
+        }
+
+        .bus-title {
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .bus-type {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .amenities {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            color: #475569;
+        }
+
+        .amenities span {
+            padding: 4px 7px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .timing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .timing small {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .timing .line {
+            width: 48px;
+            height: 1px;
+            background: #94a3b8;
+            position: relative;
+        }
+
+        .timing .line:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -3px;
+            border: 4px solid transparent;
+            border-left-color: #94a3b8;
+        }
+
+        .fare {
+            text-align: right;
+        }
+
+        .fare strong {
+            display: block;
+            margin: 2px 0 8px;
+            font: 700 26px Oswald, sans-serif;
+        }
+
+        .outline {
+            min-height: 40px;
+            padding: 0 14px;
+            border: 1px solid var(--ink);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--ink);
+            font-weight: 800;
+        }
+
+        .outline:hover {
+            background: var(--ink);
+            color: var(--yellow);
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(310px, .85fr);
+            gap: 22px;
+        }
+
+        .card {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
+        }
+
+        .card h3 {
+            font-size: 22px;
+        }
+
+        .seat-note {
+            margin: 5px 0 18px;
+            color: var(--muted);
+        }
+
+        .seat-legend {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .seat-legend i {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 4px;
+            border-radius: 3px;
+            vertical-align: -1px;
+        }
+
+        .seat-map {
+            max-width: 430px;
+            padding: 15px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        .seat-row {
+            display: grid;
+            grid-template-columns: 1fr 26px 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 9px;
+        }
+
+        .seat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .aisle {
+            border-left: 1px dashed #cbd5e1;
+        }
+
+        .seat {
+            min-height: 52px;
+            padding: 4px;
+            border: 1.5px solid #34a779;
+            border-radius: 7px;
+            background: #fff;
+            color: #075f47;
+            font-weight: 800;
+        }
+
+        .seat small {
+            display: block;
+            margin-top: 2px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .seat:hover:not(:disabled) {
+            background: #ecfdf5;
+        }
+
+        .seat.selected {
+            border-color: var(--yellow);
+            background: var(--ink);
+            color: var(--yellow);
+        }
+
+        .seat.booked {
+            border-color: #cbd5e1;
+            background: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .points-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .points-title small {
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .point-list {
+            display: grid;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .point {
+            position: relative;
+            display: block;
+            padding: 12px 12px 12px 38px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .point input {
+            position: absolute;
+            left: 13px;
+            top: 16px;
+            width: 15px;
+            min-height: 15px;
+            accent-color: var(--ink);
+        }
+
+        .point:has(input:checked) {
+            border-color: var(--ink);
+            background: #fffdf0;
+        }
+
+        .point strong {
+            display: block;
             font-size: 13px;
         }
 
-        /* Payment Spinner Overlay */
-        .payment-processing-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(6px);
-            z-index: 99999;
-            display: none;
-            flex-direction: column;
+        .point span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .summary {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            color: #ffffff;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+        }
+
+        .summary strong {
+            display: block;
+            font: 700 25px Oswald, sans-serif;
+        }
+
+        .back {
+            border: 0;
+            background: transparent;
+            color: #475569;
+            font-weight: 800;
+        }
+
+        .passenger-form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .passenger {
+            padding: 15px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+        }
+
+        .passenger h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .two-inputs {
+            display: grid;
+            grid-template-columns: 1fr 110px;
+            gap: 10px;
+        }
+
+        .confirm {
+            max-width: 680px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .payment-processing-overlay.active {
-            display: flex;
-        }
-
-        .pay-spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(249, 215, 28, 0.2);
-            border-top-color: var(--brand-yellow);
+        .tick {
+            width: 64px;
+            height: 64px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 12px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 34px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .ticket {
+            margin-top: 20px;
+            padding: 22px;
+            text-align: left;
+            border: 2px solid var(--ink);
+            border-radius: 15px;
+            background: #fff;
         }
 
-        @media (max-width: 992px) {
-            nav { padding: 0 20px; }
+        .ticket-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed #94a3b8;
+        }
+
+        .ticket-top strong {
+            font: 700 24px Oswald, sans-serif;
+            color: var(--ink);
+        }
+
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .ticket-grid small {
+            display: block;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+
+        .ticket-grid strong {
+            display: block;
+            margin-top: 3px;
+        }
+
+        .site-footer {
+            padding: 42px 5% 20px;
+            background: #0f0f0f;
+            border-top: 3px solid var(--yellow);
+            color: #b6beca;
+        }
+
+        .footer-grid {
+            max-width: 1160px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.4fr repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .footer-grid h3 {
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .footer-grid a {
+            display: block;
+            margin: 8px 0;
+            color: #b6beca;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-grid a:hover {
+            color: var(--yellow);
+        }
+
+        .copyright {
+            max-width: 1160px;
+            margin: 26px auto 0;
+            padding-top: 16px;
+            border-top: 1px solid #2d3440;
+            font-size: 12px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            place-items: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, .65);
+        }
+
+        .modal.open {
+            display: grid;
+        }
+
+        .modal-box {
+            width: min(420px, 100%);
+            padding: 24px;
+            border-radius: 16px;
+            background: #fff;
+        }
+
+        .modal-box header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .close {
+            border: 0;
+            background: transparent;
+            font-size: 26px;
+        }
+
+        @media (max-width:850px) {
+
+            .search-form,
+            .bus-card,
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fare {
+                text-align: left;
+            }
+
+            .timing {
+                justify-content: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width:680px) {
+            .site-nav {
+                height: 70px;
+            }
+
+            .brand {
+                font-size: 27px;
+            }
+
             .nav-links {
                 display: none;
-                flex-direction: column;
                 position: absolute;
-                top: 90px;
+                top: 70px;
                 left: 0;
                 right: 0;
-                background: #12151c;
-                padding: 20px;
-                border-bottom: 2px solid var(--brand-yellow);
+                z-index: 10;
+                padding: 16px 5%;
+                background: var(--ink);
+                border-top: 1px solid #263044;
             }
-            .nav-links.show { display: flex; }
-            .mobile-menu-btn { display: block; }
+
+            .nav-links.show {
+                display: grid;
+                gap: 14px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 24px 18px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .page {
+                padding: 20px 14px 42px;
+            }
+
+            .ticket-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-inputs {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- ===== NAVIGATION ===== -->
-    <nav>
-        <a href="home.html" class="logo-group">
-            <div class="logo-top">DHAGE</div>
-            <div class="logo-bottom">TRAVELS</div>
-        </a>
-
-        <div class="nav-center-badge">
-            <div class="volvo-pill">
-                <i class="bi bi-patch-check-fill" style="color:var(--brand-yellow);"></i>
-                VOLVO <span>9600</span> FLEET
-            </div>
-            <span class="realtime-badge">
-                <span class="pulse-dot"></span> LIVE ENGINE
-            </span>
-        </div>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
-            <i class="bi bi-list"></i>
-        </button>
-
+    <nav class="site-nav">
+        <a class="brand" href="home.html">DHAGE<small>TRAVELS</small></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation"><i class="bi bi-list"></i></button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="home.html"><i class="bi bi-house"></i> Home</a></li>
-            <li><a href="book.html" class="active"><i class="bi bi-bus-front-fill"></i> Book Now</a></li>
-            <li><a href="about.html"><i class="bi bi-info-circle"></i> About</a></li>
-            <li><a href="contact.html"><i class="bi bi-telephone"></i> Contact</a></li>
-            <li>
-                <button type="button" class="btn-pnr-link" id="checkPnrNavBtn">
-                    <i class="bi bi-search"></i> Check PNR
-                </button>
-            </li>
+            <li><a href="home.html">Home</a></li>
+            <li><a class="active" href="book.html">Book Now</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><button class="pnr-btn" id="pnrBtn"><i class="bi bi-search"></i> Check PNR</button></li>
         </ul>
     </nav>
 
-    <!-- ===== STEPPER PROGRESS INDICATOR ===== -->
-    <div class="booking-stepper-wrap" id="stepperWrapper">
-        <div class="booking-stepper">
-            <div class="step-item active" id="stepIndicator1">
-                <div class="step-circle" id="stepCircle1">1</div>
-                <div class="step-label">1. Search</div>
-            </div>
-            <div class="step-item" id="stepIndicator2">
-                <div class="step-circle" id="stepCircle2">2</div>
-                <div class="step-label">2. Available Buses</div>
-            </div>
-            <div class="step-item" id="stepIndicator3">
-                <div class="step-circle" id="stepCircle3">3</div>
-                <div class="step-label">3. Select Berths</div>
-            </div>
-            <div class="step-item" id="stepIndicator4">
-                <div class="step-circle" id="stepCircle4">4</div>
-                <div class="step-label">4. Passenger Info</div>
-            </div>
-            <div class="step-item" id="stepIndicator5">
-                <div class="step-circle" id="stepCircle5">5</div>
-                <div class="step-label">5. Review</div>
-            </div>
-            <div class="step-item" id="stepIndicator6">
-                <div class="step-circle" id="stepCircle6">6</div>
-                <div class="step-label">6. Payment</div>
-            </div>
-            <div class="step-item" id="stepIndicator7">
-                <div class="step-circle" id="stepCircle7">7</div>
-                <div class="step-label">7. Confirmation</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== MAIN APPLICATION WORKSPACE ===== -->
-    <main class="content-container">
-
-        <!-- =================================================================
-             STEP 1: SEARCH SCREEN (STRICT INITIAL STATE)
-             ================================================================= -->
-        <section class="step-section active-step" id="stepSearchSection">
-            <div class="search-hero-banner">
-                <div class="search-hero-header">
-                    <div class="brand-flagship-pill">
-                        <i class="bi bi-shield-check"></i> Dhage Travels Flagship Volvo 9600 AC Sleeper Fleet
-                    </div>
-                    <h1>Reserve Your <span>Luxury Sleeper</span> Journey</h1>
-                    <p>
-                        Experience 15-meter multi-axle Swedish luxury with soundproof cabin acoustics, individual AC vents,
-                        ergonomic berths, and live GPS tracking across Maharashtra.
-                    </p>
-                </div>
-
-                <!-- Strict Search Form -->
-                <div class="search-box-card">
-                    <form id="bookingSearchForm" class="search-grid-form" onsubmit="handleSearchSubmit(event)">
-                        <!-- FROM -->
-                        <div class="input-field-block">
-                            <label class="field-label" for="fromCitySelect">
-                                <i class="bi bi-geo-alt-fill"></i> FROM (Origin City)
-                            </label>
-                            <select id="fromCitySelect" class="form-control-custom" required>
-                                <option value="" disabled>Select Origin City</option>
-                                <option value="Mumbai" selected>Mumbai</option>
-                                <option value="Pune">Pune</option>
-                                <option value="Majalgaon">Majalgaon</option>
-                                <option value="Beed">Beed</option>
-                                <option value="Nanded">Nanded</option>
-                                <option value="Parbhani">Parbhani</option>
-                                <option value="Chhatrapati Sambhajinagar">Chhatrapati Sambhajinagar (Aurangabad)</option>
-                                <option value="Ahmednagar">Ahmednagar</option>
-                                <option value="Nashik">Nashik</option>
-                            </select>
-                        </div>
-
-                        <!-- SWAP BUTTON -->
-                        <button type="button" class="btn-swap-cities" id="btnSwapCities" title="Swap Cities" aria-label="Swap Cities" onclick="handleSwapCities()">
-                            ⇄
-                        </button>
-
-                        <!-- TO -->
-                        <div class="input-field-block">
-                            <label class="field-label" for="toCitySelect">
-                                <i class="bi bi-pin-map-fill"></i> TO (Destination City)
-                            </label>
-                            <select id="toCitySelect" class="form-control-custom" required>
-                                <option value="" disabled>Select Destination City</option>
-                                <option value="Pune" selected>Pune</option>
-                                <option value="Mumbai">Mumbai</option>
-                                <option value="Majalgaon">Majalgaon</option>
-                                <option value="Beed">Beed</option>
-                                <option value="Nanded">Nanded</option>
-                                <option value="Parbhani">Parbhani</option>
-                                <option value="Chhatrapati Sambhajinagar">Chhatrapati Sambhajinagar (Aurangabad)</option>
-                                <option value="Ahmednagar">Ahmednagar</option>
-                                <option value="Nashik">Nashik</option>
-                            </select>
-                        </div>
-
-                        <!-- JOURNEY DATE -->
-                        <div class="input-field-block">
-                            <label class="field-label" for="travelDateInput">
-                                <i class="bi bi-calendar3"></i> JOURNEY DATE
-                            </label>
-                            <input type="date" id="travelDateInput" class="form-control-custom" required>
-                        </div>
-
-                        <!-- SEARCH CTA -->
-                        <button type="submit" class="btn-search-primary" id="btnSearchBuses">
-                            <i class="bi bi-search"></i> Search Buses
-                        </button>
-                    </form>
-
-                    <!-- Quick Date Pills -->
-                    <div class="search-quick-bar">
-                        <div class="quick-date-chips">
-                            <span style="font-size:12px; font-weight:700; color:#64748b;">Quick Date:</span>
-                            <button type="button" class="quick-chip active" id="chipToday" onclick="selectQuickDate(0)">Today</button>
-                            <button type="button" class="quick-chip" id="chipTomorrow" onclick="selectQuickDate(1)">Tomorrow</button>
-                            <button type="button" class="quick-chip" id="chipDayAfter" onclick="selectQuickDate(2)">Day After</button>
-                        </div>
-                        <span style="font-size:12px; color:#10b981; font-weight:700;">
-                            <i class="bi bi-tag-fill"></i> Use Coupon <strong>DHAGE15</strong> for 15% Off
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Popular Routes Showcase Cards -->
-            <div style="margin-top: 10px;">
-                <h3 style="font-family:'Oswald',sans-serif; font-size:20px; color:#0f172a; margin-bottom:14px;">
-                    <i class="bi bi-stars" style="color:var(--brand-yellow);"></i> Frequent Daily Routes by Dhage Travels
-                </h3>
-                <div class="popular-routes-grid">
-                    <div class="popular-route-card" onclick="quickFillRoute('Mumbai', 'Pune')">
-                        <div class="route-card-info">
-                            <h4>Mumbai ➔ Pune</h4>
-                            <p>Daily Volvo 9600 Multi-Axle Sleepers</p>
-                        </div>
-                        <span class="route-card-badge">Starts ₹899</span>
-                    </div>
-                    <div class="popular-route-card" onclick="quickFillRoute('Pune', 'Majalgaon')">
-                        <div class="route-card-info">
-                            <h4>Pune ➔ Majalgaon</h4>
-                            <p>Direct SuperFast Night Express</p>
-                        </div>
-                        <span class="route-card-badge">Starts ₹950</span>
-                    </div>
-                    <div class="popular-route-card" onclick="quickFillRoute('Mumbai', 'Beed')">
-                        <div class="route-card-info">
-                            <h4>Mumbai ➔ Beed</h4>
-                            <p>Comfort AC Sleeper 2+1</p>
-                        </div>
-                        <span class="route-card-badge">Starts ₹1,150</span>
-                    </div>
-                    <div class="popular-route-card" onclick="quickFillRoute('Pune', 'Nanded')">
-                        <div class="route-card-info">
-                            <h4>Pune ➔ Nanded</h4>
-                            <p>Gold Class Volvo Multi-Axle</p>
-                        </div>
-                        <span class="route-card-badge">Starts ₹1,200</span>
-                    </div>
-                </div>
-            </div>
+    <main class="page">
+        <section class="hero screen active" id="searchScreen">
+            <span class="eyebrow"><i class="bi bi-bus-front-fill"></i> Maharashtra bus booking</span>
+            <h1>Book your journey in a few simple clicks.</h1>
+            <p>Select your route, choose a seat, and enter passenger details. No unnecessary booking steps.</p>
+            <form class="search-form" id="searchForm">
+                <div><label for="fromCity">From</label><select id="fromCity" required></select></div>
+                <div><label for="toCity">To</label><select id="toCity" required></select></div>
+                <div><label for="travelDate">Journey date</label><input id="travelDate" type="date" required></div>
+                <button class="primary" type="submit"><i class="bi bi-search"></i> Search buses</button>
+            </form>
         </section>
 
-
-        <!-- =================================================================
-             STEP 2: AVAILABLE BUSES SCREEN (AFTER SEARCH SUBMISSION ONLY)
-             ================================================================= -->
-        <section class="step-section" id="stepBusesSection">
-            <!-- Promo Route Ribbon -->
-            <div class="route-promo-ribbon">
-                <div class="route-ribbon-title">
-                    <span id="routeBannerCities">Mumbai (Maharashtra) to Pune (Maharashtra)</span>
-                    <span id="routeBannerDate" style="color:#1e293b; font-weight:700;">• 20 Sep 2026</span>
-                </div>
-                <div class="route-ribbon-right">
-                    <div class="discount-tag-pill">
-                        <i class="bi bi-percent"></i> Get flat 15% on all bookings
-                    </div>
-                    <button type="button" class="btn-modify-search" onclick="goToStep('SEARCH')">
-                        <i class="bi bi-pencil-square"></i> Modify Search
-                    </button>
-                </div>
+        <section class="screen" id="resultsScreen">
+            <div class="section-head">
+                <div><span class="eyebrow" style="color:#2563eb">Available buses</span>
+                    <h2 id="routeTitle">Mumbai to Pune</h2>
+                </div><button class="back" type="button" data-screen="search"><i class="bi bi-arrow-left"></i> Change
+                    route</button>
             </div>
+            <div class="bus-list" id="busList"></div>
+        </section>
 
-            <!-- Two-Column Layout (Sidebar + Results) -->
-            <div class="buses-layout-grid">
-                <!-- Filters Sidebar -->
-                <aside class="filter-sidebar-box">
-                    <div class="filter-header-bar">
-                        <h3><i class="bi bi-sliders2"></i> Filters</h3>
-                        <button type="button" class="btn-clear-filters" onclick="resetAllFilters()">Clear All</button>
+        <section class="screen" id="bookingScreen">
+            <div class="section-head">
+                <div><span class="eyebrow" style="color:#2563eb">Choose seats and stops</span>
+                    <h2 id="coachTitle">Dhage Travels AC Sleeper</h2>
+                </div><button class="back" type="button" data-screen="results"><i class="bi bi-arrow-left"></i> Change
+                    bus</button>
+            </div>
+            <div class="booking-grid">
+                <article class="card">
+                    <h3>Seat selection</h3>
+                    <p class="seat-note">Simple 2 + 1 sleeper layout. Click the green seats to select.</p>
+                    <div class="seat-legend"><span><i style="border:1px solid #34a779"></i>Available</span><span><i
+                                style="background:#12151c;border:1px solid #f9d71c"></i>Selected</span><span><i
+                                style="background:#e2e8f0"></i>Booked</span></div>
+                    <div class="seat-map" id="seatMap" aria-label="Seat map"></div>
+                </article>
+                <aside class="card">
+                    <div class="points-title"><i class="bi bi-geo-alt-fill"></i>
+                        <div>Boarding points <small id="fromPointsLabel"></small></div>
                     </div>
-
-                    <!-- Departure Time Filter -->
-                    <div class="filter-section-group">
-                        <div class="filter-group-title">Departure Time</div>
-                        <div class="time-slot-grid-sm">
-                            <button type="button" class="time-filter-btn" data-time="morning-early" onclick="toggleTimeFilter(this, 'morning-early')">
-                                <i class="bi bi-sunrise"></i>
-                                <span>Before 6 AM</span>
-                            </button>
-                            <button type="button" class="time-filter-btn" data-time="morning" onclick="toggleTimeFilter(this, 'morning')">
-                                <i class="bi bi-sun"></i>
-                                <span>6 AM - 12 PM</span>
-                            </button>
-                            <button type="button" class="time-filter-btn" data-time="afternoon" onclick="toggleTimeFilter(this, 'afternoon')">
-                                <i class="bi bi-brightness-high"></i>
-                                <span>12 PM - 6 PM</span>
-                            </button>
-                            <button type="button" class="time-filter-btn active" data-time="night" onclick="toggleTimeFilter(this, 'night')">
-                                <i class="bi bi-moon-stars"></i>
-                                <span>After 6 PM</span>
-                            </button>
-                        </div>
+                    <div class="point-list" id="boardingPoints"></div>
+                    <div class="points-title"><i class="bi bi-pin-map-fill" style="color:#059669"></i>
+                        <div>Dropping points <small id="toPointsLabel"></small></div>
                     </div>
-
-                    <!-- Bus Type Filter -->
-                    <div class="filter-section-group">
-                        <div class="filter-group-title">Bus Type</div>
-                        <label class="filter-checkbox-item">
-                            <span>AC Sleeper (2+1)</span>
-                            <input type="checkbox" class="bus-type-filter" value="sleeper" checked onchange="renderBusResults()">
-                        </label>
-                        <label class="filter-checkbox-item">
-                            <span>Volvo 9600 Flagship</span>
-                            <input type="checkbox" class="bus-type-filter" value="volvo9600" checked onchange="renderBusResults()">
-                        </label>
-                        <label class="filter-checkbox-item">
-                            <span>Celeste Executive</span>
-                            <input type="checkbox" class="bus-type-filter" value="executive" checked onchange="renderBusResults()">
-                        </label>
-                    </div>
-
-                    <!-- Coach Amenities -->
-                    <div class="filter-section-group">
-                        <div class="filter-group-title">Amenities</div>
-                        <div class="amenity-chip-filter-list">
-                            <span class="amenity-filter-chip active" data-amenity="ac" onclick="toggleAmenityChip(this, 'ac')">
-                                <i class="bi bi-snow"></i> AC
-                            </span>
-                            <span class="amenity-filter-chip active" data-amenity="charging" onclick="toggleAmenityChip(this, 'charging')">
-                                <i class="bi bi-plug"></i> USB Port
-                            </span>
-                            <span class="amenity-filter-chip" data-amenity="wifi" onclick="toggleAmenityChip(this, 'wifi')">
-                                <i class="bi bi-wifi"></i> Wi-Fi
-                            </span>
-                            <span class="amenity-filter-chip" data-amenity="blanket" onclick="toggleAmenityChip(this, 'blanket')">
-                                <i class="bi bi-shield-check"></i> Blanket
-                            </span>
-                            <span class="amenity-filter-chip" data-amenity="water" onclick="toggleAmenityChip(this, 'water')">
-                                <i class="bi bi-cup-straw"></i> Water
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Pickup / Dropping Place Search -->
-                    <div class="filter-section-group">
-                        <div class="filter-group-title">Pickup Point Filter</div>
-                        <input type="text" id="pickupSearchFilter" class="form-control-custom" placeholder="Search Pickup Point..." style="font-size:12px; padding:8px 12px;" oninput="renderBusResults()">
+                    <div class="point-list" id="droppingPoints"></div>
+                    <div class="summary">
+                        <div><span style="color:#64748b;font-size:12px;font-weight:700">TOTAL FARE</span><strong
+                                id="seatTotal">₹0</strong></div><button class="primary" type="button" id="continueBtn"
+                            disabled>Continue <i class="bi bi-arrow-right"></i></button>
                     </div>
                 </aside>
-
-                <!-- Bus Listings Area -->
-                <div class="bus-listings-container">
-                    <!-- Sort and Count Bar -->
-                    <div class="sort-and-count-bar">
-                        <div class="bus-found-count" id="busResultsCount">4 Buses Found</div>
-                        <div class="sort-chips-group">
-                            <span class="sort-label">Sort By:</span>
-                            <button type="button" class="sort-btn active" data-sort="departure" onclick="setSortMode('departure', this)">Departure</button>
-                            <button type="button" class="sort-btn" data-sort="duration" onclick="setSortMode('duration', this)">Duration</button>
-                            <button type="button" class="sort-btn" data-sort="rating" onclick="setSortMode('rating', this)">Ratings</button>
-                            <button type="button" class="sort-btn" data-sort="seats" onclick="setSortMode('seats', this)">Seat Available</button>
-                            <button type="button" class="sort-btn" data-sort="fare" onclick="setSortMode('fare', this)">Fare</button>
-                        </div>
-                    </div>
-
-                    <!-- Bus Cards Roster -->
-                    <div id="busCardsList">
-                        <!-- Rendered dynamically by renderBusResults() -->
-                    </div>
-                </div>
             </div>
         </section>
 
-
-        <!-- =================================================================
-             STEP 3: SLEEPER BERTH SELECTION (VOLVO 9600 2+1 LUXURY LAYOUT)
-             ================================================================= -->
-        <section class="step-section" id="stepSeatsSection">
-            <div class="seat-selection-wrapper">
-                <!-- Header with Selected Bus & Price Chips -->
-                <div class="seat-selection-header">
-                    <div class="selected-bus-summary-badge">
-                        <button type="button" class="btn-back-step" onclick="goToStep('AVAILABLE_BUSES')" title="Change Bus">
-                            <i class="bi bi-arrow-left"></i> Change Bus
-                        </button>
-                        <div>
-                            <h3 id="seatSelectBusTitle">Dhage Travels Volvo 9600 • AC Sleeper (Gold Class)</h3>
-                            <div style="font-size:13px; color:#64748b; font-weight:600;" id="seatSelectBusMeta">
-                                10:00 PM — 05:30 AM (7h 30m) • Starting from ₹899
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Price Filter Chips (Reference Screenshot 1 pattern) -->
-                    <div class="price-filter-tabs">
-                        <span style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase;">Seat Price:</span>
-                        <button type="button" class="price-chip active" id="chipPriceAll" onclick="filterBerthPrice('all', this)">All Prices</button>
-                        <button type="button" class="price-chip" id="chipPrice899" onclick="filterBerthPrice('899', this)">₹899</button>
-                        <button type="button" class="price-chip" id="chipPrice950" onclick="filterBerthPrice('950', this)">₹950</button>
-                        <button type="button" class="price-chip" id="chipPrice1150" onclick="filterBerthPrice('1150', this)">₹1,150</button>
-                    </div>
-                </div>
-
-                <!-- Legend Bar -->
-                <div class="seat-legend-bar">
-                    <div class="legend-item">
-                        <span class="legend-swatch swatch-available"></span>
-                        <span>AVAILABLE</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-swatch swatch-selected"></span>
-                        <span>SELECTED</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-swatch swatch-booked"></span>
-                        <span>BOOKED (Unavailable)</span>
-                    </div>
-                    <div class="legend-item" style="color:#db2777;">
-                        <i class="bi bi-gender-female" style="font-size:15px;"></i>
-                        <span>Ladies Reserved</span>
-                    </div>
-                </div>
-
-                <!-- Volvo 9600 Dual Deck Sleeper Chassis (Lower Deck & Upper Deck) -->
-                <div class="decks-grid">
-                    <!-- LOWER DECK -->
-                    <div class="deck-card">
-                        <div class="deck-card-title">
-                            <span><i class="bi bi-layers-fill" style="color:var(--brand-yellow);"></i> Lower Deck (Volvo 9600)</span>
-                            <span class="driver-cabin-indicator"><i class="bi bi-steering-wheel"></i> Cabin / Driver</span>
-                        </div>
-                        <div class="sleeper-chassis" id="lowerDeckChassis">
-                            <!-- Rendered by renderDeckLayout() -->
-                        </div>
-                    </div>
-
-                    <!-- UPPER DECK -->
-                    <div class="deck-card">
-                        <div class="deck-card-title">
-                            <span><i class="bi bi-layers-half" style="color:var(--brand-yellow);"></i> Upper Deck (Panoramic View)</span>
-                            <span class="driver-cabin-indicator"><i class="bi bi-arrow-up-circle"></i> High Deck</span>
-                        </div>
-                        <div class="sleeper-chassis" id="upperDeckChassis">
-                            <!-- Rendered by renderDeckLayout() -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Boarding & Dropping Point Radio Selection (Reference Screenshot 3 style) -->
-                <div class="points-selector-box">
-                    <div class="points-two-col">
-                        <!-- Boarding Point Column -->
-                        <div>
-                            <div class="points-header">
-                                <i class="bi bi-geo-alt-fill" style="color:#0f172a;"></i> Select Boarding Point
-                            </div>
-                            <div id="boardingPointsContainer">
-                                <!-- Rendered dynamically -->
-                            </div>
-                        </div>
-
-                        <!-- Dropping Point Column -->
-                        <div>
-                            <div class="points-header">
-                                <i class="bi bi-pin-map-fill" style="color:#059669;"></i> Select Dropping Point
-                            </div>
-                            <div id="droppingPointsContainer">
-                                <!-- Rendered dynamically -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action & Fare Footer Bar -->
-                <div class="seat-action-footer">
-                    <div class="selected-summary-left">
-                        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#94a3b8; font-weight:700;">
-                            Selected Berths:
-                        </span>
-                        <div class="selected-pills-row" id="selectedBerthsPills">
-                            <span style="font-size:13px; color:#94a3b8;">No berths selected. Click on available green berths above.</span>
-                        </div>
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:20px;">
-                        <div class="fare-calc-total">
-                            <span>Total Fare:</span>
-                            <strong id="liveFareAmount">₹0</strong>
-                        </div>
-                        <button type="button" class="btn-continue-step" id="btnContinueToPassengers" disabled onclick="handleContinueToPassengers()">
-                            Continue to Passengers <i class="bi bi-arrow-right-circle-fill"></i>
-                        </button>
-                    </div>
-                </div>
+        <section class="screen" id="passengerScreen">
+            <div class="section-head">
+                <div><span class="eyebrow" style="color:#2563eb">Passenger details</span>
+                    <h2>Who is travelling?</h2>
+                </div><button class="back" type="button" data-screen="booking"><i class="bi bi-arrow-left"></i> Back to
+                    seats</button>
             </div>
+            <form class="card passenger-form" id="passengerForm">
+                <div class="two-inputs">
+                    <div><label for="contactPhone">Mobile number</label><input id="contactPhone" inputmode="numeric"
+                            minlength="10" maxlength="10" placeholder="10-digit mobile number" required></div>
+                    <div><label for="contactEmail">Email</label><input id="contactEmail" type="email"
+                            placeholder="Email" required></div>
+                </div>
+                <div id="passengerFields"></div>
+                <div class="summary">
+                    <div><span style="color:#64748b;font-size:12px;font-weight:700">PAYABLE</span><strong
+                            id="passengerTotal">₹0</strong></div><button class="primary" type="submit">Confirm booking
+                        <i class="bi bi-lock-fill"></i></button>
+                </div>
+            </form>
         </section>
 
-
-        <!-- =================================================================
-             STEP 4: PASSENGER DETAILS SCREEN (MATCHING REFERENCE SCREENSHOT 4)
-             ================================================================= -->
-        <section class="step-section" id="stepPassengersSection">
-            <!-- Contact Details Card -->
-            <div class="passenger-details-card">
-                <div class="details-card-header">
-                    <span><i class="bi bi-envelope-at-fill" style="color:#0f172a;"></i> Contact Details</span>
-                    <span class="details-card-subtitle">Your e-ticket & SMS tracking will be sent to these details</span>
-                </div>
-                <div class="contact-inputs-grid">
-                    <div>
-                        <label class="field-label" for="contactEmailInput">Email ID *</label>
-                        <input type="email" id="contactEmailInput" class="form-control-custom" placeholder="traveler@example.com" value="passenger@dhagetravels.com" required>
-                    </div>
-                    <div>
-                        <label class="field-label" for="contactPhoneInput">Phone Number (10 Digits) *</label>
-                        <div style="display:flex;">
-                            <span style="background:#e2e8f0; padding:12px 14px; border-radius:12px 0 0 12px; font-weight:800; font-size:14px; border:1.5px solid #cbd5e1; border-right:none; color:#0f172a;">+91</span>
-                            <input type="tel" id="contactPhoneInput" class="form-control-custom" placeholder="9876543210" maxlength="10" value="9822301985" style="border-radius:0 12px 12px 0;" required>
-                        </div>
-                    </div>
-                </div>
-                <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#475569; font-weight:600; cursor:pointer;">
-                    <input type="checkbox" id="whatsappUpdatesCheck" checked style="width:16px; height:16px; accent-color:#0f172a;">
-                    Send booking details and live bus updates on WhatsApp Number
-                </label>
-            </div>
-
-            <!-- Route Headline -->
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
-                <h3 style="font-family:'Oswald',sans-serif; font-size:22px; color:#0f172a;" id="passengerRouteHeadline">
-                    Mumbai ➔ Pune (Passenger Details)
-                </h3>
-                <span style="font-size:13px; font-weight:700; color:#2563eb;" id="passengerCountBadge">
-                    2 Berths Selected
-                </span>
-            </div>
-
-            <!-- Dynamic Passenger Form Cards (Generated 1-to-1 with Berths) -->
-            <div class="passenger-details-card" style="margin-bottom: 24px;">
-                <div id="dynamicPassengerForms">
-                    <!-- Rendered by generatePassengerForms() -->
-                </div>
-                <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#475569; font-weight:600; cursor:pointer; margin-top:14px;">
-                    <input type="checkbox" id="gstDetailsCheck" style="width:16px; height:16px; accent-color:#0f172a;" onchange="toggleGstInput(this)">
-                    I have GST Details (Optional for business invoice)
-                </label>
-                <div id="gstInputBlock" style="display:none; margin-top:10px;">
-                    <input type="text" id="gstNumberInput" class="form-control-custom" placeholder="Enter 15-character GSTIN (e.g. 27AAAAA0000A1Z5)" maxlength="15" style="max-width:360px; text-transform:uppercase;">
-                </div>
-            </div>
-
-            <!-- Check Out Our Amenities (Reference Screenshot 4 Box) -->
-            <div class="amenities-showcase-box">
-                <div class="details-card-header">
-                    <span><i class="bi bi-stars" style="color:var(--brand-yellow);"></i> Check Out Our Coach Amenities</span>
-                    <span class="details-card-subtitle">Dhage Travels Volvo 9600 Gold Class Standards</span>
-                </div>
-                <div class="amenities-badges-grid">
-                    <div class="amenity-badge-card"><i class="bi bi-book"></i> Reading Light</div>
-                    <div class="amenity-badge-card"><i class="bi bi-fire"></i> Fire Extinguisher</div>
-                    <div class="amenity-badge-card"><i class="bi bi-box2-heart"></i> Sanitized Blanket</div>
-                    <div class="amenity-badge-card"><i class="bi bi-phone"></i> Mobile Charging Point</div>
-                    <div class="amenity-badge-card"><i class="bi bi-ticket-perforated"></i> M-Ticket Supported</div>
-                    <div class="amenity-badge-card"><i class="bi bi-door-open"></i> Emergency Exit</div>
-                    <div class="amenity-badge-card"><i class="bi bi-geo-alt"></i> Live Bus Tracking</div>
-                    <div class="amenity-badge-card"><i class="bi bi-hammer"></i> Safety Hammer</div>
-                    <div class="amenity-badge-card"><i class="bi bi-usb-symbol"></i> USB Port for Charger</div>
-                    <div class="amenity-badge-card"><i class="bi bi-headset"></i> 24x7 Helpline Number</div>
-                </div>
-
-                <!-- Hop Over / Boarding-Dropping Timings Bar -->
-                <div class="hop-over-timeline">
-                    <div class="hop-point-info">
-                        <span class="hop-point-title" id="hopBoardingName">Borivali West (Gokul Hotel)</span>
-                        <span class="hop-point-landmark" id="hopBoardingLandmark">Near Western Express Highway</span>
-                        <span class="hop-point-time" id="hopBoardingTime">10:00 PM</span>
-                    </div>
-                    <div style="flex:1; text-align:center; padding:0 18px;">
-                        <span style="font-size:11px; font-weight:800; color:#64748b; letter-spacing:1px;" id="hopDurationText">7h 30m DIRECT</span>
-                        <div class="track-line" style="margin-top:4px;"></div>
-                    </div>
-                    <div class="hop-point-info" style="text-align:right;">
-                        <span class="hop-point-title" id="hopDroppingName">Swargate (Laxmi Narayan)</span>
-                        <span class="hop-point-landmark" id="hopDroppingLandmark">Opp. City Bus Stand</span>
-                        <span class="hop-point-time" id="hopDroppingTime">05:30 AM</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Navigation -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; background:#ffffff; border:1px solid #cbd5e1; border-radius:16px; padding:18px 24px;">
-                <div>
-                    <span style="font-size:12px; color:#64748b; font-weight:700; text-transform:uppercase;">Total Payable:</span>
-                    <div style="font-family:'Oswald',sans-serif; font-size:26px; font-weight:700; color:#0f172a;" id="passengerTotalDisplay">
-                        ₹0
-                    </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:12px;">
-                    <button type="button" class="btn-back-step" onclick="goToStep('SELECT_SLEEPER_BERTH')">
-                        <i class="bi bi-arrow-left"></i> Back to Berths
-                    </button>
-                    <button type="button" class="btn-continue-step" onclick="handleProceedToReview()">
-                        Proceed to Review <i class="bi bi-arrow-right-circle-fill"></i>
-                    </button>
-                </div>
-            </div>
+        <section class="screen confirm" id="confirmationScreen">
+            <div class="tick"><i class="bi bi-check-lg"></i></div><span class="eyebrow" style="color:#15803d">Booking
+                confirmed</span>
+            <h2 style="font-size:34px">Your seat is reserved.</h2>
+            <p style="color:#64748b">Keep this booking ID for your journey.</p>
+            <article class="ticket" id="ticket"></article>
+            <p><a class="outline" href="home.html"
+                    style="display:inline-flex;align-items:center;margin-top:18px;text-decoration:none">Back to home</a>
+            </p>
         </section>
-
-
-        <!-- =================================================================
-             STEP 5: REVIEW BOOKING SCREEN
-             ================================================================= -->
-        <section class="step-section" id="stepReviewSection">
-            <div class="review-card-wrapper">
-                <div style="text-align:center; margin-bottom:24px;">
-                    <span class="brand-flagship-pill"><i class="bi bi-patch-check"></i> Step 5 of 7</span>
-                    <h2 style="font-family:'Oswald',sans-serif; font-size:28px; color:#0f172a;">Review Your Booking</h2>
-                    <p style="font-size:14px; color:#64748b;">Please double check your journey itinerary and passenger names before proceeding to payment.</p>
-                </div>
-
-                <!-- Trip Details -->
-                <div class="review-section-block">
-                    <div class="review-section-title">
-                        <i class="bi bi-bus-front" style="color:var(--brand-yellow);"></i> Trip Details
-                    </div>
-                    <div class="review-grid-2col">
-                        <div class="review-item-pair">
-                            <small>Operator</small>
-                            <strong>Dhage Travels</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>Coach Type</small>
-                            <strong id="reviewCoachName">Volvo 9600 Multi-Axle AC Sleeper (2+1)</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>From City</small>
-                            <strong id="reviewFromCity">Mumbai</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>To City</small>
-                            <strong id="reviewToCity">Pune</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>Journey Date</small>
-                            <strong id="reviewJourneyDate">20 Sep 2026</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>Departure & Arrival</small>
-                            <strong id="reviewTimings">10:00 PM ➔ 05:30 AM (7h 30m)</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>Boarding Point</small>
-                            <strong id="reviewBoardingPoint">Borivali West (Gokul Hotel)</strong>
-                        </div>
-                        <div class="review-item-pair">
-                            <small>Dropping Point</small>
-                            <strong id="reviewDroppingPoint">Swargate (Laxmi Narayan)</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Selected Berths -->
-                <div class="review-section-block">
-                    <div class="review-section-title">
-                        <i class="bi bi-grid-fill" style="color:#2563eb;"></i> Selected Berths
-                    </div>
-                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;" id="reviewBerthsPills">
-                        <!-- e.g. L3, U4 -->
-                    </div>
-                </div>
-
-                <!-- Passenger Roster -->
-                <div class="review-section-block">
-                    <div class="review-section-title">
-                        <i class="bi bi-people-fill" style="color:#10b981;"></i> Passenger Information
-                    </div>
-                    <div id="reviewPassengersList" style="display:flex; flex-direction:column; gap:8px;">
-                        <!-- Rendered dynamically -->
-                    </div>
-                </div>
-
-                <!-- Fare Calculation Receipt -->
-                <div class="review-section-block">
-                    <div class="review-section-title">
-                        <i class="bi bi-receipt" style="color:#0f172a;"></i> Fare Summary
-                    </div>
-                    <div class="fare-breakdown-receipt">
-                        <div class="fare-row-line">
-                            <span>Base Fare (<span id="reviewSeatCount">0</span> Berths)</span>
-                            <span id="reviewBaseFare">₹0</span>
-                        </div>
-                        <div class="fare-row-line">
-                            <span>GST / Service Tax (5%)</span>
-                            <span id="reviewGstFare">₹0</span>
-                        </div>
-                        <div class="fare-row-line" id="reviewDiscountRow" style="color:#16a34a;">
-                            <span>Promo Discount (DHAGE15)</span>
-                            <span id="reviewDiscountFare">-₹0</span>
-                        </div>
-                        <div class="fare-row-line total-line">
-                            <span>Total Payable</span>
-                            <span id="reviewGrandTotal">₹0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:24px;">
-                    <button type="button" class="btn-back-step" onclick="goToStep('PASSENGER_DETAILS')">
-                        <i class="bi bi-arrow-left"></i> Edit Passengers
-                    </button>
-                    <button type="button" class="btn-continue-step" onclick="goToStep('PAYMENT')">
-                        Proceed to Payment <i class="bi bi-lock-fill"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- =================================================================
-             STEP 6: PAYMENT SCREEN (MOCK FRONTEND PAYMENT)
-             ================================================================= -->
-        <section class="step-section" id="stepPaymentSection">
-            <div class="payment-screen-wrapper">
-                <div style="text-align:center; margin-bottom:20px;">
-                    <span class="brand-flagship-pill"><i class="bi bi-shield-lock-fill"></i> Secure Mock Checkout</span>
-                    <h2 style="font-family:'Oswald',sans-serif; font-size:28px; color:#0f172a;">Choose Payment Method</h2>
-                    <p style="font-size:13px; color:#64748b;">This is a mock simulated payment gateway for Dhage Travels. No real money will be charged.</p>
-                </div>
-
-                <!-- Payable Amount Banner -->
-                <div class="payment-banner-amount">
-                    <div>
-                        <span style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#94a3b8;">Final Payable Amount:</span>
-                        <div style="font-family:'Oswald',sans-serif; font-size:32px; color:var(--brand-yellow); font-weight:700;" id="paymentFinalPayable">
-                            ₹0
-                        </div>
-                    </div>
-                    <div style="text-align:right;">
-                        <span class="volvo-pill" style="font-size:11px;">
-                            <i class="bi bi-patch-check-fill" style="color:var(--brand-yellow);"></i> 256-Bit SSL Encrypted
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Method Switcher Tabs -->
-                <div class="payment-method-tabs">
-                    <button type="button" class="pay-tab-btn active" id="tabPayUpi" onclick="switchPaymentTab('upi')">
-                        <i class="bi bi-qr-code-scan"></i>
-                        <span>UPI / QR</span>
-                    </button>
-                    <button type="button" class="pay-tab-btn" id="tabPayCard" onclick="switchPaymentTab('card')">
-                        <i class="bi bi-credit-card-2-front"></i>
-                        <span>Debit / Credit Card</span>
-                    </button>
-                    <button type="button" class="pay-tab-btn" id="tabPayNet" onclick="switchPaymentTab('netbanking')">
-                        <i class="bi bi-bank"></i>
-                        <span>Net Banking</span>
-                    </button>
-                </div>
-
-                <!-- 1. UPI PANEL -->
-                <div class="payment-panel active" id="panelPayUpi">
-                    <div class="upi-options-grid">
-                        <div class="upi-app-chip selected" onclick="selectUpiApp(this, 'gpay')">Google Pay</div>
-                        <div class="upi-app-chip" onclick="selectUpiApp(this, 'phonepe')">PhonePe</div>
-                        <div class="upi-app-chip" onclick="selectUpiApp(this, 'paytm')">Paytm</div>
-                        <div class="upi-app-chip" onclick="selectUpiApp(this, 'other')">Any UPI ID</div>
-                    </div>
-
-                    <div style="margin-bottom:16px;">
-                        <label class="field-label" for="upiIdInput">Enter Virtual Payment Address (UPI ID)</label>
-                        <input type="text" id="upiIdInput" class="form-control-custom" placeholder="e.g. yourname@okhdfcbank" value="samrat@okhdfcbank">
-                    </div>
-
-                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center; margin-bottom:20px;">
-                        <span style="font-size:12px; font-weight:700; color:#475569; display:block; margin-bottom:8px;">Or Scan Dhage Travels Merchant QR:</span>
-                        <div style="width:120px; height:120px; margin:0 auto; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; display:flex; align-items:center; justify-content:center;">
-                            <i class="bi bi-qr-code" style="font-size:90px; color:#0f172a;"></i>
-                        </div>
-                        <small style="color:#64748b; font-size:11px; margin-top:6px; display:block;">Scan with any UPI app on your phone</small>
-                    </div>
-                </div>
-
-                <!-- 2. CARD PANEL -->
-                <div class="payment-panel" id="panelPayCard">
-                    <div style="margin-bottom:14px;">
-                        <label class="field-label" for="cardNumberInput">Card Number</label>
-                        <input type="text" id="cardNumberInput" class="form-control-custom" placeholder="4532 •••• •••• 8892" value="4532 9876 5432 8892" maxlength="19">
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
-                        <div>
-                            <label class="field-label" for="cardExpiryInput">Valid Thru (MM/YY)</label>
-                            <input type="text" id="cardExpiryInput" class="form-control-custom" placeholder="12/28" value="09/28" maxlength="5">
-                        </div>
-                        <div>
-                            <label class="field-label" for="cardCvvInput">CVV</label>
-                            <input type="password" id="cardCvvInput" class="form-control-custom" placeholder="•••" value="884" maxlength="4">
-                        </div>
-                    </div>
-                    <div style="margin-bottom:20px;">
-                        <label class="field-label" for="cardNameInput">Cardholder Name</label>
-                        <input type="text" id="cardNameInput" class="form-control-custom" placeholder="Name on card" value="Samrat Dhage">
-                    </div>
-                </div>
-
-                <!-- 3. NET BANKING PANEL -->
-                <div class="payment-panel" id="panelPayNet">
-                    <div style="margin-bottom:20px;">
-                        <label class="field-label" for="bankSelect">Select Bank</label>
-                        <select id="bankSelect" class="form-control-custom">
-                            <option value="hdfc" selected>HDFC Bank</option>
-                            <option value="sbi">State Bank of India</option>
-                            <option value="icici">ICICI Bank</option>
-                            <option value="axis">Axis Bank</option>
-                            <option value="kotak">Kotak Mahindra Bank</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Actions -->
-                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-                    <button type="button" class="btn-back-step" onclick="goToStep('REVIEW_BOOKING')">
-                        <i class="bi bi-arrow-left"></i> Back to Review
-                    </button>
-                    <button type="button" class="btn-continue-step" id="btnPayNow" style="background:#16a34a; font-size:17px; padding:14px 34px;" onclick="simulatePayment()">
-                        <i class="bi bi-lock-fill"></i> Pay Now <span id="payNowBtnAmount">₹0</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- =================================================================
-             STEP 7: BOOKING CONFIRMATION SCREEN
-             ================================================================= -->
-        <section class="step-section" id="stepConfirmationSection">
-            <div class="confirmation-wrapper">
-                <!-- Success Notification Card -->
-                <div class="success-badge-card">
-                    <div class="check-circle">
-                        <i class="bi bi-check-lg"></i>
-                    </div>
-                    <h2>Booking Confirmed!</h2>
-                    <p style="color:#15803d; font-size:15px; font-weight:600;">
-                        Your reservation with Dhage Travels has been successfully confirmed.
-                    </p>
-                    <div class="pnr-display-box">
-                        PNR / BOOKING ID: <strong id="confirmPnrCode">DHT84920</strong>
-                    </div>
-                </div>
-
-                <!-- =================================================================
-                     STEP 8: AIRLINE-STYLE DIGITAL BOARDING PASS / E-TICKET
-                     ================================================================= -->
-                <div class="ticket-print-box" id="printableTicketContainer">
-                    <!-- Top Header -->
-                    <div class="ticket-top-band">
-                        <div>
-                            <div class="ticket-brand-header">DHAGE TRAVELS</div>
-                            <small style="color:#cbd5e1; font-size:12px; font-weight:700; letter-spacing:1px;">
-                                FLAGSHIP VOLVO 9600 MULTI-AXLE LUXURY SLEEPER
-                            </small>
-                        </div>
-                        <div style="text-align:right;">
-                            <span class="route-card-badge" style="background:var(--brand-yellow); color:#000000;">
-                                CONFIRMED E-TICKET
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Body Content -->
-                    <div class="ticket-body-content">
-                        <!-- Route Headline -->
-                        <div class="ticket-route-headline">
-                            <div class="ticket-city-block">
-                                <h3 id="ticketFromCityDisplay">MUMBAI</h3>
-                                <span id="ticketDepTimeDisplay">10:00 PM</span>
-                            </div>
-                            <div style="text-align:center;">
-                                <span style="font-size:12px; font-weight:800; color:#64748b;" id="ticketDurationDisplay">7h 30m DIRECT</span>
-                                <div style="color:var(--brand-yellow); font-size:24px; line-height:1;">➔</div>
-                                <small style="color:#94a3b8; font-weight:700;" id="ticketCoachTypeDisplay">Volvo 9600 AC Sleeper</small>
-                            </div>
-                            <div class="ticket-city-block" style="text-align:right;">
-                                <h3 id="ticketToCityDisplay">PUNE</h3>
-                                <span id="ticketArrTimeDisplay">05:30 AM</span>
-                            </div>
-                        </div>
-
-                        <!-- Meta Grid -->
-                        <div class="ticket-meta-grid">
-                            <div class="review-item-pair">
-                                <small>Booking ID / PNR</small>
-                                <strong id="ticketMetaPnr" style="color:#0f172a; font-family:'Oswald',sans-serif; letter-spacing:1px;">DHT84920</strong>
-                            </div>
-                            <div class="review-item-pair">
-                                <small>Journey Date</small>
-                                <strong id="ticketMetaDate">20 Sep 2026</strong>
-                            </div>
-                            <div class="review-item-pair">
-                                <small>Selected Berths</small>
-                                <strong id="ticketMetaBerths" style="color:#2563eb;">L3, U4</strong>
-                            </div>
-                            <div class="review-item-pair">
-                                <small>Boarding Point</small>
-                                <strong id="ticketMetaBoarding">Borivali West (10:00 PM)</strong>
-                            </div>
-                            <div class="review-item-pair">
-                                <small>Dropping Point</small>
-                                <strong id="ticketMetaDropping">Swargate Pune (05:30 AM)</strong>
-                            </div>
-                            <div class="review-item-pair">
-                                <small>Total Paid Amount</small>
-                                <strong id="ticketMetaPaid" style="color:#15803d; font-size:18px;">₹1,888</strong>
-                            </div>
-                        </div>
-
-                        <!-- Perforation Line -->
-                        <div class="ticket-perforation-divider"></div>
-
-                        <!-- Passenger List -->
-                        <div style="background:#f8fafc; border-radius:12px; padding:16px; border:1px solid #e2e8f0; margin-bottom:18px;">
-                            <span style="font-size:11px; font-weight:800; color:#64748b; text-transform:uppercase; display:block; margin-bottom:8px;">
-                                Booked Passengers
-                            </span>
-                            <div id="ticketPassengersContainer" style="display:flex; flex-direction:column; gap:6px;">
-                                <!-- Passenger Names -->
-                            </div>
-                        </div>
-
-                        <!-- Footer Strip with Barcode Mockup -->
-                        <div class="ticket-footer-strip">
-                            <div>
-                                <small style="display:block; color:#64748b; font-size:11px;">Helpline & Support:</small>
-                                <strong style="font-size:13px; color:#0f172a;" id="ticketContactInfo">+91 9822301985 | booking@dhagetravels.com</strong>
-                                <span style="display:block; color:#94a3b8; font-size:11px; margin-top:2px;">
-                                    Please report at boarding point 15 minutes before departure.
-                                </span>
-                            </div>
-                            <div style="text-align:right;">
-                                <svg viewBox="0 0 100 100" width="70" height="70">
-                                    <rect width="100" height="100" fill="#ffffff" />
-                                    <path d="M10 10h30v30h-30z M15 15v20h20v-20z M20 20h10v10h-10z" fill="#0f172a" />
-                                    <path d="M60 10h30v30h-30z M65 15v20h20v-20z M70 20h10v10h-10z" fill="#0f172a" />
-                                    <path d="M10 60h30v30h-30z M15 65v20h20v-20z M20 70h10v10h-10z" fill="#0f172a" />
-                                    <rect x="45" y="15" width="8" height="8" fill="#0f172a" />
-                                    <rect x="45" y="30" width="8" height="8" fill="#0f172a" />
-                                    <rect x="15" y="45" width="8" height="8" fill="#0f172a" />
-                                    <rect x="30" y="45" width="8" height="8" fill="#0f172a" />
-                                    <rect x="45" y="45" width="10" height="10" fill="#f9d71c" />
-                                    <rect x="60" y="45" width="8" height="8" fill="#0f172a" />
-                                    <rect x="75" y="45" width="8" height="8" fill="#0f172a" />
-                                    <rect x="60" y="60" width="12" height="12" fill="#0f172a" />
-                                    <rect x="75" y="75" width="12" height="12" fill="#0f172a" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons: Download, Print, Home -->
-                <div class="ticket-actions-bar">
-                    <button type="button" class="btn-ticket-download" id="btnDownloadTicket" onclick="handleDownloadETicket()">
-                        <i class="bi bi-file-earmark-arrow-down-fill"></i> Download E-Ticket
-                    </button>
-                    <button type="button" class="btn-ticket-print-action" id="btnPrintTicket" onclick="window.print()">
-                        <i class="bi bi-printer-fill"></i> Print Ticket
-                    </button>
-                    <a href="home.html" class="btn-home-action">
-                        <i class="bi bi-house-door-fill"></i> Back to Home
-                    </a>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <!-- ===== PAYMENT PROCESSING OVERLAY ===== -->
-    <div class="payment-processing-overlay" id="paymentOverlay">
-        <div class="pay-spinner"></div>
-        <h3 style="font-family:'Oswald',sans-serif; font-size:24px; letter-spacing:0.5px; margin-bottom:8px;">
-            Processing Your Payment...
-        </h3>
-        <p style="color:#cbd5e1; font-size:14px; max-width:400px;">
-            Connecting securely with Dhage Travels banking gateway. Please do not refresh or press back.
-        </p>
-    </div>
-
-    <!-- ===== PNR LOOKUP MODAL ===== -->
-    <div class="dhage-modal-backdrop" id="pnrModalBackdrop">
-        <div class="dhage-modal-card">
-            <button class="btn-close-modal" id="btnClosePnrModal" aria-label="Close Modal" onclick="closePnrModal()">&times;</button>
-            <h3 style="font-family:'Oswald',sans-serif; font-size:24px; color:#0f172a; margin-bottom:8px;">
-                <i class="bi bi-ticket-detailed-fill" style="color:var(--brand-yellow);"></i> Check PNR Status
-            </h3>
-            <p style="font-size:13px; color:#64748b; margin-bottom:20px;">
-                Enter your Dhage Travels booking reference (e.g. DHT84920) to view or print your Volvo 9600 e-ticket.
-            </p>
-
-            <form onsubmit="handlePnrLookup(event)">
-                <div style="margin-bottom:16px;">
-                    <label class="field-label" for="pnrSearchInput">Booking PNR Code</label>
-                    <input type="text" id="pnrSearchInput" class="form-control-custom" placeholder="e.g. DHT84920"
-                        value="DHT84920" required
-                        style="font-family:'Oswald',sans-serif; letter-spacing:1px; text-transform:uppercase;">
-                </div>
-                <button type="submit" class="btn-search-primary" style="width:100%;">
-                    <i class="bi bi-search"></i> Retrieve E-Ticket
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ===== SITE FOOTER ===== -->
     <footer class="site-footer">
         <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">DHAGE<span style="display:block;font-size:12px;letter-spacing:3px;">TRAVELS</span></div>
-                <p style="color:#abafb6; font-size:13px; line-height:1.6; margin-top:10px;">
-                    Reliable, safe and premium bus travels across Maharashtra since 1985. Experience the luxury of Volvo
-                    9600 multi-axle sleeper coaches with verified safety standards.
-                </p>
+            <div>
+                <div class="brand">DHAGE<small>TRAVELS</small></div>
+                <p>Safe and reliable travels across Maharashtra.</p>
             </div>
-            <div class="footer-col">
-                <h5>Quick Links</h5>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="book.html">Book Volvo 9600</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact & Offices</a></li>
-                </ul>
+            <div>
+                <h3>Quick links</h3><a href="home.html">Home</a><a href="book.html">Book now</a>
             </div>
-            <div class="footer-col">
-                <h5>Passenger Support</h5>
-                <ul>
-                    <li><a href="contact.html">24x7 Helpline</a></li>
-                    <li><a href="javascript:void(0)" onclick="openPnrModal()">Check PNR Status</a></li>
-                    <li><a href="#">Safety & Ladies Quota</a></li>
-                    <li><a href="#">Cancellation Policy</a></li>
-                </ul>
+            <div>
+                <h3>Support</h3><a href="contact.html">Contact us</a><a href="#" id="footerPnr">Check PNR</a>
             </div>
-            <div class="footer-col">
-                <h5>Dhage Travels Fleet</h5>
-                <ul>
-                    <li><a href="#"><i class="bi bi-bus-front"></i> Volvo 9600 15M Sleeper</a></li>
-                    <li><a href="#"><i class="bi bi-shield-check"></i> Celeste Executive Class</a></li>
-                    <li><a href="#"><i class="bi bi-geo-alt"></i> Majalgaon Central Hub</a></li>
-                </ul>
+            <div>
+                <h3>Contact</h3><a href="tel:+919822301985">+91 9822301985</a><a
+                    href="mailto:booking@dhagetravels.com">booking@dhagetravels.com</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 Dhage Travels. All rights reserved.</span>
-            <span>
-                <a href="#" style="color:#7e848f; text-decoration:none;">Privacy Policy</a> | 
-                <a href="#" style="color:#7e848f; text-decoration:none;">Terms of Service</a>
-            </span>
-        </div>
+        <div class="copyright">© 2026 Dhage Travels. All rights reserved.</div>
     </footer>
 
-
-    <!-- =================================================================
-         JAVASCRIPT BOOKING ENGINE (STRICT STEP-GATING & STATE MACHINE)
-         ================================================================= -->
-    <script>
-        // ==========================================
-        // 1. DATA REPOSITORY: DHAGE TRAVELS VOLVO 9600
-        // ==========================================
-        const DHAGE_BUSES = [
-            {
-                id: 'dhage-v1',
-                name: 'Dhage Travels Multi Axle Volvo 9600 A/c Sleeper',
-                classTag: 'Gold Class',
-                type: 'AC Sleeper (2+1) • Volvo 9600 B11R 15m Coach',
-                depTime: '10:00 PM',
-                arrTime: '05:30 AM',
-                duration: '7h 30m',
-                depPeriod: 'night',
-                fare: 899,
-                rating: 4.9,
-                reviews: 2410,
-                seatsLeft: 18,
-                windowSeatsLeft: 6,
-                amenities: ['ac', 'charging', 'blanket', 'water'],
-                boardingPoints: [
-                    { id: 'b1', name: 'Borivali West (Gokul Hotel)', time: '10:00 PM', landmark: 'Near Western Express Highway' },
-                    { id: 'b2', name: 'Andheri East (Bisleri Compound)', time: '10:30 PM', landmark: 'Flyover junction' },
-                    { id: 'b3', name: 'Sion Circle (Dhage Travels Counter)', time: '11:00 PM', landmark: 'Opposite Railway Station' },
-                    { id: 'b4', name: 'Vashi Plaza (Highway Toll)', time: '11:45 PM', landmark: 'Below Flyover' }
-                ],
-                droppingPoints: [
-                    { id: 'd1', name: 'Swargate (Near Laxmi Narayan)', time: '05:30 AM', landmark: 'Opposite State Bank' },
-                    { id: 'd2', name: 'Pune Station (Dhage Lounge)', time: '05:50 AM', landmark: 'Station Road' },
-                    { id: 'd3', name: 'Hadapsar (Gadital Circle)', time: '06:15 AM', landmark: 'Express Highway Stop' }
-                ],
-                lowerDeck: [
-                    { code: 'L1', price: 899, type: 'single', status: 'available' },
-                    { code: 'L2', price: 899, type: 'single', status: 'available' },
-                    { code: 'L3', price: 899, type: 'single', status: 'available' },
-                    { code: 'L4', price: 899, type: 'single', status: 'booked' },
-                    { code: 'L5', price: 899, type: 'single', status: 'available' },
-                    { code: 'L6', price: 899, type: 'double', status: 'available' },
-                    { code: 'L7', price: 899, type: 'double', status: 'booked' },
-                    { code: 'L8', price: 899, type: 'double', status: 'available' },
-                    { code: 'L9', price: 899, type: 'double', status: 'available' },
-                    { code: 'L10', price: 899, type: 'double', status: 'booked' },
-                    { code: 'L11', price: 899, type: 'double', status: 'available' },
-                    { code: 'L12', price: 899, type: 'double', status: 'available' },
-                    { code: 'L13', price: 899, type: 'double', status: 'available' },
-                    { code: 'L14', price: 899, type: 'double', status: 'available' },
-                    { code: 'L15', price: 899, type: 'double', status: 'booked' }
-                ],
-                upperDeck: [
-                    { code: 'U1', price: 950, type: 'single', status: 'available' },
-                    { code: 'U2', price: 950, type: 'single', status: 'booked' },
-                    { code: 'U3', price: 950, type: 'single', status: 'available' },
-                    { code: 'U4', price: 950, type: 'single', status: 'available' },
-                    { code: 'U5', price: 950, type: 'single', status: 'available' },
-                    { code: 'U6', price: 950, type: 'double', status: 'available' },
-                    { code: 'U7', price: 950, type: 'double', status: 'available' },
-                    { code: 'U8', price: 950, type: 'double', status: 'booked' },
-                    { code: 'U9', price: 950, type: 'double', status: 'available' },
-                    { code: 'U10', price: 950, type: 'double', status: 'available' },
-                    { code: 'U11', price: 950, type: 'double', status: 'booked' },
-                    { code: 'U12', price: 950, type: 'double', status: 'available' },
-                    { code: 'U13', price: 950, type: 'double', status: 'available' },
-                    { code: 'U14', price: 950, type: 'double', status: 'available' },
-                    { code: 'U15', price: 950, type: 'double', status: 'available' }
-                ]
-            },
-            {
-                id: 'dhage-v2',
-                name: 'Dhage Travels Celeste Executive Sleeper',
-                classTag: 'Platinum Class',
-                type: 'AC Sleeper (2+1) • Soundproof Aerodynamic Cabin',
-                depTime: '11:15 PM',
-                arrTime: '06:30 AM',
-                duration: '7h 15m',
-                depPeriod: 'night',
-                fare: 950,
-                rating: 4.8,
-                reviews: 1890,
-                seatsLeft: 14,
-                windowSeatsLeft: 4,
-                amenities: ['ac', 'charging', 'wifi', 'blanket', 'water'],
-                boardingPoints: [
-                    { id: 'b1', name: 'Borivali West (Gokul Hotel)', time: '11:15 PM', landmark: 'Highway Stop' },
-                    { id: 'b2', name: 'Dadar TT Circle (Dhage Office)', time: '11:45 PM', landmark: 'Near Swami Narayan Temple' }
-                ],
-                droppingPoints: [
-                    { id: 'd1', name: 'Swargate (Near Laxmi Narayan)', time: '06:30 AM', landmark: 'Main Stand' },
-                    { id: 'd2', name: 'Viman Nagar (Four Points Sheraton)', time: '06:50 AM', landmark: 'Nagar Road Stop' }
-                ],
-                lowerDeck: [
-                    { code: 'L1', price: 950, type: 'single', status: 'available' },
-                    { code: 'L2', price: 950, type: 'single', status: 'booked' },
-                    { code: 'L3', price: 950, type: 'single', status: 'available' },
-                    { code: 'L4', price: 950, type: 'single', status: 'available' },
-                    { code: 'L5', price: 950, type: 'single', status: 'available' },
-                    { code: 'L6', price: 950, type: 'double', status: 'booked' },
-                    { code: 'L7', price: 950, type: 'double', status: 'available' },
-                    { code: 'L8', price: 950, type: 'double', status: 'available' },
-                    { code: 'L9', price: 950, type: 'double', status: 'available' },
-                    { code: 'L10', price: 950, type: 'double', status: 'booked' },
-                    { code: 'L11', price: 950, type: 'double', status: 'available' },
-                    { code: 'L12', price: 950, type: 'double', status: 'available' },
-                    { code: 'L13', price: 950, type: 'double', status: 'available' },
-                    { code: 'L14', price: 950, type: 'double', status: 'available' },
-                    { code: 'L15', price: 950, type: 'double', status: 'available' }
-                ],
-                upperDeck: [
-                    { code: 'U1', price: 1000, type: 'single', status: 'available' },
-                    { code: 'U2', price: 1000, type: 'single', status: 'available' },
-                    { code: 'U3', price: 1000, type: 'single', status: 'booked' },
-                    { code: 'U4', price: 1000, type: 'single', status: 'available' },
-                    { code: 'U5', price: 1000, type: 'single', status: 'available' },
-                    { code: 'U6', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U7', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U8', price: 1000, type: 'double', status: 'booked' },
-                    { code: 'U9', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U10', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U11', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U12', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U13', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U14', price: 1000, type: 'double', status: 'available' },
-                    { code: 'U15', price: 1000, type: 'double', status: 'available' }
-                ]
-            },
-            {
-                id: 'dhage-v3',
-                name: 'Dhage Travels Royal Crown Cruiser',
-                classTag: 'Diamond Class',
-                type: 'AC Sleeper (2+1) • Volvo 9600 Air Suspension',
-                depTime: '06:00 PM',
-                arrTime: '01:30 AM',
-                duration: '7h 30m',
-                depPeriod: 'afternoon',
-                fare: 899,
-                rating: 4.7,
-                reviews: 1420,
-                seatsLeft: 20,
-                windowSeatsLeft: 8,
-                amenities: ['ac', 'charging', 'water'],
-                boardingPoints: [
-                    { id: 'b1', name: 'Borivali West (Gokul Hotel)', time: '06:00 PM', landmark: 'Main Counter' },
-                    { id: 'b2', name: 'Sion Circle', time: '06:45 PM', landmark: 'Highway junction' }
-                ],
-                droppingPoints: [
-                    { id: 'd1', name: 'Swargate (Near Laxmi Narayan)', time: '01:30 AM', landmark: 'Main Stand' }
-                ],
-                lowerDeck: [
-                    { code: 'L1', price: 899, type: 'single', status: 'available' },
-                    { code: 'L2', price: 899, type: 'single', status: 'available' },
-                    { code: 'L3', price: 899, type: 'single', status: 'available' },
-                    { code: 'L4', price: 899, type: 'single', status: 'available' },
-                    { code: 'L5', price: 899, type: 'single', status: 'available' },
-                    { code: 'L6', price: 899, type: 'double', status: 'available' },
-                    { code: 'L7', price: 899, type: 'double', status: 'available' },
-                    { code: 'L8', price: 899, type: 'double', status: 'booked' },
-                    { code: 'L9', price: 899, type: 'double', status: 'available' },
-                    { code: 'L10', price: 899, type: 'double', status: 'available' },
-                    { code: 'L11', price: 899, type: 'double', status: 'available' },
-                    { code: 'L12', price: 899, type: 'double', status: 'available' },
-                    { code: 'L13', price: 899, type: 'double', status: 'available' },
-                    { code: 'L14', price: 899, type: 'double', status: 'available' },
-                    { code: 'L15', price: 899, type: 'double', status: 'available' }
-                ],
-                upperDeck: [
-                    { code: 'U1', price: 950, type: 'single', status: 'available' },
-                    { code: 'U2', price: 950, type: 'single', status: 'available' },
-                    { code: 'U3', price: 950, type: 'single', status: 'available' },
-                    { code: 'U4', price: 950, type: 'single', status: 'available' },
-                    { code: 'U5', price: 950, type: 'single', status: 'available' },
-                    { code: 'U6', price: 950, type: 'double', status: 'available' },
-                    { code: 'U7', price: 950, type: 'double', status: 'available' },
-                    { code: 'U8', price: 950, type: 'double', status: 'available' },
-                    { code: 'U9', price: 950, type: 'double', status: 'available' },
-                    { code: 'U10', price: 950, type: 'double', status: 'available' },
-                    { code: 'U11', price: 950, type: 'double', status: 'available' },
-                    { code: 'U12', price: 950, type: 'double', status: 'available' },
-                    { code: 'U13', price: 950, type: 'double', status: 'available' },
-                    { code: 'U14', price: 950, type: 'double', status: 'available' },
-                    { code: 'U15', price: 950, type: 'double', status: 'available' }
-                ]
-            },
-            {
-                id: 'dhage-v4',
-                name: 'Dhage Travels Dayliner Express',
-                classTag: 'Executive Day',
-                type: 'AC Sleeper (2+1) • High Scenic Visibility',
-                depTime: '07:30 AM',
-                arrTime: '03:00 PM',
-                duration: '7h 30m',
-                depPeriod: 'morning',
-                fare: 899,
-                rating: 4.9,
-                reviews: 980,
-                seatsLeft: 16,
-                windowSeatsLeft: 5,
-                amenities: ['ac', 'charging', 'water', 'wifi'],
-                boardingPoints: [
-                    { id: 'b1', name: 'Borivali West (Gokul Hotel)', time: '07:30 AM', landmark: 'Highway Station' }
-                ],
-                droppingPoints: [
-                    { id: 'd1', name: 'Swargate (Near Laxmi Narayan)', time: '03:00 PM', landmark: 'Central Station' }
-                ],
-                lowerDeck: [
-                    { code: 'L1', price: 899, type: 'single', status: 'available' },
-                    { code: 'L2', price: 899, type: 'single', status: 'available' },
-                    { code: 'L3', price: 899, type: 'single', status: 'available' },
-                    { code: 'L4', price: 899, type: 'single', status: 'available' },
-                    { code: 'L5', price: 899, type: 'single', status: 'available' },
-                    { code: 'L6', price: 899, type: 'double', status: 'available' },
-                    { code: 'L7', price: 899, type: 'double', status: 'available' },
-                    { code: 'L8', price: 899, type: 'double', status: 'available' },
-                    { code: 'L9', price: 899, type: 'double', status: 'available' },
-                    { code: 'L10', price: 899, type: 'double', status: 'available' },
-                    { code: 'L11', price: 899, type: 'double', status: 'available' },
-                    { code: 'L12', price: 899, type: 'double', status: 'available' },
-                    { code: 'L13', price: 899, type: 'double', status: 'available' },
-                    { code: 'L14', price: 899, type: 'double', status: 'available' },
-                    { code: 'L15', price: 899, type: 'double', status: 'available' }
-                ],
-                upperDeck: [
-                    { code: 'U1', price: 950, type: 'single', status: 'available' },
-                    { code: 'U2', price: 950, type: 'single', status: 'available' },
-                    { code: 'U3', price: 950, type: 'single', status: 'available' },
-                    { code: 'U4', price: 950, type: 'single', status: 'available' },
-                    { code: 'U5', price: 950, type: 'single', status: 'available' },
-                    { code: 'U6', price: 950, type: 'double', status: 'available' },
-                    { code: 'U7', price: 950, type: 'double', status: 'available' },
-                    { code: 'U8', price: 950, type: 'double', status: 'available' },
-                    { code: 'U9', price: 950, type: 'double', status: 'available' },
-                    { code: 'U10', price: 950, type: 'double', status: 'available' },
-                    { code: 'U11', price: 950, type: 'double', status: 'available' },
-                    { code: 'U12', price: 950, type: 'double', status: 'available' },
-                    { code: 'U13', price: 950, type: 'double', status: 'available' },
-                    { code: 'U14', price: 950, type: 'double', status: 'available' },
-                    { code: 'U15', price: 950, type: 'double', status: 'available' }
-                ]
-            }
-        ];
-
-        // ==========================================
-        // 2. CENTRAL STATE MACHINE (STRICT STEP-GATING)
-        // ==========================================
-        const BookingState = {
-            currentStep: 'SEARCH', // SEARCH | AVAILABLE_BUSES | SELECT_SLEEPER_BERTH | PASSENGER_DETAILS | REVIEW_BOOKING | PAYMENT | BOOKING_CONFIRMATION
-            search: {
-                from: 'Mumbai',
-                to: 'Pune',
-                journeyDate: ''
-            },
-            selectedBus: null,
-            selectedBerths: [], // [{ code, deck, type, price }]
-            selectedBoardingPoint: null,
-            selectedDroppingPoint: null,
-            passengerDetails: [], // [{ name, age, gender, berthCode }]
-            contactDetails: {
-                phone: '9822301985',
-                email: 'passenger@dhagetravels.com',
-                whatsapp: true
-            },
-            pricing: {
-                baseFare: 0,
-                gst: 0,
-                discount: 0,
-                total: 0
-            },
-            bookingId: null,
-            activePriceFilter: 'all',
-            activeTimeFilter: 'night',
-            sortMode: 'departure'
-        };
-
-        // Initialize on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            initDateInputs();
-            setupMobileMenu();
-            // Strict initial state: Only SEARCH is displayed, buses NOT rendered yet
-            goToStep('SEARCH');
-        });
-
-        // Initialize Date picker
-        function initDateInputs() {
-            const dateInput = document.getElementById('travelDateInput');
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const formattedToday = `${yyyy}-${mm}-${dd}`;
-
-            dateInput.min = formattedToday;
-            dateInput.value = formattedToday;
-            BookingState.search.journeyDate = formattedToday;
-
-            dateInput.addEventListener('change', () => {
-                BookingState.search.journeyDate = dateInput.value;
-            });
-        }
-
-        function selectQuickDate(offsetDays) {
-            const d = new Date();
-            d.setDate(d.getDate() + offsetDays);
-            const yyyy = d.getFullYear();
-            const mm = String(d.getMonth() + 1).padStart(2, '0');
-            const dd = String(d.getDate()).padStart(2, '0');
-            const str = `${yyyy}-${mm}-${dd}`;
-
-            const dateInput = document.getElementById('travelDateInput');
-            dateInput.value = str;
-            BookingState.search.journeyDate = str;
-
-            document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
-            if (offsetDays === 0) document.getElementById('chipToday').classList.add('active');
-            else if (offsetDays === 1) document.getElementById('chipTomorrow').classList.add('active');
-            else if (offsetDays === 2) document.getElementById('chipDayAfter').classList.add('active');
-        }
-
-        function handleSwapCities() {
-            const fromSelect = document.getElementById('fromCitySelect');
-            const toSelect = document.getElementById('toCitySelect');
-            const temp = fromSelect.value;
-            fromSelect.value = toSelect.value;
-            toSelect.value = temp;
-            BookingState.search.from = fromSelect.value;
-            BookingState.search.to = toSelect.value;
-        }
-
-        function quickFillRoute(from, to) {
-            const fromSelect = document.getElementById('fromCitySelect');
-            const toSelect = document.getElementById('toCitySelect');
-            fromSelect.value = from;
-            toSelect.value = to;
-            BookingState.search.from = from;
-            BookingState.search.to = to;
-            // Scroll to search button
-            document.getElementById('btnSearchBuses').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // ==========================================
-        // STEP TRANSITION CONTROLLER (STRICT GATING)
-        // ==========================================
-        function goToStep(targetStep) {
-            // STEP GATING RULES: Block skipping steps forward
-            if (targetStep === 'AVAILABLE_BUSES') {
-                if (!BookingState.search.from || !BookingState.search.to || !BookingState.search.journeyDate) {
-                    alert('Please select From, To, and Journey Date first.');
-                    return;
-                }
-                if (BookingState.search.from === BookingState.search.to) {
-                    alert('Origin and Destination cities cannot be the same. Please select different cities.');
-                    return;
-                }
-            } else if (targetStep === 'SELECT_SLEEPER_BERTH') {
-                if (!BookingState.selectedBus) {
-                    alert('Please select a bus first.');
-                    return;
-                }
-            } else if (targetStep === 'PASSENGER_DETAILS') {
-                if (!BookingState.selectedBus || BookingState.selectedBerths.length === 0) {
-                    alert('Please select at least 1 sleeper berth before proceeding.');
-                    return;
-                }
-                if (!BookingState.selectedBoardingPoint || !BookingState.selectedDroppingPoint) {
-                    alert('Please select both a Boarding Point and Dropping Point.');
-                    return;
-                }
-            } else if (targetStep === 'REVIEW_BOOKING') {
-                if (!validatePassengerDetails()) {
-                    return;
-                }
-            } else if (targetStep === 'PAYMENT') {
-                if (BookingState.selectedBerths.length === 0 || BookingState.passengerDetails.length === 0) {
-                    alert('Please complete passenger details first.');
-                    return;
-                }
-            } else if (targetStep === 'BOOKING_CONFIRMATION') {
-                if (!BookingState.bookingId) {
-                    alert('No confirmed booking found. Please complete payment first.');
-                    return;
-                }
-            }
-
-            BookingState.currentStep = targetStep;
-
-            // Hide all sections
-            document.querySelectorAll('.step-section').forEach(sec => sec.classList.remove('active-step'));
-
-            // Update Stepper Bar Circles & Labels
-            updateStepperIndicators(targetStep);
-
-            // Show active section
-            if (targetStep === 'SEARCH') {
-                document.getElementById('stepSearchSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'AVAILABLE_BUSES') {
-                updateBusesHeader();
-                renderBusResults();
-                document.getElementById('stepBusesSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'SELECT_SLEEPER_BERTH') {
-                setupSleeperBerthScreen();
-                document.getElementById('stepSeatsSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'PASSENGER_DETAILS') {
-                setupPassengerDetailsScreen();
-                document.getElementById('stepPassengersSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'REVIEW_BOOKING') {
-                setupReviewScreen();
-                document.getElementById('stepReviewSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'PAYMENT') {
-                setupPaymentScreen();
-                document.getElementById('stepPaymentSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (targetStep === 'BOOKING_CONFIRMATION') {
-                setupConfirmationScreen();
-                document.getElementById('stepConfirmationSection').classList.add('active-step');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function updateStepperIndicators(step) {
-            const stepOrder = ['SEARCH', 'AVAILABLE_BUSES', 'SELECT_SLEEPER_BERTH', 'PASSENGER_DETAILS', 'REVIEW_BOOKING', 'PAYMENT', 'BOOKING_CONFIRMATION'];
-            const currentIndex = stepOrder.indexOf(step);
-
-            for (let i = 1; i <= 7; i++) {
-                const indicator = document.getElementById(`stepIndicator${i}`);
-                const circle = document.getElementById(`stepCircle${i}`);
-                if (!indicator || !circle) continue;
-
-                indicator.classList.remove('active', 'completed');
-                const thisStepIndex = i - 1;
-
-                if (thisStepIndex < currentIndex) {
-                    indicator.classList.add('completed');
-                    circle.innerHTML = '<i class="bi bi-check-lg"></i>';
-                } else if (thisStepIndex === currentIndex) {
-                    indicator.classList.add('active');
-                    circle.innerText = i;
-                } else {
-                    circle.innerText = i;
-                }
-            }
-        }
-
-        // ==========================================
-        // STEP 1 -> STEP 2: SEARCH SUBMIT
-        // ==========================================
-        function handleSearchSubmit(e) {
-            e.preventDefault();
-            const from = document.getElementById('fromCitySelect').value;
-            const to = document.getElementById('toCitySelect').value;
-            const date = document.getElementById('travelDateInput').value;
-
-            if (!from || !to || !date) {
-                alert('Please select Origin, Destination, and Travel Date.');
-                return;
-            }
-
-            if (from === to) {
-                alert('Origin and Destination cities cannot be the same.');
-                return;
-            }
-
-            BookingState.search.from = from;
-            BookingState.search.to = to;
-            BookingState.search.journeyDate = date;
-
-            // Reset downstream selections on fresh search
-            BookingState.selectedBus = null;
-            BookingState.selectedBerths = [];
-            BookingState.selectedBoardingPoint = null;
-            BookingState.selectedDroppingPoint = null;
-
-            goToStep('AVAILABLE_BUSES');
-        }
-
-        function updateBusesHeader() {
-            const routeStr = `${BookingState.search.from} (Maharashtra) to ${BookingState.search.to} (Maharashtra)`;
-            document.getElementById('routeBannerCities').innerText = routeStr;
-
-            const d = new Date(BookingState.search.journeyDate);
-            const dateStr = isNaN(d) ? BookingState.search.journeyDate : d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-            document.getElementById('routeBannerDate').innerText = `• ${dateStr}`;
-        }
-
-        // ==========================================
-        // STEP 2: RENDER BUS RESULTS & FILTERS
-        // ==========================================
-        function setSortMode(mode, btn) {
-            BookingState.sortMode = mode;
-            document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderBusResults();
-        }
-
-        function toggleTimeFilter(btn, timeSlot) {
-            const wasActive = btn.classList.contains('active');
-            document.querySelectorAll('.time-filter-btn').forEach(b => b.classList.remove('active'));
-            if (!wasActive) {
-                btn.classList.add('active');
-                BookingState.activeTimeFilter = timeSlot;
-            } else {
-                BookingState.activeTimeFilter = null;
-            }
-            renderBusResults();
-        }
-
-        function toggleAmenityChip(chip, amenity) {
-            chip.classList.toggle('active');
-            renderBusResults();
-        }
-
-        function resetAllFilters() {
-            document.querySelectorAll('.time-filter-btn').forEach(b => b.classList.remove('active'));
-            BookingState.activeTimeFilter = null;
-            document.querySelectorAll('.bus-type-filter').forEach(c => c.checked = true);
-            document.querySelectorAll('.amenity-filter-chip').forEach(c => c.classList.remove('active'));
-            document.getElementById('pickupSearchFilter').value = '';
-            renderBusResults();
-        }
-
-        function renderBusResults() {
-            const container = document.getElementById('busCardsList');
-            let list = [...DHAGE_BUSES];
-
-            // Filter by departure time
-            if (BookingState.activeTimeFilter) {
-                list = list.filter(b => b.depPeriod === BookingState.activeTimeFilter);
-            }
-
-            // Filter by active amenity chips
-            const activeAmenities = Array.from(document.querySelectorAll('.amenity-filter-chip.active')).map(c => c.dataset.amenity);
-            if (activeAmenities.length > 0) {
-                list = list.filter(b => activeAmenities.every(a => b.amenities.includes(a)));
-            }
-
-            // Filter by pickup point search text
-            const pickupText = document.getElementById('pickupSearchFilter')?.value.trim().toLowerCase();
-            if (pickupText) {
-                list = list.filter(b => b.boardingPoints.some(p => p.name.toLowerCase().includes(pickupText)));
-            }
-
-            // Sort
-            if (BookingState.sortMode === 'fare') {
-                list.sort((a, b) => a.fare - b.fare);
-            } else if (BookingState.sortMode === 'duration') {
-                list.sort((a, b) => a.duration.localeCompare(b.duration));
-            } else if (BookingState.sortMode === 'rating') {
-                list.sort((a, b) => b.rating - a.rating);
-            } else if (BookingState.sortMode === 'seats') {
-                list.sort((a, b) => b.seatsLeft - a.seatsLeft);
-            } else {
-                // Departure time
-                list.sort((a, b) => a.depTime.localeCompare(b.depTime));
-            }
-
-            document.getElementById('busResultsCount').innerText = `${list.length} Buses Found`;
-
-            if (list.length === 0) {
-                container.innerHTML = `
-                    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:48px 20px; text-align:center;">
-                        <div style="font-size:44px; margin-bottom:10px;">🚌</div>
-                        <h3 style="font-family:'Oswald',sans-serif; font-size:22px; color:#0f172a;">No Coaches Match Your Filter</h3>
-                        <p style="color:#64748b; font-size:14px; margin-bottom:16px;">Try clearing departure time or amenity filters to view all coaches.</p>
-                        <button type="button" class="btn-search-primary" onclick="resetAllFilters()">Reset All Filters</button>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = list.map(bus => `
-                <div class="reference-bus-card ${BookingState.selectedBus?.id === bus.id ? 'active-selection' : ''}" id="busCard-${bus.id}">
-                    <div class="bus-card-top-row">
-                        <!-- Operator & Bus Title -->
-                        <div>
-                            <div class="bus-operator-title">
-                                ${bus.name}
-                                <span class="gold-class-pill">${bus.classTag}</span>
-                            </div>
-                            <div class="bus-type-subtitle">${bus.type}</div>
-                            <div class="bus-amenities-icons">
-                                <span title="AC Sleeper"><i class="bi bi-snow"></i></span>
-                                <span title="Charging Port"><i class="bi bi-plug"></i></span>
-                                <span title="Clean Blanket"><i class="bi bi-shield-check"></i></span>
-                                <span title="Emergency SOS"><i class="bi bi-telephone"></i></span>
-                                <span style="font-size:12px; font-weight:700; color:#15803d; width:auto; border-radius:20px; padding:0 10px; background:#ecfdf5;">
-                                    ★ ${bus.rating} (${bus.reviews.toLocaleString()} ratings)
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Schedule & Duration -->
-                        <div class="bus-timeline-col">
-                            <div class="time-point-block">
-                                <span class="time-digit">${bus.depTime}</span>
-                                <span class="time-tag">${BookingState.search.from}</span>
-                            </div>
-                            <div class="timeline-track-wrap">
-                                <span class="duration-pill">${bus.duration}</span>
-                                <div class="track-line"></div>
-                            </div>
-                            <div class="time-point-block">
-                                <span class="time-digit">${bus.arrTime}</span>
-                                <span class="time-tag">${BookingState.search.to}</span>
-                            </div>
-                        </div>
-
-                        <!-- Fare & Select Seats Action -->
-                        <div class="bus-cta-column">
-                            <span class="bus-fare-starts">Starts at</span>
-                            <div class="bus-fare-val">₹${bus.fare.toLocaleString()}</div>
-                            <span class="seats-avail-tag">
-                                <i class="bi bi-person-check-fill"></i> ${bus.seatsLeft} Seats Available (${bus.windowSeatsLeft} Window)
-                            </span>
-                            <button type="button" class="btn-select-seats" onclick="selectBusAndProceed('${bus.id}')">
-                                Select Seats <i class="bi bi-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Bar with links -->
-                    <div class="bus-card-bottom-bar">
-                        <div class="bus-extra-links">
-                            <a href="javascript:void(0)" onclick="alert('${bus.name} features air suspension, ergonomic sleep berths, sanitised blankets, and Volvo GPS.')">About Bus</a>
-                            <a href="javascript:void(0)" onclick="alert('Boarding Points: ${bus.boardingPoints.map(b => b.name).join(', ')}')">Boarding & Dropping Points</a>
-                            <a href="javascript:void(0)" onclick="alert('Amenities: Clean Bedding, USB Charging, Emergency Hammers, First Aid, Reading Lamps.')">Amenities</a>
-                        </div>
-                        <span style="font-weight:700; color:#059669;">
-                            <i class="bi bi-shield-check"></i> Dhage Travels Safety Assured
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // ==========================================
-        // STEP 2 -> STEP 3: BUS SELECTION
-        // ==========================================
-        function selectBusAndProceed(busId) {
-            const bus = DHAGE_BUSES.find(b => b.id === busId);
-            if (!bus) return;
-
-            BookingState.selectedBus = bus;
-            // Set default boarding and dropping points
-            BookingState.selectedBoardingPoint = bus.boardingPoints[0];
-            BookingState.selectedDroppingPoint = bus.droppingPoints[0];
-
-            // Proceed to Step 3
-            goToStep('SELECT_SLEEPER_BERTH');
-        }
-
-        // ==========================================
-        // STEP 3: SLEEPER BERTH SELECTION UI
-        // ==========================================
-        function setupSleeperBerthScreen() {
-            const bus = BookingState.selectedBus;
-            if (!bus) return;
-
-            document.getElementById('seatSelectBusTitle').innerText = bus.name;
-            document.getElementById('seatSelectBusMeta').innerText = `${bus.depTime} — ${bus.arrTime} (${bus.duration}) • Starting from ₹${bus.fare}`;
-
-            renderDeckLayout('lower', bus.lowerDeck, document.getElementById('lowerDeckChassis'));
-            renderDeckLayout('upper', bus.upperDeck, document.getElementById('upperDeckChassis'));
-
-            renderPointsRadioSelection(bus);
-            updateSelectedBerthsFooter();
-        }
-
-        function renderDeckLayout(deckName, berths, container) {
-            const singles = berths.filter(b => b.type === 'single');
-            const doubles = berths.filter(b => b.type === 'double');
-
-            let html = '';
-            for (let i = 0; i < 5; i++) {
-                const singleBerth = singles[i];
-                const double1 = doubles[i * 2];
-                const double2 = doubles[i * 2 + 1];
-
-                html += `
-                    <div class="sleeper-row">
-                        <!-- Single Berth on Left (Window) -->
-                        <div class="single-berth-col">
-                            ${renderBerthButton(singleBerth, deckName)}
-                        </div>
-
-                        <!-- Central Gangway Aisle -->
-                        <div class="center-gangway">
-                            <span>AISLE</span>
-                        </div>
-
-                        <!-- Double Berths on Right -->
-                        <div class="double-berth-col">
-                            ${renderBerthButton(double1, deckName)}
-                            ${renderBerthButton(double2, deckName)}
-                        </div>
-                    </div>
-                `;
-            }
-            container.innerHTML = html;
-        }
-
-        function renderBerthButton(berth, deckName) {
-            if (!berth) return '';
-
-            const isSelected = BookingState.selectedBerths.some(b => b.code === berth.code);
-            let stateClass = 'available';
-
-            if (berth.status === 'booked') {
-                stateClass = 'booked';
-            } else if (isSelected) {
-                stateClass = 'selected';
-            }
-
-            // Price filter opacity check
-            const filterPrice = BookingState.activePriceFilter;
-            let filterStyle = '';
-            if (filterPrice !== 'all' && parseInt(filterPrice) !== berth.price && stateClass !== 'booked') {
-                filterStyle = 'opacity: 0.35;';
-            }
-
-            return `
-                <div class="sleeper-berth ${stateClass}" 
-                     id="berthBtn-${berth.code}" 
-                     style="${filterStyle}"
-                     ${stateClass !== 'booked' ? `onclick="toggleBerthClick('${berth.code}', ${berth.price}, '${berth.type}', '${deckName}')"` : ''}
-                     title="${berth.code} • ${deckName.toUpperCase()} DECK (₹${berth.price})">
-                    <div class="pillow"></div>
-                    <span class="berth-id">${berth.code}</span>
-                </div>
-            `;
-        }
-
-        function toggleBerthClick(code, price, type, deck) {
-            const index = BookingState.selectedBerths.findIndex(b => b.code === code);
-            const berthEl = document.getElementById(`berthBtn-${code}`);
-
-            if (index > -1) {
-                // Deselect
-                BookingState.selectedBerths.splice(index, 1);
-                if (berthEl) {
-                    berthEl.classList.remove('selected');
-                    berthEl.classList.add('available');
-                }
-            } else {
-                // Max 6 seats limit per booking
-                if (BookingState.selectedBerths.length >= 6) {
-                    alert('You can select a maximum of 6 berths per booking.');
-                    return;
-                }
-                BookingState.selectedBerths.push({ code, price, type, deck });
-                if (berthEl) {
-                    berthEl.classList.remove('available');
-                    berthEl.classList.add('selected');
-                }
-            }
-
-            updateSelectedBerthsFooter();
-        }
-
-        function filterBerthPrice(price, btn) {
-            BookingState.activePriceFilter = price;
-            document.querySelectorAll('.price-chip').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const bus = BookingState.selectedBus;
-            if (bus) {
-                renderDeckLayout('lower', bus.lowerDeck, document.getElementById('lowerDeckChassis'));
-                renderDeckLayout('upper', bus.upperDeck, document.getElementById('upperDeckChassis'));
-            }
-        }
-
-        function renderPointsRadioSelection(bus) {
-            // Boarding points
-            const bpContainer = document.getElementById('boardingPointsContainer');
-            bpContainer.innerHTML = bus.boardingPoints.map((bp, idx) => `
-                <label class="point-radio-card ${BookingState.selectedBoardingPoint?.id === bp.id ? 'selected' : ''}" id="bpCard-${bp.id}">
-                    <input type="radio" name="boardingPointRadio" value="${bp.id}" ${BookingState.selectedBoardingPoint?.id === bp.id ? 'checked' : ''} onchange="setBoardingPoint('${bp.id}')">
-                    <div class="point-text-block">
-                        <div class="point-top-line">
-                            <span>${bp.name}</span>
-                            <span class="point-time-badge">${bp.time}</span>
-                        </div>
-                        <div class="point-landmark-line">${bp.landmark}</div>
-                        <a href="https://maps.google.com/?q=${encodeURIComponent(bp.name)}" target="_blank" class="point-map-link">
-                            <i class="bi bi-geo-alt"></i> Locate on Google Map
-                        </a>
-                    </div>
-                </label>
-            `).join('');
-
-            // Dropping points
-            const dpContainer = document.getElementById('droppingPointsContainer');
-            dpContainer.innerHTML = bus.droppingPoints.map((dp, idx) => `
-                <label class="point-radio-card ${BookingState.selectedDroppingPoint?.id === dp.id ? 'selected' : ''}" id="dpCard-${dp.id}">
-                    <input type="radio" name="droppingPointRadio" value="${dp.id}" ${BookingState.selectedDroppingPoint?.id === dp.id ? 'checked' : ''} onchange="setDroppingPoint('${dp.id}')">
-                    <div class="point-text-block">
-                        <div class="point-top-line">
-                            <span>${dp.name}</span>
-                            <span class="point-time-badge">${dp.time}</span>
-                        </div>
-                        <div class="point-landmark-line">${dp.landmark}</div>
-                        <a href="https://maps.google.com/?q=${encodeURIComponent(dp.name)}" target="_blank" class="point-map-link">
-                            <i class="bi bi-geo-alt"></i> Locate on Google Map
-                        </a>
-                    </div>
-                </label>
-            `).join('');
-        }
-
-        function setBoardingPoint(pointId) {
-            const point = BookingState.selectedBus.boardingPoints.find(p => p.id === pointId);
-            if (point) {
-                BookingState.selectedBoardingPoint = point;
-                document.querySelectorAll(`[id^="bpCard-"]`).forEach(c => c.classList.remove('selected'));
-                document.getElementById(`bpCard-${pointId}`)?.classList.add('selected');
-            }
-        }
-
-        function setDroppingPoint(pointId) {
-            const point = BookingState.selectedBus.droppingPoints.find(p => p.id === pointId);
-            if (point) {
-                BookingState.selectedDroppingPoint = point;
-                document.querySelectorAll(`[id^="dpCard-"]`).forEach(c => c.classList.remove('selected'));
-                document.getElementById(`dpCard-${pointId}`)?.classList.add('selected');
-            }
-        }
-
-        function updateSelectedBerthsFooter() {
-            const pillsBox = document.getElementById('selectedBerthsPills');
-            const totalFareEl = document.getElementById('liveFareAmount');
-            const continueBtn = document.getElementById('btnContinueToPassengers');
-
-            const count = BookingState.selectedBerths.length;
-            const subtotal = BookingState.selectedBerths.reduce((sum, b) => sum + b.price, 0);
-
-            if (count > 0) {
-                pillsBox.innerHTML = BookingState.selectedBerths.map(b => `
-                    <span class="seat-code-pill">${b.code} (${b.deck.toUpperCase()})</span>
-                `).join('');
-            } else {
-                pillsBox.innerHTML = `<span style="font-size:13px; color:#94a3b8;">No berths selected. Click on available green berths above.</span>`;
-            }
-
-            totalFareEl.innerText = `₹${subtotal.toLocaleString()}`;
-            // STRICT RULE: Continue button disabled when selectedBerths.length === 0
-            continueBtn.disabled = (count === 0);
-        }
-
-        function handleContinueToPassengers() {
-            if (BookingState.selectedBerths.length === 0) {
-                alert('Please select at least 1 sleeper berth.');
-                return;
-            }
-            goToStep('PASSENGER_DETAILS');
-        }
-
-        // ==========================================
-        // STEP 4: PASSENGER DETAILS
-        // ==========================================
-        function setupPassengerDetailsScreen() {
-            const berths = BookingState.selectedBerths;
-            document.getElementById('passengerCountBadge').innerText = `${berths.length} Berth${berths.length > 1 ? 's' : ''} Selected`;
-            document.getElementById('passengerRouteHeadline').innerText = `${BookingState.search.from} ➔ ${BookingState.search.to} (Passenger Details)`;
-
-            // Update Hop Over timeline bar
-            if (BookingState.selectedBoardingPoint) {
-                document.getElementById('hopBoardingName').innerText = BookingState.selectedBoardingPoint.name;
-                document.getElementById('hopBoardingLandmark').innerText = BookingState.selectedBoardingPoint.landmark;
-                document.getElementById('hopBoardingTime').innerText = BookingState.selectedBoardingPoint.time;
-            }
-            if (BookingState.selectedDroppingPoint) {
-                document.getElementById('hopDroppingName').innerText = BookingState.selectedDroppingPoint.name;
-                document.getElementById('hopDroppingLandmark').innerText = BookingState.selectedDroppingPoint.landmark;
-                document.getElementById('hopDroppingTime').innerText = BookingState.selectedDroppingPoint.time;
-            }
-
-            calculatePricing();
-            document.getElementById('passengerTotalDisplay').innerText = `₹${BookingState.pricing.total.toLocaleString()}`;
-
-            // Generate dynamic passenger form 1-to-1 with chosen berths
-            const container = document.getElementById('dynamicPassengerForms');
-            container.innerHTML = berths.map((b, idx) => {
-                const existing = BookingState.passengerDetails[idx] || {};
-                const name = existing.name || (idx === 0 ? 'Samrat Dhage' : '');
-                const age = existing.age || (idx === 0 ? '24' : '26');
-                const gender = existing.gender || 'male';
-
-                return `
-                    <div class="passenger-entry-block" id="passengerBlock-${idx}">
-                        <div class="passenger-entry-top">
-                            <h4>
-                                <i class="bi bi-person-fill" style="color:var(--brand-yellow);"></i> 
-                                Passenger ${idx + 1}
-                            </h4>
-                            <span class="passenger-seat-badge">
-                                Assigned Berth: ${b.code} (${b.deck.toUpperCase()} Deck)
-                            </span>
-                        </div>
-                        <div class="passenger-inputs-grid">
-                            <div>
-                                <label class="field-label" for="passName-${idx}">Full Name (as per Govt Photo ID) *</label>
-                                <input type="text" id="passName-${idx}" class="form-control-custom" placeholder="e.g. Samrat Dhage" value="${name}" required>
-                            </div>
-                            <div>
-                                <label class="field-label" for="passAge-${idx}">Age (Years) *</label>
-                                <input type="number" id="passAge-${idx}" class="form-control-custom" placeholder="25" min="5" max="100" value="${age}" required>
-                            </div>
-                            <div>
-                                <label class="field-label">Gender *</label>
-                                <div class="gender-pills-wrap">
-                                    <button type="button" class="gender-pill-btn ${gender === 'male' ? 'active' : ''}" id="genderMale-${idx}" onclick="setPassengerGender(${idx}, 'male')">
-                                        <i class="bi bi-gender-male"></i> Male
-                                    </button>
-                                    <button type="button" class="gender-pill-btn ${gender === 'female' ? 'active' : ''}" id="genderFemale-${idx}" onclick="setPassengerGender(${idx}, 'female')">
-                                        <i class="bi bi-gender-female"></i> Female
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function setPassengerGender(idx, gender) {
-            const maleBtn = document.getElementById(`genderMale-${idx}`);
-            const femaleBtn = document.getElementById(`genderFemale-${idx}`);
-            if (gender === 'male') {
-                maleBtn.classList.add('active');
-                femaleBtn.classList.remove('active');
-            } else {
-                femaleBtn.classList.add('active');
-                maleBtn.classList.remove('active');
-            }
-        }
-
-        function toggleGstInput(checkbox) {
-            document.getElementById('gstInputBlock').style.display = checkbox.checked ? 'block' : 'none';
-        }
-
-        function validatePassengerDetails() {
-            const emailInput = document.getElementById('contactEmailInput');
-            const phoneInput = document.getElementById('contactPhoneInput');
-
-            if (!emailInput || !emailInput.value.trim() || !emailInput.value.includes('@')) {
-                alert('Please enter a valid email address for receiving your e-ticket.');
-                emailInput.focus();
-                return false;
-            }
-
-            if (!phoneInput || !phoneInput.value.trim() || phoneInput.value.trim().length < 10) {
-                alert('Please enter a valid 10-digit mobile number.');
-                phoneInput.focus();
-                return false;
-            }
-
-            BookingState.contactDetails.email = emailInput.value.trim();
-            BookingState.contactDetails.phone = phoneInput.value.trim();
-            BookingState.contactDetails.whatsapp = document.getElementById('whatsappUpdatesCheck').checked;
-
-            // Validate each passenger block
-            const passengers = [];
-            for (let i = 0; i < BookingState.selectedBerths.length; i++) {
-                const nameEl = document.getElementById(`passName-${i}`);
-                const ageEl = document.getElementById(`passAge-${i}`);
-                const isMale = document.getElementById(`genderMale-${i}`)?.classList.contains('active');
-
-                if (!nameEl || !nameEl.value.trim()) {
-                    alert(`Please enter full name for Passenger ${i + 1}.`);
-                    nameEl.focus();
-                    return false;
-                }
-
-                if (!ageEl || !ageEl.value || parseInt(ageEl.value) <= 0) {
-                    alert(`Please enter a valid age for Passenger ${i + 1}.`);
-                    ageEl.focus();
-                    return false;
-                }
-
-                passengers.push({
-                    name: nameEl.value.trim(),
-                    age: parseInt(ageEl.value),
-                    gender: isMale ? 'Male' : 'Female',
-                    berthCode: BookingState.selectedBerths[i].code,
-                    deck: BookingState.selectedBerths[i].deck
-                });
-            }
-
-            BookingState.passengerDetails = passengers;
-            return true;
-        }
-
-        function handleProceedToReview() {
-            if (validatePassengerDetails()) {
-                goToStep('REVIEW_BOOKING');
-            }
-        }
-
-        // ==========================================
-        // FARE CALCULATION ENGINE
-        // ==========================================
-        function calculatePricing() {
-            const base = BookingState.selectedBerths.reduce((sum, b) => sum + b.price, 0);
-            const gst = Math.round(base * 0.05); // 5% GST
-            const discount = Math.min(Math.round(base * 0.15), 200); // 15% discount capped at 200
-            const total = Math.max(0, base + gst - discount);
-
-            BookingState.pricing = {
-                baseFare: base,
-                gst: gst,
-                discount: discount,
-                total: total
-            };
-        }
-
-        // ==========================================
-        // STEP 5: REVIEW SCREEN
-        // ==========================================
-        function setupReviewScreen() {
-            calculatePricing();
-            const bus = BookingState.selectedBus;
-
-            document.getElementById('reviewCoachName').innerText = `${bus.name} (${bus.classTag})`;
-            document.getElementById('reviewFromCity').innerText = BookingState.search.from;
-            document.getElementById('reviewToCity').innerText = BookingState.search.to;
-
-            const d = new Date(BookingState.search.journeyDate);
-            const dateStr = isNaN(d) ? BookingState.search.journeyDate : d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-            document.getElementById('reviewJourneyDate').innerText = dateStr;
-
-            document.getElementById('reviewTimings').innerText = `${bus.depTime} ➔ ${bus.arrTime} (${bus.duration})`;
-            document.getElementById('reviewBoardingPoint').innerText = `${BookingState.selectedBoardingPoint.name} (${BookingState.selectedBoardingPoint.time})`;
-            document.getElementById('reviewDroppingPoint').innerText = `${BookingState.selectedDroppingPoint.name} (${BookingState.selectedDroppingPoint.time})`;
-
-            // Berths pills
-            document.getElementById('reviewBerthsPills').innerHTML = BookingState.selectedBerths.map(b => `
-                <span class="seat-code-pill" style="background:#0f172a; color:var(--brand-yellow); font-size:13px; padding:6px 14px;">
-                    Berth ${b.code} (${b.deck.toUpperCase()}) - ₹${b.price}
-                </span>
-            `).join('');
-
-            // Passengers
-            document.getElementById('reviewPassengersList').innerHTML = BookingState.passengerDetails.map((p, idx) => `
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between;">
-                    <div>
-                        <strong>${idx + 1}. ${p.name}</strong> 
-                        <span style="color:#64748b; font-size:12px;">(${p.gender}, Age ${p.age})</span>
-                    </div>
-                    <span class="passenger-seat-badge" style="background:#2563eb; color:#ffffff;">
-                        Seat ${p.berthCode}
-                    </span>
-                </div>
-            `).join('');
-
-            // Fare breakdown
-            document.getElementById('reviewSeatCount').innerText = BookingState.selectedBerths.length;
-            document.getElementById('reviewBaseFare').innerText = `₹${BookingState.pricing.baseFare.toLocaleString()}`;
-            document.getElementById('reviewGstFare').innerText = `₹${BookingState.pricing.gst.toLocaleString()}`;
-            document.getElementById('reviewDiscountFare').innerText = `-₹${BookingState.pricing.discount.toLocaleString()}`;
-            document.getElementById('reviewGrandTotal').innerText = `₹${BookingState.pricing.total.toLocaleString()}`;
-        }
-
-        // ==========================================
-        // STEP 6: PAYMENT SCREEN
-        // ==========================================
-        function setupPaymentScreen() {
-            calculatePricing();
-            const totalStr = `₹${BookingState.pricing.total.toLocaleString()}`;
-            document.getElementById('paymentFinalPayable').innerText = totalStr;
-            document.getElementById('payNowBtnAmount').innerText = totalStr;
-        }
-
-        function switchPaymentTab(method) {
-            document.querySelectorAll('.pay-tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.payment-panel').forEach(p => p.classList.remove('active'));
-
-            if (method === 'upi') {
-                document.getElementById('tabPayUpi').classList.add('active');
-                document.getElementById('panelPayUpi').classList.add('active');
-            } else if (method === 'card') {
-                document.getElementById('tabPayCard').classList.add('active');
-                document.getElementById('panelPayCard').classList.add('active');
-            } else {
-                document.getElementById('tabPayNet').classList.add('active');
-                document.getElementById('panelPayNet').classList.add('active');
-            }
-        }
-
-        function selectUpiApp(chip, app) {
-            document.querySelectorAll('.upi-app-chip').forEach(c => c.classList.remove('selected'));
-            chip.classList.add('selected');
-            const upiInput = document.getElementById('upiIdInput');
-            if (app === 'gpay') upiInput.value = 'samrat@okhdfcbank';
-            else if (app === 'phonepe') upiInput.value = '9822301985@ybl';
-            else if (app === 'paytm') upiInput.value = '9822301985@paytm';
-            else upiInput.value = '';
-        }
-
-        function simulatePayment() {
-            const overlay = document.getElementById('paymentOverlay');
-            overlay.classList.add('active');
-
-            setTimeout(() => {
-                overlay.classList.remove('active');
-                // Generate realistic PNR
-                const randomNum = Math.floor(10000 + Math.random() * 90000);
-                BookingState.bookingId = `DHT${randomNum}`;
-                goToStep('BOOKING_CONFIRMATION');
-            }, 1200);
-        }
-
-        // ==========================================
-        // STEP 7 & 8: CONFIRMATION & E-TICKET DOWNLOAD
-        // ==========================================
-        function setupConfirmationScreen() {
-            const pnr = BookingState.bookingId || 'DHT84920';
-            document.getElementById('confirmPnrCode').innerText = pnr;
-            document.getElementById('ticketMetaPnr').innerText = pnr;
-
-            document.getElementById('ticketFromCityDisplay').innerText = BookingState.search.from.toUpperCase();
-            document.getElementById('ticketToCityDisplay').innerText = BookingState.search.to.toUpperCase();
-            document.getElementById('ticketDepTimeDisplay').innerText = BookingState.selectedBus.depTime;
-            document.getElementById('ticketArrTimeDisplay').innerText = BookingState.selectedBus.arrTime;
-            document.getElementById('ticketDurationDisplay').innerText = BookingState.selectedBus.duration;
-            document.getElementById('ticketCoachTypeDisplay').innerText = BookingState.selectedBus.type;
-
-            const d = new Date(BookingState.search.journeyDate);
-            const dateStr = isNaN(d) ? BookingState.search.journeyDate : d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-            document.getElementById('ticketMetaDate').innerText = dateStr;
-
-            document.getElementById('ticketMetaBerths').innerText = BookingState.selectedBerths.map(b => b.code).join(', ');
-            document.getElementById('ticketMetaBoarding').innerText = `${BookingState.selectedBoardingPoint.name} (${BookingState.selectedBoardingPoint.time})`;
-            document.getElementById('ticketMetaDropping').innerText = `${BookingState.selectedDroppingPoint.name} (${BookingState.selectedDroppingPoint.time})`;
-            document.getElementById('ticketMetaPaid').innerText = `₹${BookingState.pricing.total.toLocaleString()}`;
-
-            document.getElementById('ticketContactInfo').innerText = `+91 ${BookingState.contactDetails.phone} | ${BookingState.contactDetails.email}`;
-
-            document.getElementById('ticketPassengersContainer').innerHTML = BookingState.passengerDetails.map((p, idx) => `
-                <div style="font-size:13px; color:#0f172a; display:flex; justify-content:space-between;">
-                    <span>${idx + 1}. <strong>${p.name}</strong> (${p.gender}, Age ${p.age})</span>
-                    <strong style="color:#2563eb;">Seat ${p.berthCode} (${p.deck.toUpperCase()})</strong>
-                </div>
-            `).join('');
-        }
-
-        // WORKING E-TICKET DOWNLOAD HANDLER (CREATES A REAL DOWNLOADABLE HTML TICKET FILE)
-        function handleDownloadETicket() {
-            const pnr = BookingState.bookingId || 'DHT84920';
-            const bus = BookingState.selectedBus;
-            const passengersHtml = BookingState.passengerDetails.map((p, i) => `
-                <tr>
-                    <td style="padding:10px; border-bottom:1px solid #e2e8f0;">${i + 1}</td>
-                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; font-weight:bold;">${p.name}</td>
-                    <td style="padding:10px; border-bottom:1px solid #e2e8f0;">${p.age} / ${p.gender}</td>
-                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; color:#1e40af; font-weight:bold;">${p.berthCode} (${p.deck})</td>
-                </tr>
-            `).join('');
-
-            const ticketHtml = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>E-Ticket: ${pnr} - Dhage Travels</title>
-    <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; padding: 30px; margin: 0; color: #0f172a; }
-        .ticket { max-width: 720px; margin: 0 auto; background: #ffffff; border: 2px solid #0f172a; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .header { background: #0f172a; color: #ffffff; padding: 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 28px; font-weight: 900; color: #f9d71c; letter-spacing: 2px; }
-        .body { padding: 24px; }
-        .route-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #cbd5e1; padding-bottom: 20px; margin-bottom: 20px; }
-        .city-name { font-size: 26px; font-weight: 800; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-        .meta-item small { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700; display: block; }
-        .meta-item strong { font-size: 14px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { background: #f1f5f9; text-align: left; padding: 10px; font-size: 12px; color: #475569; }
-        .footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 18px 24px; font-size: 12px; color: #64748b; text-align: center; }
-    </style>
-</head>
-<body>
-    <div class="ticket">
-        <div class="header">
-            <div>
-                <div class="logo">DHAGE TRAVELS</div>
-                <div style="font-size: 12px; color: #cbd5e1;">VOLVO 9600 MULTI-AXLE LUXURY SLEEPER</div>
-            </div>
-            <div style="background: #f9d71c; color: #000; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 12px;">
-                CONFIRMED E-TICKET
-            </div>
-        </div>
-        <div class="body">
-            <div class="route-row">
-                <div>
-                    <div class="city-name">${BookingState.search.from.toUpperCase()}</div>
-                    <div style="color: #059669; font-weight: bold;">${bus.depTime}</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 12px; color: #64748b;">${bus.duration}</div>
-                    <div style="font-size: 22px; color: #f9d71c;">➔</div>
-                    <small style="color: #64748b;">${bus.type}</small>
-                </div>
-                <div style="text-align: right;">
-                    <div class="city-name">${BookingState.search.to.toUpperCase()}</div>
-                    <div style="color: #059669; font-weight: bold;">${bus.arrTime}</div>
-                </div>
-            </div>
-
-            <div class="grid">
-                <div class="meta-item"><small>Booking PNR</small><strong>${pnr}</strong></div>
-                <div class="meta-item"><small>Journey Date</small><strong>${BookingState.search.journeyDate}</strong></div>
-                <div class="meta-item"><small>Total Fare Paid</small><strong style="color: #15803d; font-size: 16px;">₹${BookingState.pricing.total.toLocaleString()}</strong></div>
-                <div class="meta-item"><small>Boarding Point</small><strong>${BookingState.selectedBoardingPoint.name} (${BookingState.selectedBoardingPoint.time})</strong></div>
-                <div class="meta-item"><small>Dropping Point</small><strong>${BookingState.selectedDroppingPoint.name} (${BookingState.selectedDroppingPoint.time})</strong></div>
-                <div class="meta-item"><small>Contact Phone</small><strong>+91 ${BookingState.contactDetails.phone}</strong></div>
-            </div>
-
-            <h4 style="margin: 20px 0 10px; font-size: 14px; text-transform: uppercase;">Passenger Roster</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Passenger Name</th>
-                        <th>Age / Gender</th>
-                        <th>Assigned Berth</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${passengersHtml}
-                </tbody>
-            </table>
-        </div>
-        <div class="footer">
-            24x7 Customer Care: +91 9822301985 | booking@dhagetravels.com | Dhage Travels Corporate Offices, Maharashtra
+    <div class="modal" id="pnrModal" aria-hidden="true">
+        <div class="modal-box">
+            <header>
+                <h3>Check PNR</h3><button class="close" id="closePnr" aria-label="Close">&times;</button>
+            </header>
+            <form id="pnrForm"><label for="pnrInput">Booking ID</label><input id="pnrInput" placeholder="e.g. DHT12345"
+                    required><button class="primary" style="width:100%;margin-top:14px" type="submit">View
+                    ticket</button></form>
         </div>
     </div>
-</body>
-</html>
-            `;
 
-            const blob = new Blob([ticketHtml], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Dhage_Travels_Ticket_${pnr}.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        // ==========================================
-        // PNR LOOKUP MODAL
-        // ==========================================
-        function openPnrModal() {
-            document.getElementById('pnrModalBackdrop').classList.add('open');
-        }
-
-        function closePnrModal() {
-            document.getElementById('pnrModalBackdrop').classList.remove('open');
-        }
-
-        function handlePnrLookup(e) {
-            e.preventDefault();
-            const pnrVal = document.getElementById('pnrSearchInput').value.trim().toUpperCase();
-            closePnrModal();
-
-            // Set state to match PNR lookup and show confirmation
-            BookingState.bookingId = pnrVal || 'DHT84920';
-            BookingState.selectedBus = DHAGE_BUSES[0];
-            BookingState.selectedBerths = [
-                { code: 'L3', deck: 'lower', type: 'single', price: 899 },
-                { code: 'U4', deck: 'upper', type: 'single', price: 950 }
-            ];
-            BookingState.selectedBoardingPoint = DHAGE_BUSES[0].boardingPoints[0];
-            BookingState.selectedDroppingPoint = DHAGE_BUSES[0].droppingPoints[0];
-            BookingState.passengerDetails = [
-                { name: 'Samrat Dhage', age: 24, gender: 'Male', berthCode: 'L3', deck: 'lower' },
-                { name: 'Arjun Dhage', age: 26, gender: 'Male', berthCode: 'U4', deck: 'upper' }
-            ];
-            calculatePricing();
-            goToStep('BOOKING_CONFIRMATION');
-        }
-
-        function setupMobileMenu() {
-            const menuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            if (menuBtn && navLinks) {
-                menuBtn.addEventListener('click', () => {
-                    navLinks.classList.toggle('show');
-                });
+    <script>
+        const cityStops = {
+            Pune: [
+                ['New Shivaji Nagar', 'Main private-bus pickup point'],
+                ['Chinchwad', 'Highway pickup point'],
+                ['Wakdewadi', 'Near bus stand']
+            ],
+            Mumbai: [
+                ['Mumbai Central', 'Main pickup point'],
+                ['Dadar', 'Near railway station'],
+                ['Sion', 'Highway pickup point'],
+                ['Chembur', 'Eastern Express Highway'],
+                ['Thane', 'Near bus depot'],
+                ['Bhiwandi', 'Highway pickup point'],
+                ['Panvel', 'Near bus stand'],
+                ['Borivali', 'Western Express Highway']
+            ],
+            Majalgaon: [
+                ['Majalgaon Bus Stand', 'Main bus depot'],
+                ['Majalgaon City', 'City pickup and drop point'],
+                ['Majalgaon Bypass', 'Highway-side pickup point']
+            ],
+            Parbhani: [
+                ['Parbhani Bus Stand', 'Central bus depot'],
+                ['Ganpati Chowk', 'City centre'],
+                ['Visawa Corner', 'Main road'],
+                ['Parbhani Railway Station', 'Station Road'],
+                ['R. R. Petrol Pump', 'Highway-side point'],
+                ['Zero Phata', 'Road junction'],
+                ['Jilha Parishad', 'D. S. M. College area']
+            ],
+            Jalna: [
+                ['Jalna Bus Stand', 'Main bus depot'],
+                ['Mondha Naka', 'City junction'],
+                ['Manmandir Travels', 'Travel office area'],
+                ['Seven Hills', 'Main road'],
+                ['Shree Chintamani Travels', 'Travel office area']
+            ],
+            Nanded: [
+                ['Nanded Bus Stand', 'Main bus depot'],
+                ['Kawtha Naka', 'City junction'],
+                ['Hingoli Gate', 'Main road'],
+                ['Bhagyanagar', 'Pickup and drop point'],
+                ['Kalamandir', 'City centre'],
+                ['Old Mondha', 'Market area']
+            ]
+        };
+        const serviceRoutes = {
+            Pune: ['Majalgaon', 'Parbhani', 'Jalna', 'Nanded'],
+            Mumbai: ['Majalgaon', 'Parbhani', 'Jalna', 'Nanded'],
+            Majalgaon: ['Pune', 'Mumbai'],
+            Parbhani: ['Pune', 'Mumbai'],
+            Jalna: ['Pune', 'Mumbai'],
+            Nanded: ['Pune', 'Mumbai']
+        };
+        const buses = [
+            { id: 'gold', name: 'Dhage Travels AC Sleeper', type: 'Volvo multi-axle • 2 + 1 sleeper', depart: '10:00 PM', arrive: '05:30 AM', fare: 899, amenities: ['AC', 'Charging', 'Blanket'] },
+            { id: 'express', name: 'Dhage Travels Express Sleeper', type: 'AC sleeper • 2 + 1 layout', depart: '08:30 PM', arrive: '04:00 AM', fare: 799, amenities: ['AC', 'Charging', 'Water'] }
+        ];
+        const state = { from: 'Pune', to: 'Majalgaon', date: '', bus: null, seats: [], boarding: null, dropping: null };
+        const $ = id => document.getElementById(id);
+        const money = amount => '₹' + amount.toLocaleString('en-IN');
+        const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
+        function show(screen) { document.querySelectorAll('.screen').forEach(el => el.classList.remove('active')); $(screen + 'Screen').classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function setCities() {
+            const query = new URLSearchParams(location.search);
+            if (serviceRoutes[query.get('from')] && serviceRoutes[query.get('from')].includes(query.get('to'))) {
+                state.from = query.get('from');
+                state.to = query.get('to');
             }
-
-            const checkPnrNavBtn = document.getElementById('checkPnrNavBtn');
-            if (checkPnrNavBtn) {
-                checkPnrNavBtn.addEventListener('click', openPnrModal);
-            }
+            $('fromCity').innerHTML = Object.keys(serviceRoutes).map(city => '<option value="' + city + '">' + city + '</option>').join('');
+            $('fromCity').value = state.from;
+            updateDestinationOptions();
+            $('fromCity').addEventListener('change', () => {
+                state.from = $('fromCity').value;
+                state.to = serviceRoutes[state.from][0];
+                updateDestinationOptions();
+            });
+            const today = new Date().toISOString().slice(0, 10); $('travelDate').min = today; state.date = query.get('date') >= today ? query.get('date') : today; $('travelDate').value = state.date;
         }
+        function updateDestinationOptions() {
+            $('toCity').innerHTML = serviceRoutes[state.from].map(city => '<option value="' + city + '">' + city + '</option>').join('');
+            $('toCity').value = state.to;
+        }
+        function renderBuses() {
+            $('routeTitle').textContent = state.from + ' → ' + state.to;
+            $('busList').innerHTML = buses.map(bus => '<article class="bus-card"><div><div class="bus-title">' + bus.name + '</div><div class="bus-type">' + bus.type + '</div><div class="amenities">' + bus.amenities.map(item => '<span>' + item + '</span>').join('') + '</div></div><div class="timing"><div>' + bus.depart + '<small>' + state.from + '</small></div><i class="line"></i><div>' + bus.arrive + '<small>' + state.to + '</small></div></div><div class="fare"><small>Starting from</small><strong>' + money(bus.fare) + '</strong><button class="outline" type="button" data-bus="' + bus.id + '">Select seats</button></div></article>').join('');
+            document.querySelectorAll('[data-bus]').forEach(button => button.addEventListener('click', () => chooseBus(button.dataset.bus)));
+        }
+        function renderPoints(containerId, city, type) {
+            $(containerId).innerHTML = cityStops[city].map((stop, index) => '<label class="point"><input type="radio" name="' + type + '" value="' + index + '"' + (index === 0 ? ' checked' : '') + '><strong>' + stop[0] + '</strong><span>' + stop[1] + '</span></label>').join('');
+        }
+        function renderSeats() {
+            const booked = ['L2', 'R4'];
+            const seats = [['L1', 'R1', 'R2'], ['L2', 'R3', 'R4'], ['L3', 'R5', 'R6'], ['L4', 'R7', 'R8'], ['L5', 'R9', 'R10'], ['L6', 'R11', 'R12']];
+            $('seatMap').innerHTML = seats.map(row => '<div class="seat-row">' + '<button class="seat ' + (booked.includes(row[0]) ? 'booked' : '') + '" type="button" data-seat="' + row[0] + '"' + (booked.includes(row[0]) ? ' disabled' : '') + '>' + row[0] + '<small>' + money(state.bus.fare) + '</small></button><span class="aisle"></span>' + row.slice(1).map(seat => '<button class="seat ' + (booked.includes(seat) ? 'booked' : '') + '" type="button" data-seat="' + seat + '"' + (booked.includes(seat) ? ' disabled' : '') + '>' + seat + '<small>' + money(state.bus.fare) + '</small></button>').join('') + '</div>').join('');
+            document.querySelectorAll('[data-seat]').forEach(button => button.addEventListener('click', () => { const seat = button.dataset.seat; state.seats = state.seats.includes(seat) ? state.seats.filter(item => item !== seat) : [...state.seats, seat]; button.classList.toggle('selected', state.seats.includes(seat)); updateSeatTotal(); }));
+        }
+        function updateSeatTotal() { $('seatTotal').textContent = money(state.seats.length * state.bus.fare); $('continueBtn').disabled = state.seats.length === 0; }
+        function chooseBus(id) { state.bus = buses.find(bus => bus.id === id); state.seats = []; state.boarding = cityStops[state.from][0]; state.dropping = cityStops[state.to][0]; $('coachTitle').textContent = state.bus.name; $('fromPointsLabel').textContent = '— ' + state.from; $('toPointsLabel').textContent = '— ' + state.to; renderSeats(); renderPoints('boardingPoints', state.from, 'boarding'); renderPoints('droppingPoints', state.to, 'dropping'); updateSeatTotal(); show('booking'); }
+        function renderPassengerForm() { $('passengerFields').innerHTML = state.seats.map((seat, index) => '<div class="passenger"><h3>Passenger ' + (index + 1) + ' <span style="font-family:Inter;font-size:12px;color:#2563eb">Seat ' + seat + '</span></h3><div class="two-inputs"><div><label for="name' + index + '">Full name</label><input id="name' + index + '" required placeholder="Passenger name"></div><div><label for="age' + index + '">Age</label><input id="age' + index + '" type="number" min="5" max="100" required></div></div></div>').join(''); $('passengerTotal').textContent = money(state.seats.length * state.bus.fare); }
+        function selectedPoint(name, city) { const index = Number(document.querySelector('input[name="' + name + '"]:checked').value); return cityStops[city][index]; }
+        function showTicket(pnr) { const passengers = state.seats.map((seat, index) => escapeHtml($('name' + index).value) + ' (Seat ' + seat + ')').join(', '); $('ticket').innerHTML = '<div class="ticket-top"><div><strong>DHAGE TRAVELS</strong><br><small>' + escapeHtml(state.bus.name) + '</small></div><div style="text-align:right"><small>BOOKING ID</small><br><strong style="color:#2563eb">' + pnr + '</strong></div></div><div class="ticket-grid"><div><small>Route</small><strong>' + state.from + ' → ' + state.to + '</strong></div><div><small>Journey date</small><strong>' + state.date + '</strong></div><div><small>Total paid</small><strong>' + money(state.seats.length * state.bus.fare) + '</strong></div><div><small>Boarding</small><strong>' + state.boarding[0] + '</strong></div><div><small>Dropping</small><strong>' + state.dropping[0] + '</strong></div><div><small>Passengers</small><strong>' + passengers + '</strong></div></div>'; show('confirmation'); }
+        $('searchForm').addEventListener('submit', event => { event.preventDefault(); state.from = $('fromCity').value; state.to = $('toCity').value; state.date = $('travelDate').value; if (!serviceRoutes[state.from].includes(state.to)) return alert('Please choose one of the available service routes.'); renderBuses(); show('results'); });
+        $('continueBtn').addEventListener('click', () => { state.boarding = selectedPoint('boarding', state.from); state.dropping = selectedPoint('dropping', state.to); renderPassengerForm(); show('passenger'); });
+        $('passengerForm').addEventListener('submit', event => { event.preventDefault(); showTicket('DHT' + Math.floor(10000 + Math.random() * 90000)); });
+        document.querySelectorAll('[data-screen]').forEach(button => button.addEventListener('click', () => show(button.dataset.screen)));
+        function openPnr() { $('pnrModal').classList.add('open'); $('pnrModal').setAttribute('aria-hidden', 'false'); }
+        function closePnr() { $('pnrModal').classList.remove('open'); $('pnrModal').setAttribute('aria-hidden', 'true'); }
+        $('pnrBtn').addEventListener('click', openPnr); $('footerPnr').addEventListener('click', event => { event.preventDefault(); openPnr(); }); $('closePnr').addEventListener('click', closePnr); $('pnrModal').addEventListener('click', event => { if (event.target === $('pnrModal')) closePnr(); }); $('pnrForm').addEventListener('submit', event => { event.preventDefault(); alert('PNR ' + $('pnrInput').value.toUpperCase() + ' is confirmed.'); closePnr(); }); $('menuBtn').addEventListener('click', () => $('navLinks').classList.toggle('show'));
+        setCities(); if (new URLSearchParams(location.search).get('from') && new URLSearchParams(location.search).get('to')) $('searchForm').requestSubmit(); if (new URLSearchParams(location.search).get('pnr') === 'open') openPnr();
     </script>
 </body>
 

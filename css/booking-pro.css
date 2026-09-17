@@ -128,6 +128,7 @@
     .step-label {
         display: none;
     }
+
     .booking-stepper::before {
         left: 20px;
         right: 20px;
@@ -420,10 +421,12 @@
     .search-grid-form {
         grid-template-columns: 1fr 1fr;
     }
+
     .btn-swap-cities {
         grid-column: span 2;
         margin: 0 auto;
     }
+
     .btn-search-primary {
         grid-column: span 2;
     }
@@ -433,6 +436,7 @@
     .search-grid-form {
         grid-template-columns: 1fr;
     }
+
     .btn-swap-cities,
     .btn-search-primary {
         grid-column: span 1;
@@ -856,8 +860,13 @@
     border: 1px solid #0f172a;
 }
 
-.track-line::before { left: 0; }
-.track-line::after { right: 0; }
+.track-line::before {
+    left: 0;
+}
+
+.track-line::after {
+    right: 0;
+}
 
 .bus-cta-column {
     display: flex;
@@ -946,11 +955,13 @@
         grid-template-columns: 1fr;
         gap: 16px;
     }
+
     .bus-cta-column {
         align-items: flex-start;
         border-top: 1px dashed #cbd5e1;
         padding-top: 14px;
     }
+
     .btn-select-seats {
         width: 100%;
         justify-content: center;
@@ -1063,18 +1074,18 @@
     gap: 6px;
 }
 
-/* Volvo 9600 Sleeper Chassis Layout (Horizontal Beds) */
+/* Simple, familiar 2+1 seat map: one berth on the left and two on the right. */
 .sleeper-chassis {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .sleeper-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
 }
 
 .single-berth-col {
@@ -1083,15 +1094,9 @@
 }
 
 .center-gangway {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #cbd5e1;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    user-select: none;
+    width: 22px;
+    height: 42px;
+    border-left: 1px dashed #cbd5e1;
 }
 
 .double-berth-col {
@@ -1100,30 +1105,23 @@
     gap: 8px;
 }
 
-/* Realistic Sleeper Berth Styling (Capsule / Pill with Pillow Headrest) */
+/* Clear, tap-friendly berth cards */
 .sleeper-berth {
-    width: 76px;
-    height: 44px;
-    border-radius: 8px;
+    width: 70px;
+    min-height: 48px;
+    border-radius: 7px;
     position: relative;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     user-select: none;
-}
-
-.sleeper-berth .pillow {
-    position: absolute;
-    left: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 28px;
-    border-radius: 4px;
-    transition: background 0.2s;
+    font: inherit;
+    line-height: 1.1;
+    padding: 5px;
 }
 
 .sleeper-berth .berth-id {
@@ -1131,7 +1129,12 @@
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    margin-left: 6px;
+}
+
+.sleeper-berth small {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 3px;
 }
 
 /* BERTH STATES */
@@ -1140,11 +1143,6 @@
     background: #ffffff;
     border: 1.5px solid #10b981;
     color: #065f46;
-}
-
-.sleeper-berth.available .pillow {
-    background: #a7f3d0;
-    border: 1px solid #10b981;
 }
 
 .sleeper-berth.available:hover {
@@ -1162,10 +1160,6 @@
     box-shadow: 0 6px 14px rgba(15, 23, 42, 0.3);
 }
 
-.sleeper-berth.selected .pillow {
-    background: var(--brand-yellow);
-}
-
 /* 3. BOOKED (DISABLED) */
 .sleeper-berth.booked {
     background: #e2e8f0;
@@ -1176,17 +1170,9 @@
     opacity: 0.75;
 }
 
-.sleeper-berth.booked .pillow {
-    background: #cbd5e1;
-}
-
-/* Ladies Quota (Optional Indicator) */
-.sleeper-berth.ladies-quota {
-    border-color: #ec4899;
-}
-
-.sleeper-berth.ladies-quota .pillow {
-    background: #fbcfe8;
+.sleeper-berth:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.45);
+    outline-offset: 2px;
 }
 
 /* Legend Bar */
@@ -1938,8 +1924,13 @@
     border-radius: 50%;
 }
 
-.ticket-perforation-divider::before { left: -10px; }
-.ticket-perforation-divider::after { right: -10px; }
+.ticket-perforation-divider::before {
+    left: -10px;
+}
+
+.ticket-perforation-divider::after {
+    right: -10px;
+}
 
 .ticket-footer-strip {
     display: flex;
