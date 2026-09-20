@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book your Dhage Travels bus ticket.">
+    <meta name="description"
+        content="Book your Dhage Travels bus ticket with real-time seat availability and instant confirmation.">
     <title>Book Bus Tickets | Dhage Travels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Unified Shared Navigation & Footer Stylesheet -->
+    <link rel="stylesheet" href="css/shared-navigation.css">
     <style>
         :root {
             --yellow: #f9d71c;
@@ -44,73 +47,11 @@
             cursor: pointer;
         }
 
-        .site-nav {
-            height: 82px;
-            padding: 0 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            background: var(--ink);
-            color: #fff;
-        }
-
-        .brand {
-            color: var(--yellow);
-            text-decoration: none;
-            font: 700 30px/0.85 Oswald, sans-serif;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-
-        .brand small {
-            display: block;
-            margin-top: 7px;
-            letter-spacing: 4px;
-            font-size: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--yellow);
-        }
-
-        .pnr-btn {
-            border: 1px solid var(--yellow);
-            border-radius: 999px;
-            padding: 8px 14px;
-            background: transparent;
-            color: var(--yellow);
-            font-weight: 700;
-        }
-
-        .menu-btn {
-            display: none;
-            border: 0;
-            background: transparent;
-            color: #fff;
-            font-size: 27px;
-        }
-
+        /* Content container with padding to accommodate the 90px fixed shared navbar */
         .page {
             max-width: 1160px;
             margin: 0 auto;
-            padding: 34px 20px 62px;
+            padding: 114px 20px 62px;
         }
 
         .hero {
@@ -148,54 +89,66 @@
         .hero p {
             max-width: 650px;
             margin: 8px 0 25px;
-            color: #cbd5e1;
+            color: #d1d5db;
         }
 
         .search-form {
             display: grid;
-            grid-template-columns: 1fr 1fr 170px auto;
-            gap: 12px;
-            padding: 16px;
-            border-radius: 15px;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 14px;
             background: #fff;
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .2);
         }
 
-        label {
-            display: block;
-            margin: 0 0 6px;
-            color: #475569;
+        .search-form div {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .search-form label {
+            color: var(--muted);
             font-size: 11px;
-            font-weight: 800;
-            letter-spacing: .5px;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
-        select,
-        input {
-            width: 100%;
-            min-height: 46px;
+        .search-form input,
+        .search-form select {
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
             padding: 0 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 9px;
+            font-weight: 600;
             background: #fff;
-            color: #172033;
-            outline: none;
+            color: #0f172a;
         }
 
-        select:focus,
-        input:focus {
-            border-color: var(--blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, .14);
+        .search-form input:focus,
+        .search-form select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .primary,
+        .outline {
+            height: 44px;
+            border-radius: 10px;
+            font-weight: 700;
+            padding: 0 18px;
+            border: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .primary {
-            min-height: 46px;
-            padding: 0 20px;
-            border: 0;
-            border-radius: 9px;
             background: var(--yellow);
-            color: #111;
-            font-weight: 800;
+            color: #12151c;
+            align-self: end;
         }
 
         .primary:hover {
@@ -214,7 +167,7 @@
         .section-head {
             display: flex;
             justify-content: space-between;
-            align-items: end;
+            align-items: flex-end;
             gap: 12px;
             margin-bottom: 14px;
         }
@@ -247,11 +200,46 @@
             gap: 20px;
             align-items: center;
             box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .bus-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
         }
 
         .bus-title {
             font-weight: 800;
-            font-size: 16px;
+            font-size: 17px;
+            color: #0f172a;
+        }
+
+        .bus-id-tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .seat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .seat-badge.available {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
         }
 
         .bus-type {
@@ -265,6 +253,7 @@
             gap: 8px;
             margin-top: 12px;
             color: #475569;
+            flex-wrap: wrap;
         }
 
         .amenities span {
@@ -310,132 +299,143 @@
             text-align: right;
         }
 
+        .fare small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
         .fare strong {
             display: block;
             margin: 2px 0 8px;
             font: 700 26px Oswald, sans-serif;
+            color: #0f172a;
         }
 
         .outline {
             min-height: 40px;
-            padding: 0 14px;
-            border: 1px solid var(--ink);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--ink);
-            font-weight: 800;
+            border: 1px solid #0f172a;
+            background: transparent;
+            color: #0f172a;
+            transition: all 0.2s;
         }
 
         .outline:hover {
-            background: var(--ink);
-            color: var(--yellow);
+            background: #0f172a;
+            color: #fff;
         }
 
         .booking-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(310px, .85fr);
-            gap: 22px;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 20px;
         }
 
         .card {
-            padding: 22px;
+            background: #fff;
             border: 1px solid var(--line);
             border-radius: 16px;
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(15, 23, 42, .04);
-        }
-
-        .card h3 {
-            font-size: 22px;
+            padding: 24px;
         }
 
         .seat-note {
-            margin: 5px 0 18px;
             color: var(--muted);
+            margin: 6px 0 16px;
+            font-size: 13px;
         }
 
         .seat-legend {
             display: flex;
-            gap: 13px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-            color: #475569;
+            gap: 16px;
             font-size: 12px;
-            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .seat-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .seat-legend i {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin-right: 4px;
-            border-radius: 3px;
-            vertical-align: -1px;
         }
 
+        /* Volvo 9600 Sleeper Layout Styling */
         .seat-map {
-            max-width: 430px;
-            padding: 15px;
-            border: 1px solid var(--line);
-            border-radius: 12px;
+            display: grid;
+            gap: 10px;
             background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 16px;
         }
 
         .seat-row {
-            display: grid;
-            grid-template-columns: 1fr 26px 1fr 1fr;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 8px;
-            margin-bottom: 9px;
-        }
-
-        .seat-row:last-child {
-            margin-bottom: 0;
         }
 
         .aisle {
-            border-left: 1px dashed #cbd5e1;
+            width: 24px;
         }
 
         .seat {
-            min-height: 52px;
-            padding: 4px;
-            border: 1.5px solid #34a779;
-            border-radius: 7px;
-            background: #fff;
-            color: #075f47;
-            font-weight: 800;
+            min-width: 68px;
+            height: 44px;
+            border-radius: 8px;
+            border: 1px solid #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            transition: all .15s ease;
         }
 
         .seat small {
-            display: block;
-            margin-top: 2px;
-            font-size: 10px;
-            font-weight: 700;
+            font-size: 9px;
+            font-weight: 600;
         }
 
-        .seat:hover:not(:disabled) {
-            background: #ecfdf5;
+        .seat:hover:not(.booked) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, .2);
         }
 
         .seat.selected {
-            border-color: var(--yellow);
-            background: var(--ink);
+            background: #12151c;
             color: var(--yellow);
+            border-color: var(--yellow);
         }
 
         .seat.booked {
-            border-color: #cbd5e1;
             background: #e2e8f0;
+            border-color: #cbd5e1;
             color: #94a3b8;
             cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         .points-title {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
             font-weight: 800;
+            font-size: 15px;
+        }
+
+        .points-title i {
+            color: #2563eb;
         }
 
         .points-title small {
@@ -445,31 +445,25 @@
 
         .point-list {
             display: grid;
-            gap: 9px;
-            margin-bottom: 22px;
+            gap: 8px;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 4px;
         }
 
         .point {
-            position: relative;
-            display: block;
-            padding: 12px 12px 12px 38px;
+            display: flex;
+            gap: 10px;
+            padding: 10px 12px;
             border: 1px solid var(--line);
             border-radius: 10px;
             cursor: pointer;
+            transition: background 0.15s;
         }
 
-        .point input {
-            position: absolute;
-            left: 13px;
-            top: 16px;
-            width: 15px;
-            min-height: 15px;
-            accent-color: var(--ink);
-        }
-
-        .point:has(input:checked) {
-            border-color: var(--ink);
-            background: #fffdf0;
+        .point:hover {
+            background: #f8fafc;
         }
 
         .point strong {
@@ -480,103 +474,107 @@
         .point span {
             color: var(--muted);
             font-size: 11px;
+            display: block;
         }
 
         .summary {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            margin-top: 18px;
-            padding-top: 16px;
+            align-items: center;
             border-top: 1px solid var(--line);
+            padding-top: 16px;
+            margin-top: 10px;
         }
 
         .summary strong {
+            font: 700 24px Oswald, sans-serif;
             display: block;
-            font: 700 25px Oswald, sans-serif;
-        }
-
-        .back {
-            border: 0;
-            background: transparent;
-            color: #475569;
-            font-weight: 800;
-        }
-
-        .passenger-form {
-            display: grid;
-            gap: 14px;
-        }
-
-        .passenger {
-            padding: 15px;
-            border: 1px solid var(--line);
-            border-radius: 11px;
-        }
-
-        .passenger h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
         }
 
         .two-inputs {
             display: grid;
-            grid-template-columns: 1fr 110px;
-            gap: 10px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .two-inputs label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .two-inputs input {
+            width: 100%;
+            height: 42px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            padding: 0 12px;
+        }
+
+        .two-inputs input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .passenger {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .passenger h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
         }
 
         .confirm {
-            max-width: 680px;
-            margin: 0 auto;
             text-align: center;
         }
 
         .tick {
-            width: 64px;
-            height: 64px;
-            display: grid;
-            place-items: center;
-            margin: 0 auto 12px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: #dcfce7;
             color: #15803d;
-            font-size: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 12px;
         }
 
         .ticket {
-            margin-top: 20px;
-            padding: 22px;
-            text-align: left;
-            border: 2px solid var(--ink);
-            border-radius: 15px;
+            max-width: 640px;
+            margin: 22px auto 0;
             background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
         }
 
         .ticket-top {
             display: flex;
             justify-content: space-between;
-            gap: 12px;
-            padding-bottom: 16px;
-            border-bottom: 1px dashed #94a3b8;
-        }
-
-        .ticket-top strong {
-            font: 700 24px Oswald, sans-serif;
-            color: var(--ink);
+            align-items: center;
+            border-bottom: 1px dashed var(--line);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .ticket-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 18px;
+            gap: 14px;
         }
 
         .ticket-grid small {
-            display: block;
             color: var(--muted);
-            font-weight: 700;
             text-transform: uppercase;
             font-size: 10px;
         }
@@ -586,54 +584,16 @@
             margin-top: 3px;
         }
 
-        .site-footer {
-            padding: 42px 5% 20px;
-            background: #0f0f0f;
-            border-top: 3px solid var(--yellow);
-            color: #b6beca;
-        }
-
-        .footer-grid {
-            max-width: 1160px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.4fr repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .footer-grid h3 {
-            color: #fff;
-            font-size: 17px;
-        }
-
-        .footer-grid a {
-            display: block;
-            margin: 8px 0;
-            color: #b6beca;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .footer-grid a:hover {
-            color: var(--yellow);
-        }
-
-        .copyright {
-            max-width: 1160px;
-            margin: 26px auto 0;
-            padding-top: 16px;
-            border-top: 1px solid #2d3440;
-            font-size: 12px;
-        }
-
+        /* Check PNR Modal */
         .modal {
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 20;
+            z-index: 2000;
             place-items: center;
             padding: 20px;
             background: rgba(15, 23, 42, .65);
+            backdrop-filter: blur(4px);
         }
 
         .modal.open {
@@ -645,6 +605,7 @@
             padding: 24px;
             border-radius: 16px;
             background: #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .modal-box header {
@@ -654,13 +615,44 @@
             margin-bottom: 16px;
         }
 
+        .modal-box input {
+            width: 100%;
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0 12px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
         .close {
             border: 0;
             background: transparent;
             font-size: 26px;
+            cursor: pointer;
+            color: #64748b;
         }
 
-        @media (max-width:850px) {
+        .close:hover {
+            color: #0f172a;
+        }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 850px) {
 
             .search-form,
             .bus-card,
@@ -675,40 +667,11 @@
             .timing {
                 justify-content: flex-start;
             }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
         }
 
-        @media (max-width:680px) {
-            .site-nav {
-                height: 70px;
-            }
-
-            .brand {
-                font-size: 27px;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                z-index: 10;
-                padding: 16px 5%;
-                background: var(--ink);
-                border-top: 1px solid #263044;
-            }
-
-            .nav-links.show {
-                display: grid;
-                gap: 14px;
-            }
-
-            .menu-btn {
-                display: block;
+        @media (max-width: 680px) {
+            .page {
+                padding: 95px 14px 42px;
             }
 
             .hero {
@@ -719,16 +682,8 @@
                 font-size: 31px;
             }
 
-            .page {
-                padding: 20px 14px 42px;
-            }
-
             .ticket-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
             }
 
             .two-inputs {
@@ -739,23 +694,16 @@
 </head>
 
 <body>
-    <nav class="site-nav">
-        <a class="brand" href="home.html">DHAGE<small>TRAVELS</small></a>
-        <button class="menu-btn" id="menuBtn" aria-label="Open navigation"><i class="bi bi-list"></i></button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="home.html">Home</a></li>
-            <li><a class="active" href="book.html">Book Now</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><button class="pnr-btn" id="pnrBtn"><i class="bi bi-search"></i> Check PNR</button></li>
-        </ul>
-    </nav>
+    <!-- Shared Header/Navbar Container (populated via SharedComponents) -->
+    <div id="siteHeader"></div>
 
     <main class="page">
+        <!-- SCREEN 1: SEARCH SCREEN -->
         <section class="hero screen active" id="searchScreen">
             <span class="eyebrow"><i class="bi bi-bus-front-fill"></i> Maharashtra bus booking</span>
             <h1>Book your journey in a few simple clicks.</h1>
-            <p>Select your route, choose a seat, and enter passenger details. No unnecessary booking steps.</p>
+            <p>Select your route, choose a seat, and enter passenger details. Real-time availability with guaranteed
+                seats.</p>
             <form class="search-form" id="searchForm">
                 <div><label for="fromCity">From</label><select id="fromCity" required></select></div>
                 <div><label for="toCity">To</label><select id="toCity" required></select></div>
@@ -764,227 +712,692 @@
             </form>
         </section>
 
+        <!-- SCREEN 2: MULTI-BUS SEARCH RESULTS -->
         <section class="screen" id="resultsScreen">
             <div class="section-head">
-                <div><span class="eyebrow" style="color:#2563eb">Available buses</span>
-                    <h2 id="routeTitle">Mumbai to Pune</h2>
-                </div><button class="back" type="button" data-screen="search"><i class="bi bi-arrow-left"></i> Change
-                    route</button>
+                <div>
+                    <span class="eyebrow" style="color:#2563eb">Available buses</span>
+                    <h2 id="routeTitle">Mumbai → Nanded</h2>
+                </div>
+                <button class="back outline" type="button" data-screen="search">
+                    <i class="bi bi-arrow-left"></i> Change route
+                </button>
             </div>
             <div class="bus-list" id="busList"></div>
         </section>
 
+        <!-- SCREEN 3: SEAT SELECTION & PICKUP/DROP STOPS -->
         <section class="screen" id="bookingScreen">
             <div class="section-head">
-                <div><span class="eyebrow" style="color:#2563eb">Choose seats and stops</span>
-                    <h2 id="coachTitle">Dhage Travels AC Sleeper</h2>
-                </div><button class="back" type="button" data-screen="results"><i class="bi bi-arrow-left"></i> Change
-                    bus</button>
+                <div>
+                    <span class="eyebrow" style="color:#2563eb">Choose seats and stops</span>
+                    <h2 id="coachTitle">Volvo 9600 Luxury Sleeper</h2>
+                </div>
+                <button class="back outline" type="button" data-screen="results">
+                    <i class="bi bi-arrow-left"></i> Change bus
+                </button>
             </div>
             <div class="booking-grid">
+                <!-- Volvo 9600 Sleeper Map (preserved exact layout) -->
                 <article class="card">
                     <h3>Seat selection</h3>
-                    <p class="seat-note">Simple 2 + 1 sleeper layout. Click the green seats to select.</p>
-                    <div class="seat-legend"><span><i style="border:1px solid #34a779"></i>Available</span><span><i
-                                style="background:#12151c;border:1px solid #f9d71c"></i>Selected</span><span><i
-                                style="background:#e2e8f0"></i>Booked</span></div>
-                    <div class="seat-map" id="seatMap" aria-label="Seat map"></div>
+                    <p class="seat-note">Volvo 9600 Sleeper 2 + 1 layout. Click green berths to select.</p>
+                    <div class="seat-legend">
+                        <span><i style="border:1px solid #10b981;background:#ecfdf5;"></i> Available</span>
+                        <span><i style="background:#12151c;border:1px solid #f9d71c"></i> Selected</span>
+                        <span><i style="background:#e2e8f0;border:1px solid #cbd5e1;"></i> Booked</span>
+                    </div>
+                    <div class="seat-map" id="seatMap" aria-label="Volvo 9600 Sleeper Berth Map"></div>
                 </article>
+
+                <!-- City-Specific Boarding & Dropping Points -->
                 <aside class="card">
-                    <div class="points-title"><i class="bi bi-geo-alt-fill"></i>
+                    <div class="points-title">
+                        <i class="bi bi-geo-alt-fill"></i>
                         <div>Boarding points <small id="fromPointsLabel"></small></div>
                     </div>
                     <div class="point-list" id="boardingPoints"></div>
-                    <div class="points-title"><i class="bi bi-pin-map-fill" style="color:#059669"></i>
+
+                    <div class="points-title">
+                        <i class="bi bi-pin-map-fill" style="color:#059669"></i>
                         <div>Dropping points <small id="toPointsLabel"></small></div>
                     </div>
                     <div class="point-list" id="droppingPoints"></div>
+
                     <div class="summary">
-                        <div><span style="color:#64748b;font-size:12px;font-weight:700">TOTAL FARE</span><strong
-                                id="seatTotal">₹0</strong></div><button class="primary" type="button" id="continueBtn"
-                            disabled>Continue <i class="bi bi-arrow-right"></i></button>
+                        <div>
+                            <span style="color:#64748b;font-size:12px;font-weight:700">TOTAL FARE</span>
+                            <strong id="seatTotal">₹0</strong>
+                        </div>
+                        <button class="primary" type="button" id="continueBtn" disabled>
+                            Continue <i class="bi bi-arrow-right"></i>
+                        </button>
                     </div>
                 </aside>
             </div>
         </section>
 
+        <!-- SCREEN 4: PASSENGER DETAILS -->
         <section class="screen" id="passengerScreen">
             <div class="section-head">
-                <div><span class="eyebrow" style="color:#2563eb">Passenger details</span>
+                <div>
+                    <span class="eyebrow" style="color:#2563eb">Passenger details</span>
                     <h2>Who is travelling?</h2>
-                </div><button class="back" type="button" data-screen="booking"><i class="bi bi-arrow-left"></i> Back to
-                    seats</button>
+                </div>
+                <button class="back outline" type="button" data-screen="booking">
+                    <i class="bi bi-arrow-left"></i> Back to seats
+                </button>
             </div>
             <form class="card passenger-form" id="passengerForm">
                 <div class="two-inputs">
-                    <div><label for="contactPhone">Mobile number</label><input id="contactPhone" inputmode="numeric"
-                            minlength="10" maxlength="10" placeholder="10-digit mobile number" required></div>
-                    <div><label for="contactEmail">Email</label><input id="contactEmail" type="email"
-                            placeholder="Email" required></div>
+                    <div>
+                        <label for="contactPhone">Mobile number</label>
+                        <input id="contactPhone" inputmode="numeric" minlength="10" maxlength="10"
+                            placeholder="10-digit mobile number" required>
+                    </div>
+                    <div>
+                        <label for="contactEmail">Email</label>
+                        <input id="contactEmail" type="email" placeholder="Email address" required>
+                    </div>
                 </div>
                 <div id="passengerFields"></div>
                 <div class="summary">
-                    <div><span style="color:#64748b;font-size:12px;font-weight:700">PAYABLE</span><strong
-                            id="passengerTotal">₹0</strong></div><button class="primary" type="submit">Confirm booking
-                        <i class="bi bi-lock-fill"></i></button>
+                    <div>
+                        <span style="color:#64748b;font-size:12px;font-weight:700">PAYABLE</span>
+                        <strong id="passengerTotal">₹0</strong>
+                    </div>
+                    <button class="primary" type="submit">
+                        Confirm booking <i class="bi bi-lock-fill"></i>
+                    </button>
                 </div>
             </form>
         </section>
 
+        <!-- SCREEN 5: CONFIRMATION & E-TICKET -->
         <section class="screen confirm" id="confirmationScreen">
-            <div class="tick"><i class="bi bi-check-lg"></i></div><span class="eyebrow" style="color:#15803d">Booking
-                confirmed</span>
+            <div class="tick"><i class="bi bi-check-lg"></i></div>
+            <span class="eyebrow" style="color:#15803d">Booking confirmed</span>
             <h2 style="font-size:34px">Your seat is reserved.</h2>
             <p style="color:#64748b">Keep this booking ID for your journey.</p>
             <article class="ticket" id="ticket"></article>
-            <p><a class="outline" href="home.html"
-                    style="display:inline-flex;align-items:center;margin-top:18px;text-decoration:none">Back to home</a>
+            <p>
+                <a class="outline" href="home.html"
+                    style="display:inline-flex;align-items:center;margin-top:18px;text-decoration:none">
+                    Back to home
+                </a>
             </p>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div>
-                <div class="brand">DHAGE<small>TRAVELS</small></div>
-                <p>Safe and reliable travels across Maharashtra.</p>
-            </div>
-            <div>
-                <h3>Quick links</h3><a href="home.html">Home</a><a href="book.html">Book now</a>
-            </div>
-            <div>
-                <h3>Support</h3><a href="contact.html">Contact us</a><a href="#" id="footerPnr">Check PNR</a>
-            </div>
-            <div>
-                <h3>Contact</h3><a href="tel:+919822301985">+91 9822301985</a><a
-                    href="mailto:booking@dhagetravels.com">booking@dhagetravels.com</a>
-            </div>
-        </div>
-        <div class="copyright">© 2026 Dhage Travels. All rights reserved.</div>
-    </footer>
+    <!-- Shared Footer Container (populated via SharedComponents) -->
+    <div id="siteFooter"></div>
 
+    <!-- Check PNR Modal -->
     <div class="modal" id="pnrModal" aria-hidden="true">
         <div class="modal-box">
             <header>
-                <h3>Check PNR</h3><button class="close" id="closePnr" aria-label="Close">&times;</button>
+                <h3>Check PNR</h3>
+                <button class="close" id="closePnr" aria-label="Close">&times;</button>
             </header>
-            <form id="pnrForm"><label for="pnrInput">Booking ID</label><input id="pnrInput" placeholder="e.g. DHT12345"
-                    required><button class="primary" style="width:100%;margin-top:14px" type="submit">View
-                    ticket</button></form>
+            <form id="pnrForm">
+                <label for="pnrInput"
+                    style="font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;">Booking ID /
+                    PNR</label>
+                <input id="pnrInput" placeholder="e.g. DHT12345" required>
+                <button class="primary" style="width:100%;margin-top:14px" type="submit">
+                    View ticket
+                </button>
+            </form>
         </div>
     </div>
 
+    <!-- Scripts: Supabase, Config, Availability, Shared Components -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase-service.js"></script>
+    <script src="js/travel-config.js"></script>
+    <script src="js/availability-service.js"></script>
+    <script src="js/shared-components.js"></script>
+
     <script>
-        const cityStops = {
-            Pune: [
-                ['New Shivaji Nagar', 'Main private-bus pickup point'],
-                ['Chinchwad', 'Highway pickup point'],
-                ['Wakdewadi', 'Near bus stand']
-            ],
-            Mumbai: [
-                ['Mumbai Central', 'Main pickup point'],
-                ['Dadar', 'Near railway station'],
-                ['Sion', 'Highway pickup point'],
-                ['Chembur', 'Eastern Express Highway'],
-                ['Thane', 'Near bus depot'],
-                ['Bhiwandi', 'Highway pickup point'],
-                ['Panvel', 'Near bus stand'],
-                ['Borivali', 'Western Express Highway']
-            ],
-            Majalgaon: [
-                ['Majalgaon Bus Stand', 'Main bus depot'],
-                ['Majalgaon City', 'City pickup and drop point'],
-                ['Majalgaon Bypass', 'Highway-side pickup point']
-            ],
-            Parbhani: [
-                ['Parbhani Bus Stand', 'Central bus depot'],
-                ['Ganpati Chowk', 'City centre'],
-                ['Visawa Corner', 'Main road'],
-                ['Parbhani Railway Station', 'Station Road'],
-                ['R. R. Petrol Pump', 'Highway-side point'],
-                ['Zero Phata', 'Road junction'],
-                ['Jilha Parishad', 'D. S. M. College area']
-            ],
-            Jalna: [
-                ['Jalna Bus Stand', 'Main bus depot'],
-                ['Mondha Naka', 'City junction'],
-                ['Manmandir Travels', 'Travel office area'],
-                ['Seven Hills', 'Main road'],
-                ['Shree Chintamani Travels', 'Travel office area']
-            ],
-            Nanded: [
-                ['Nanded Bus Stand', 'Main bus depot'],
-                ['Kawtha Naka', 'City junction'],
-                ['Hingoli Gate', 'Main road'],
-                ['Bhagyanagar', 'Pickup and drop point'],
-                ['Kalamandir', 'City centre'],
-                ['Old Mondha', 'Market area']
-            ]
+        const state = {
+            from: 'Mumbai',
+            to: 'Nanded',
+            date: '',
+            buses: [],
+            bus: null,
+            seats: [],
+            boarding: null,
+            dropping: null
         };
-        const serviceRoutes = {
-            Pune: ['Majalgaon', 'Parbhani', 'Jalna', 'Nanded'],
-            Mumbai: ['Majalgaon', 'Parbhani', 'Jalna', 'Nanded'],
-            Majalgaon: ['Pune', 'Mumbai'],
-            Parbhani: ['Pune', 'Mumbai'],
-            Jalna: ['Pune', 'Mumbai'],
-            Nanded: ['Pune', 'Mumbai']
-        };
-        const buses = [
-            { id: 'gold', name: 'Dhage Travels AC Sleeper', type: 'Volvo multi-axle • 2 + 1 sleeper', depart: '10:00 PM', arrive: '05:30 AM', fare: 899, amenities: ['AC', 'Charging', 'Blanket'] },
-            { id: 'express', name: 'Dhage Travels Express Sleeper', type: 'AC sleeper • 2 + 1 layout', depart: '08:30 PM', arrive: '04:00 AM', fare: 799, amenities: ['AC', 'Charging', 'Water'] }
-        ];
-        const state = { from: 'Pune', to: 'Majalgaon', date: '', bus: null, seats: [], boarding: null, dropping: null };
+
         const $ = id => document.getElementById(id);
-        const money = amount => '₹' + amount.toLocaleString('en-IN');
-        const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
-        function show(screen) { document.querySelectorAll('.screen').forEach(el => el.classList.remove('active')); $(screen + 'Screen').classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        const money = amount => '₹' + Number(amount).toLocaleString('en-IN');
+        const escapeHtml = value => String(value || '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
+
+        function show(screen) {
+            document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+            const target = $(screen + 'Screen');
+            if (target) target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize City Dropdowns and Travel Date
         function setCities() {
             const query = new URLSearchParams(location.search);
-            if (serviceRoutes[query.get('from')] && serviceRoutes[query.get('from')].includes(query.get('to'))) {
-                state.from = query.get('from');
-                state.to = query.get('to');
-            }
-            $('fromCity').innerHTML = Object.keys(serviceRoutes).map(city => '<option value="' + city + '">' + city + '</option>').join('');
-            $('fromCity').value = state.from;
+            const allCities = window.TravelConfig.getAllCities();
+
+            // 1. Determine Initial FROM and TO from query or defaults
+            let initialFrom = query.get('from') && allCities.includes(query.get('from')) ? query.get('from') : 'Mumbai';
+            let availableDests = window.TravelConfig.getDestinationsFor(initialFrom);
+            let initialTo = query.get('to') && availableDests.includes(query.get('to')) ? query.get('to') : (availableDests[0] || 'Nanded');
+
+            state.from = initialFrom;
+            state.to = initialTo;
+
+            // 2. Populate FROM select
+            $('fromCity').innerHTML = allCities.map(city => `<option value="${city}" ${city === state.from ? 'selected' : ''}>${city}</option>`).join('');
+
+            // 3. Populate TO select
             updateDestinationOptions();
+
+            // 4. FROM City Change Listener (Section 14 & 15: Clear previously selected pickup/drop and update options)
             $('fromCity').addEventListener('change', () => {
                 state.from = $('fromCity').value;
-                state.to = serviceRoutes[state.from][0];
+                const dests = window.TravelConfig.getDestinationsFor(state.from);
+                // If current destination not in new destinations, switch to first available
+                if (!dests.includes(state.to)) {
+                    state.to = dests[0] || '';
+                }
                 updateDestinationOptions();
+
+                // Clear stale pickup / drop selections
+                state.boarding = null;
+                state.dropping = null;
             });
-            const today = new Date().toISOString().slice(0, 10); $('travelDate').min = today; state.date = query.get('date') >= today ? query.get('date') : today; $('travelDate').value = state.date;
+
+            // 5. TO City Change Listener
+            $('toCity').addEventListener('change', () => {
+                state.to = $('toCity').value;
+                // Clear stale drop selection
+                state.dropping = null;
+            });
+
+            // 6. Travel Date with Asia/Kolkata timezone validation
+            const todayStr = window.AvailabilityService.getTodayKolkataString();
+            $('travelDate').min = todayStr;
+            const paramDate = query.get('date');
+            state.date = (paramDate && paramDate >= todayStr) ? paramDate : todayStr;
+            $('travelDate').value = state.date;
         }
+
         function updateDestinationOptions() {
-            $('toCity').innerHTML = serviceRoutes[state.from].map(city => '<option value="' + city + '">' + city + '</option>').join('');
+            const dests = window.TravelConfig.getDestinationsFor(state.from);
+            $('toCity').innerHTML = dests.map(city => `<option value="${city}" ${city === state.to ? 'selected' : ''}>${city}</option>`).join('');
             $('toCity').value = state.to;
         }
-        function renderBuses() {
-            $('routeTitle').textContent = state.from + ' → ' + state.to;
-            $('busList').innerHTML = buses.map(bus => '<article class="bus-card"><div><div class="bus-title">' + bus.name + '</div><div class="bus-type">' + bus.type + '</div><div class="amenities">' + bus.amenities.map(item => '<span>' + item + '</span>').join('') + '</div></div><div class="timing"><div>' + bus.depart + '<small>' + state.from + '</small></div><i class="line"></i><div>' + bus.arrive + '<small>' + state.to + '</small></div></div><div class="fare"><small>Starting from</small><strong>' + money(bus.fare) + '</strong><button class="outline" type="button" data-bus="' + bus.id + '">Select seats</button></div></article>').join('');
-            document.querySelectorAll('[data-bus]').forEach(button => button.addEventListener('click', () => chooseBus(button.dataset.bus)));
+
+        // Bus Search & Multi-Bus Rendering
+        async function searchBuses() {
+            $('routeTitle').textContent = `${state.from} → ${state.to}`;
+            const busListEl = $('busList');
+            busListEl.innerHTML = `
+                <div style="padding:40px 20px;text-align:center;color:#64748b;">
+                    <i class="bi bi-arrow-repeat spin" style="font-size:24px;display:inline-block;"></i>
+                    <div style="margin-top:10px;font-weight:600;">Checking real-time bus & seat availability...</div>
+                </div>`;
+
+            // 1. Get all candidate buses on this route from TravelConfig
+            const routeBuses = window.TravelConfig.getBusesForRoute(state.from, state.to);
+
+            // 2. Fetch live booked seats for this route & date from Supabase / local
+            let bookedSeatsMap = {};
+            if (window.DhageService) {
+                bookedSeatsMap = await window.DhageService.fetchBookedSeatsForRouteDate(state.date, state.from, state.to);
+            }
+
+            // 3. Central Availability Evaluation (Asia/Kolkata timezone, 30-min cutoff, full bus exclusion)
+            const availableBuses = window.AvailabilityService.filterAvailableBuses(
+                routeBuses,
+                state.date,
+                bookedSeatsMap
+            );
+
+            state.buses = availableBuses;
+
+            // 4. Render results or informative empty state
+            if (availableBuses.length === 0) {
+                busListEl.innerHTML = `
+                    <div class="card" style="padding:44px 24px;text-align:center;background:#fff;border-radius:16px;border:1px dashed #cbd5e1;">
+                        <div style="font-size:42px;color:#94a3b8;margin-bottom:12px;"><i class="bi bi-calendar-x"></i></div>
+                        <h3 style="font-size:22px;color:#1e293b;margin-bottom:8px;">No Buses Currently Available</h3>
+                        <p style="color:#64748b;max-width:560px;margin:0 auto 20px;line-height:1.6;">
+                            No available seats found for <strong>${state.from} → ${state.to}</strong> on <strong>${state.date}</strong>.<br>
+                            <small style="color:#94a3b8;">Note: Bus booking strictly closes 30 minutes before departure, departed buses are hidden, and fully booked buses (0 seats) are not displayed.</small>
+                        </p>
+                        <button class="primary" type="button" data-screen="search" style="display:inline-flex;align-items:center;gap:8px;margin:auto;">
+                            <i class="bi bi-arrow-left"></i> Change Route or Date
+                        </button>
+                    </div>`;
+                busListEl.querySelectorAll('[data-screen]').forEach(btn => btn.addEventListener('click', () => show(btn.dataset.screen)));
+                return;
+            }
+
+            // Multiple buses on the same route rendered as separate cards
+            busListEl.innerHTML = availableBuses.map(bus => `
+                <article class="bus-card" id="bus-card-${bus.id}">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                            <span class="bus-title">${escapeHtml(bus.busName)}</span>
+                            <span class="bus-id-tag">${escapeHtml(bus.id)}</span>
+                            <span class="seat-badge available">
+                                <i class="bi bi-person-check-fill"></i> ${bus.availableSeats} ${bus.availableSeats === 1 ? 'seat' : 'seats'} left
+                            </span>
+                        </div>
+                        <div class="bus-type">${escapeHtml(bus.type)} • ${escapeHtml(bus.busNumber)}</div>
+                        <div class="amenities">
+                            ${bus.amenities.map(item => `<span>${escapeHtml(item)}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="timing">
+                        <div>
+                            ${bus.departureTimeDisplay || bus.departureTime}
+                            <small>${escapeHtml(state.from)}</small>
+                        </div>
+                        <i class="line"></i>
+                        <div>
+                            ${bus.arrivalTimeDisplay || bus.arrivalTime}
+                            <small>${escapeHtml(state.to)}</small>
+                        </div>
+                    </div>
+                    <div class="fare">
+                        <small>Starting from</small>
+                        <strong>${money(bus.fare)}</strong>
+                        <button class="outline" type="button" data-bus="${bus.id}">Select seats</button>
+                    </div>
+                </article>
+            `).join('');
+
+            busListEl.querySelectorAll('[data-bus]').forEach(btn => {
+                btn.addEventListener('click', () => chooseBus(btn.dataset.bus));
+            });
         }
-        function renderPoints(containerId, city, type) {
-            $(containerId).innerHTML = cityStops[city].map((stop, index) => '<label class="point"><input type="radio" name="' + type + '" value="' + index + '"' + (index === 0 ? ' checked' : '') + '><strong>' + stop[0] + '</strong><span>' + stop[1] + '</span></label>').join('');
+
+        // Dynamic Boarding and Dropping Points Rendering (Section 11, 12, 13, 14, 15)
+        function renderBoardingPoints(originCity) {
+            const points = window.TravelConfig.getPickupPoints(originCity);
+            const container = $('boardingPoints');
+            container.innerHTML = points.map((stop, index) => `
+                <label class="point">
+                    <input type="radio" name="boarding" value="${index}" ${index === 0 ? 'checked' : ''}>
+                    <div>
+                        <strong>${escapeHtml(stop[0])}</strong>
+                        <span>${escapeHtml(stop[1])}</span>
+                    </div>
+                </label>
+            `).join('');
+            // Initialize state.boarding
+            state.boarding = points[0];
+            // Listen for user changes
+            container.querySelectorAll('input[name="boarding"]').forEach(input => {
+                input.addEventListener('change', () => {
+                    const idx = Number(input.value);
+                    state.boarding = points[idx];
+                });
+            });
         }
-        function renderSeats() {
-            const booked = ['L2', 'R4'];
-            const seats = [['L1', 'R1', 'R2'], ['L2', 'R3', 'R4'], ['L3', 'R5', 'R6'], ['L4', 'R7', 'R8'], ['L5', 'R9', 'R10'], ['L6', 'R11', 'R12']];
-            $('seatMap').innerHTML = seats.map(row => '<div class="seat-row">' + '<button class="seat ' + (booked.includes(row[0]) ? 'booked' : '') + '" type="button" data-seat="' + row[0] + '"' + (booked.includes(row[0]) ? ' disabled' : '') + '>' + row[0] + '<small>' + money(state.bus.fare) + '</small></button><span class="aisle"></span>' + row.slice(1).map(seat => '<button class="seat ' + (booked.includes(seat) ? 'booked' : '') + '" type="button" data-seat="' + seat + '"' + (booked.includes(seat) ? ' disabled' : '') + '>' + seat + '<small>' + money(state.bus.fare) + '</small></button>').join('') + '</div>').join('');
-            document.querySelectorAll('[data-seat]').forEach(button => button.addEventListener('click', () => { const seat = button.dataset.seat; state.seats = state.seats.includes(seat) ? state.seats.filter(item => item !== seat) : [...state.seats, seat]; button.classList.toggle('selected', state.seats.includes(seat)); updateSeatTotal(); }));
+
+        function renderDroppingPoints(destCity) {
+            const points = window.TravelConfig.getDropPoints(destCity);
+            const container = $('droppingPoints');
+            container.innerHTML = points.map((stop, index) => `
+                <label class="point">
+                    <input type="radio" name="dropping" value="${index}" ${index === 0 ? 'checked' : ''}>
+                    <div>
+                        <strong>${escapeHtml(stop[0])}</strong>
+                        <span>${escapeHtml(stop[1])}</span>
+                    </div>
+                </label>
+            `).join('');
+            // Initialize state.dropping
+            state.dropping = points[0];
+            // Listen for user changes
+            container.querySelectorAll('input[name="dropping"]').forEach(input => {
+                input.addEventListener('change', () => {
+                    const idx = Number(input.value);
+                    state.dropping = points[idx];
+                });
+            });
         }
-        function updateSeatTotal() { $('seatTotal').textContent = money(state.seats.length * state.bus.fare); $('continueBtn').disabled = state.seats.length === 0; }
-        function chooseBus(id) { state.bus = buses.find(bus => bus.id === id); state.seats = []; state.boarding = cityStops[state.from][0]; state.dropping = cityStops[state.to][0]; $('coachTitle').textContent = state.bus.name; $('fromPointsLabel').textContent = '— ' + state.from; $('toPointsLabel').textContent = '— ' + state.to; renderSeats(); renderPoints('boardingPoints', state.from, 'boarding'); renderPoints('droppingPoints', state.to, 'dropping'); updateSeatTotal(); show('booking'); }
-        function renderPassengerForm() { $('passengerFields').innerHTML = state.seats.map((seat, index) => '<div class="passenger"><h3>Passenger ' + (index + 1) + ' <span style="font-family:Inter;font-size:12px;color:#2563eb">Seat ' + seat + '</span></h3><div class="two-inputs"><div><label for="name' + index + '">Full name</label><input id="name' + index + '" required placeholder="Passenger name"></div><div><label for="age' + index + '">Age</label><input id="age' + index + '" type="number" min="5" max="100" required></div></div></div>').join(''); $('passengerTotal').textContent = money(state.seats.length * state.bus.fare); }
-        function selectedPoint(name, city) { const index = Number(document.querySelector('input[name="' + name + '"]:checked').value); return cityStops[city][index]; }
-        function showTicket(pnr) { const passengers = state.seats.map((seat, index) => escapeHtml($('name' + index).value) + ' (Seat ' + seat + ')').join(', '); $('ticket').innerHTML = '<div class="ticket-top"><div><strong>DHAGE TRAVELS</strong><br><small>' + escapeHtml(state.bus.name) + '</small></div><div style="text-align:right"><small>BOOKING ID</small><br><strong style="color:#2563eb">' + pnr + '</strong></div></div><div class="ticket-grid"><div><small>Route</small><strong>' + state.from + ' → ' + state.to + '</strong></div><div><small>Journey date</small><strong>' + state.date + '</strong></div><div><small>Total paid</small><strong>' + money(state.seats.length * state.bus.fare) + '</strong></div><div><small>Boarding</small><strong>' + state.boarding[0] + '</strong></div><div><small>Dropping</small><strong>' + state.dropping[0] + '</strong></div><div><small>Passengers</small><strong>' + passengers + '</strong></div></div>'; show('confirmation'); }
-        $('searchForm').addEventListener('submit', event => { event.preventDefault(); state.from = $('fromCity').value; state.to = $('toCity').value; state.date = $('travelDate').value; if (!serviceRoutes[state.from].includes(state.to)) return alert('Please choose one of the available service routes.'); renderBuses(); show('results'); });
-        $('continueBtn').addEventListener('click', () => { state.boarding = selectedPoint('boarding', state.from); state.dropping = selectedPoint('dropping', state.to); renderPassengerForm(); show('passenger'); });
-        $('passengerForm').addEventListener('submit', event => { event.preventDefault(); showTicket('DHT' + Math.floor(10000 + Math.random() * 90000)); });
-        document.querySelectorAll('[data-screen]').forEach(button => button.addEventListener('click', () => show(button.dataset.screen)));
-        function openPnr() { $('pnrModal').classList.add('open'); $('pnrModal').setAttribute('aria-hidden', 'false'); }
-        function closePnr() { $('pnrModal').classList.remove('open'); $('pnrModal').setAttribute('aria-hidden', 'true'); }
-        $('pnrBtn').addEventListener('click', openPnr); $('footerPnr').addEventListener('click', event => { event.preventDefault(); openPnr(); }); $('closePnr').addEventListener('click', closePnr); $('pnrModal').addEventListener('click', event => { if (event.target === $('pnrModal')) closePnr(); }); $('pnrForm').addEventListener('submit', event => { event.preventDefault(); alert('PNR ' + $('pnrInput').value.toUpperCase() + ' is confirmed.'); closePnr(); }); $('menuBtn').addEventListener('click', () => $('navLinks').classList.toggle('show'));
-        setCities(); if (new URLSearchParams(location.search).get('from') && new URLSearchParams(location.search).get('to')) $('searchForm').requestSubmit(); if (new URLSearchParams(location.search).get('pnr') === 'open') openPnr();
+
+        // Preserve the exact Volvo 9600 sleeper seat layout (2 + 1 format, L1..L6, R1..R12)
+        function renderSeats(booked = []) {
+            const seats = [
+                ['L1', 'R1', 'R2'],
+                ['L2', 'R3', 'R4'],
+                ['L3', 'R5', 'R6'],
+                ['L4', 'R7', 'R8'],
+                ['L5', 'R9', 'R10'],
+                ['L6', 'R11', 'R12']
+            ];
+
+            $('seatMap').innerHTML = seats.map(row => `
+                <div class="seat-row">
+                    <button class="seat ${booked.includes(row[0]) ? 'booked' : ''} ${state.seats.includes(row[0]) ? 'selected' : ''}" 
+                            type="button" 
+                            data-seat="${row[0]}" 
+                            ${booked.includes(row[0]) ? 'disabled aria-disabled="true"' : ''}>
+                        ${row[0]}
+                        <small>${money(state.bus.fare)}</small>
+                    </button>
+                    <span class="aisle"></span>
+                    ${row.slice(1).map(seat => `
+                        <button class="seat ${booked.includes(seat) ? 'booked' : ''} ${state.seats.includes(seat) ? 'selected' : ''}" 
+                                type="button" 
+                                data-seat="${seat}" 
+                                ${booked.includes(seat) ? 'disabled aria-disabled="true"' : ''}>
+                            ${seat}
+                            <small>${money(state.bus.fare)}</small>
+                        </button>
+                    `).join('')}
+                </div>
+            `).join('');
+
+            $('seatMap').querySelectorAll('[data-seat]:not(.booked)').forEach(button => {
+                button.addEventListener('click', () => {
+                    const seat = button.dataset.seat;
+                    state.seats = state.seats.includes(seat)
+                        ? state.seats.filter(item => item !== seat)
+                        : [...state.seats, seat];
+                    button.classList.toggle('selected', state.seats.includes(seat));
+                    updateSeatTotal();
+                });
+            });
+        }
+
+        function updateSeatTotal() {
+            const totalFare = state.seats.length * (state.bus ? state.bus.fare : 0);
+            $('seatTotal').textContent = money(totalFare);
+            $('continueBtn').disabled = state.seats.length === 0;
+        }
+
+        let realtimeSubscription = null;
+
+        // Bus Selection Handler
+        async function chooseBus(id) {
+            state.bus = (state.buses && state.buses.find(b => b.id === id)) || window.TravelConfig.getBusById(id);
+            if (!state.bus) return;
+
+            state.seats = [];
+            $('coachTitle').textContent = `${state.bus.busName} (${state.bus.id})`;
+            $('fromPointsLabel').textContent = `— ${state.from}`;
+            $('toPointsLabel').textContent = `— ${state.to}`;
+
+            // Loading state
+            $('seatMap').innerHTML = `
+                <div style="padding:30px;text-align:center;color:#64748b;">
+                    <i class="bi bi-arrow-repeat spin" style="font-size:24px;display:inline-block;"></i>
+                    <div style="margin-top:10px;">Loading live Volvo 9600 sleeper layout...</div>
+                </div>`;
+            show('booking');
+
+            // Dynamic boarding points strictly for state.from
+            renderBoardingPoints(state.from);
+
+            // Dynamic dropping points strictly for state.to
+            renderDroppingPoints(state.to);
+
+            // Fetch live booked seats
+            let bookedSeats = [];
+            if (window.DhageService) {
+                bookedSeats = await window.DhageService.fetchBookedSeats(state.bus.busName, state.date, state.bus.id);
+            }
+
+            renderSeats(bookedSeats);
+            updateSeatTotal();
+
+            // Realtime updates for seats
+            if (window.DhageService && typeof window.DhageService.subscribeToBookings === 'function') {
+                if (realtimeSubscription && typeof realtimeSubscription.unsubscribe === 'function') {
+                    realtimeSubscription.unsubscribe();
+                }
+                realtimeSubscription = window.DhageService.subscribeToBookings(state.date, async () => {
+                    const latestBooked = await window.DhageService.fetchBookedSeats(state.bus.busName, state.date, state.bus.id);
+                    renderSeats(latestBooked);
+                    // Remove any now-conflicting seats from user selection
+                    state.seats = state.seats.filter(s => !latestBooked.includes(s));
+                    updateSeatTotal();
+                });
+            }
+        }
+
+        function renderPassengerForm() {
+            $('passengerFields').innerHTML = state.seats.map((seat, index) => `
+                <div class="passenger">
+                    <h3>Passenger ${index + 1} <span style="font-family:Inter;font-size:12px;color:#2563eb">Seat ${seat}</span></h3>
+                    <div class="two-inputs">
+                        <div>
+                            <label for="name${index}">Full name</label>
+                            <input id="name${index}" required placeholder="Passenger name">
+                        </div>
+                        <div>
+                            <label for="age${index}">Age</label>
+                            <input id="age${index}" type="number" min="5" max="100" required placeholder="Age">
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            $('passengerTotal').textContent = money(state.seats.length * state.bus.fare);
+        }
+
+        function showTicket(pnr, passengersList) {
+            const passengersText = passengersList.map(p => `${escapeHtml(p.name)} (Seat ${p.seat})`).join(', ');
+            $('ticket').innerHTML = `
+                <div class="ticket-top">
+                    <div>
+                        <strong>DHAGE TRAVELS</strong><br>
+                        <small>${escapeHtml(state.bus.busName)} • ${escapeHtml(state.bus.busNumber || state.bus.id)}</small>
+                    </div>
+                    <div style="text-align:right">
+                        <small>BOOKING ID / PNR</small><br>
+                        <strong style="color:#2563eb;font-size:18px;">${pnr}</strong>
+                    </div>
+                </div>
+                <div class="ticket-grid">
+                    <div><small>Route</small><strong>${state.from} → ${state.to}</strong></div>
+                    <div><small>Journey date</small><strong>${state.date}</strong></div>
+                    <div><small>Departure time</small><strong>${state.bus.departureTimeDisplay || state.bus.departureTime}</strong></div>
+                    <div><small>Total paid</small><strong>${money(state.seats.length * state.bus.fare)}</strong></div>
+                    <div><small>Boarding point</small><strong>${escapeHtml(state.boarding[0])}</strong><span style="font-size:11px;color:#64748b;display:block;">${escapeHtml(state.boarding[1])}</span></div>
+                    <div><small>Dropping point</small><strong>${escapeHtml(state.dropping[0])}</strong><span style="font-size:11px;color:#64748b;display:block;">${escapeHtml(state.dropping[1])}</span></div>
+                    <div style="grid-column:1 / -1;"><small>Passengers</small><strong>${passengersText}</strong></div>
+                </div>`;
+            show('confirmation');
+        }
+
+        function displayBookingTicket(booking) {
+            const passengers = Array.isArray(booking.passengers) && booking.passengers.length > 0
+                ? booking.passengers.map(p => `${escapeHtml(p.name)} (Seat ${p.seat})`).join(', ')
+                : `${booking.primary_passenger_name} (Seats ${booking.selected_seats ? booking.selected_seats.join(', ') : ''})`;
+
+            $('ticket').innerHTML = `
+                <div class="ticket-top">
+                    <div>
+                        <strong>DHAGE TRAVELS</strong><br>
+                        <small>${escapeHtml(booking.bus_name || 'Volvo 9600 Sleeper')}</small>
+                    </div>
+                    <div style="text-align:right">
+                        <small>BOOKING ID / PNR</small><br>
+                        <strong style="color:#2563eb;font-size:18px;">${booking.pnr}</strong>
+                    </div>
+                </div>
+                <div class="ticket-grid">
+                    <div><small>Route</small><strong>${booking.from_city} → ${booking.to_city}</strong></div>
+                    <div><small>Journey date</small><strong>${booking.travel_date}</strong></div>
+                    <div><small>Total amount</small><strong>${money(booking.total_amount)}</strong></div>
+                    <div><small>Boarding point</small><strong>${escapeHtml(booking.pickup_point || 'Main Stand')}</strong></div>
+                    <div><small>Dropping point</small><strong>${escapeHtml(booking.drop_point || 'Main Stand')}</strong></div>
+                    <div style="grid-column:1 / -1;"><small>Passengers</small><strong>${passengers}</strong></div>
+                </div>`;
+        }
+
+        // FORM SUBMISSION HANDLERS
+        $('searchForm').addEventListener('submit', async event => {
+            event.preventDefault();
+            state.from = $('fromCity').value;
+            state.to = $('toCity').value;
+            state.date = $('travelDate').value;
+
+            const dests = window.TravelConfig.getDestinationsFor(state.from);
+            if (!dests.includes(state.to)) {
+                alert('Please choose one of the available service routes.');
+                return;
+            }
+
+            show('results');
+            await searchBuses();
+        });
+
+        $('continueBtn').addEventListener('click', () => {
+            if (!state.seats || state.seats.length === 0) {
+                alert('Please select at least one seat to continue.');
+                return;
+            }
+            renderPassengerForm();
+            show('passenger');
+        });
+
+        $('passengerForm').addEventListener('submit', async event => {
+            event.preventDefault();
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const origHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Securing Seats in Real-Time... <i class="bi bi-arrow-repeat spin"></i>';
+            submitBtn.disabled = true;
+
+            const passengers = state.seats.map((seat, index) => ({
+                name: $('name' + index).value.trim(),
+                age: Number($('age' + index).value),
+                seat: seat
+            }));
+
+            const bookingData = {
+                bus_id: state.bus.id,
+                bus_name: state.bus.busName,
+                from_city: state.from,
+                to_city: state.to,
+                travel_date: state.date,
+                selected_seats: state.seats,
+                primary_passenger_name: passengers[0] ? passengers[0].name : 'Passenger',
+                primary_passenger_phone: $('contactPhone').value.trim(),
+                primary_passenger_email: $('contactEmail').value.trim(),
+                passengers: passengers,
+                pickup_point: `${state.boarding[0]} (${state.boarding[1]})`,
+                drop_point: `${state.dropping[0]} (${state.dropping[1]})`,
+                base_fare: state.bus.fare,
+                total_amount: state.seats.length * state.bus.fare
+            };
+
+            try {
+                const res = await window.DhageService.createBooking(bookingData);
+
+                // Double Booking Conflict Check
+                if (!res.success && res.conflict) {
+                    if (window.showToast) {
+                        window.showToast(res.message, 'error', 6000);
+                    } else {
+                        alert(res.message);
+                    }
+                    // Re-fetch booked seats and refresh map
+                    const latestBooked = await window.DhageService.fetchBookedSeats(state.bus.busName, state.date, state.bus.id);
+                    renderSeats(latestBooked);
+                    state.seats = [];
+                    updateSeatTotal();
+                    show('booking');
+                    return;
+                }
+
+                if (res.success) {
+                    showTicket(res.pnr, passengers);
+                    if (window.showToast) {
+                        window.showToast(`Booking confirmed! PNR: ${res.pnr}`, 'success', 5000);
+                    }
+                } else {
+                    throw new Error(res.message || 'Booking could not be confirmed.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Could not complete booking: ' + err.message);
+            } finally {
+                submitBtn.innerHTML = origHtml;
+                submitBtn.disabled = false;
+            }
+        });
+
+        document.querySelectorAll('[data-screen]').forEach(button => {
+            button.addEventListener('click', () => show(button.dataset.screen));
+        });
+
+        // PNR Modal Management
+        window.openPnrModal = function () {
+            $('pnrModal').classList.add('open');
+            $('pnrModal').setAttribute('aria-hidden', 'false');
+        };
+
+        window.closePnrModal = function () {
+            $('pnrModal').classList.remove('open');
+            $('pnrModal').setAttribute('aria-hidden', 'true');
+        };
+
+        $('closePnr').addEventListener('click', window.closePnrModal);
+        $('pnrModal').addEventListener('click', event => {
+            if (event.target === $('pnrModal')) window.closePnrModal();
+        });
+
+        $('pnrForm').addEventListener('submit', async event => {
+            event.preventDefault();
+            const pnrVal = $('pnrInput').value.trim();
+            if (!pnrVal) return;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const origText = submitBtn.innerText;
+            submitBtn.innerText = 'Searching Database...';
+            submitBtn.disabled = true;
+
+            try {
+                const booking = await window.DhageService.getBookingByPNR(pnrVal);
+                if (booking) {
+                    displayBookingTicket(booking);
+                    window.closePnrModal();
+                    show('confirmation');
+                    if (window.showToast) {
+                        window.showToast(`Booking details retrieved for ${booking.pnr}`, 'success');
+                    }
+                } else {
+                    alert(`No booking found in database for PNR: ${pnrVal.toUpperCase()}`);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error querying booking.');
+            } finally {
+                submitBtn.innerText = origText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Initialize Shared Navbar & Footer components
+        window.SharedComponents.init('book', '#siteHeader', '#siteFooter');
+
+        // Initialize Cities & Check URL Params
+        setCities();
+
+        const queryParams = new URLSearchParams(location.search);
+        if (queryParams.get('from') && queryParams.get('to')) {
+            $('searchForm').requestSubmit();
+        }
+        if (queryParams.get('pnr') === 'open') {
+            window.openPnrModal();
+        }
     </script>
 </body>
 
